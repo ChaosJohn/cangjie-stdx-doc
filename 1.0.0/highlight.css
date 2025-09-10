@@ -1,0 +1,96 @@
+/*
+ * An increased contrast highlighting scheme loosely based on the
+ * "Base16 Atelier Dune Light" theme by Bram de Haan
+ * (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/dune)
+ * Original Base16 color scheme by Chris Kempson
+ * (https://github.com/chriskempson/base16)
+ */
+
+/* Comment */
+.hljs-comment,
+.hljs-quote {
+  color: #575757;
+}
+
+.hljs-keyword,
+.hljs-name,
+.hljs-section,
+.hljs-selector-tag {
+    color: #2871cc
+}
+
+.hljs-template-variable,
+.hljs-variable {
+    color: #49b3ac
+}
+
+.hljs-regexp,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-string {
+    color: #689932
+}
+
+.hljs-bullet,
+.hljs-link,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-symbol {
+    color: #3e9fcc
+}
+
+.hljs-attr,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-doctag,
+.hljs-javadoc,
+.hljs-params,
+.hljs-title,
+.hljs-type {
+    color: #6f79a9
+}
+
+.hljs-attribute,
+.hljs-subst {
+    color: #000
+}
+
+.hljs-formula {
+    font-style: italic
+}
+
+.hljs-selector-class,
+.hljs-selector-id {
+    color: #e69a3a
+}
+
+.hljs-package {
+    color: #242728
+}
+
+.hljs-doctag,
+.hljs-strong {
+    font-weight: bold
+}
+
+.hljs-emphasis {
+    font-style: italic
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  background: #f1f3f4;
+  color: #000;
+}
+
+.hljs-addition {
+  color: #22863a;
+  background-color: #f0fff4;
+}
+
+.hljs-deletion {
+  color: #b31d28;
+  background-color: #ffeef0;
+}

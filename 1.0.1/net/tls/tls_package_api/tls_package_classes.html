@@ -1,0 +1,616 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" class="light" dir="ltr">
+    <head>
+            <script type="text/x-mathjax-config">
+                MathJax.Hub.Config({
+                    showProcessingMessages: false,
+                    messageStyle: "none",
+                    extensions: ['tex2jax.js'],
+                    jax: ['input/TeX', 'output/HTML-CSS'],
+                    tex2jax: {
+                        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                        processEscapes: true
+                    },
+                    "HTML-CSS": { availableFonts: ["STIX", "TeX"] }
+                });
+            </script>
+            
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>类 - 仓颉编程语言扩展库 API</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../favicon.png">
+        <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../../assets/style.css">
+        <link rel="stylesheet" href="../../../assets/theme.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../../libs_overview.html"><strong aria-hidden="true">1.</strong> 仓颉编程语言扩展库 API</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../aspectCJ/aspectCJ_package_overview.html"><strong aria-hidden="true">1.1.</strong> stdx.aspectCJ</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../aspectCJ/aspectCJ_package_api/aspectCJ_package_classes.html"><strong aria-hidden="true">1.1.1.</strong> 类</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.1.2.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../aspectCJ/aspectCJ_samples/aspectCJ_sample.html"><strong aria-hidden="true">1.1.2.1.</strong> aspecjCJ 使用</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../compress/zlib/zlib_package_overview.html"><strong aria-hidden="true">1.2.</strong> stdx.compress.zlib</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../compress/zlib/zlib_package_api/zlib_package_classes.html"><strong aria-hidden="true">1.2.1.</strong> 类</a></li><li class="chapter-item "><a href="../../../compress/zlib/zlib_package_api/zlib_package_enums.html"><strong aria-hidden="true">1.2.2.</strong> 枚举</a></li><li class="chapter-item "><a href="../../../compress/zlib/zlib_package_api/zlib_package_exceptions.html"><strong aria-hidden="true">1.2.3.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.2.4.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../compress/zlib/zlib_samples/deflate_compress_decompress.html"><strong aria-hidden="true">1.2.4.1.</strong> Deflate 格式数据的压缩和解压</a></li><li class="chapter-item "><a href="../../../compress/zlib/zlib_samples/gzip_compress_decompress.html"><strong aria-hidden="true">1.2.4.2.</strong> Gzip 格式数据的压缩和解压</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../crypto/crypto/crypto_package_overview.html"><strong aria-hidden="true">1.3.</strong> stdx.crypto.crypto</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/crypto/crypto_package_api/crypto_package_classes.html"><strong aria-hidden="true">1.3.1.</strong> 类</a></li><li class="chapter-item "><a href="../../../crypto/crypto/crypto_package_api/crypto_package_structs.html"><strong aria-hidden="true">1.3.2.</strong> 结构体</a></li><li class="chapter-item "><a href="../../../crypto/crypto/crypto_package_api/crypto_package_exceptions.html"><strong aria-hidden="true">1.3.3.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.3.4.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/crypto/crypto_samples/sample_secure_random.html"><strong aria-hidden="true">1.3.4.1.</strong> SecureRandom 使用</a></li><li class="chapter-item "><a href="../../../crypto/crypto/crypto_samples/sample_crypto.html"><strong aria-hidden="true">1.3.4.2.</strong> SM4 使用</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../crypto/digest/crypto_digest_package_overview.html"><strong aria-hidden="true">1.4.</strong> stdx.crypto.digest</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/digest/digest_package_api/digest_package_classes.html"><strong aria-hidden="true">1.4.1.</strong> 类</a></li><li class="chapter-item "><a href="../../../crypto/digest/digest_package_api/digest_package_structs.html"><strong aria-hidden="true">1.4.2.</strong> 结构体</a></li><li class="chapter-item "><a href="../../../crypto/digest/digest_package_api/digest_package_exceptions.html"><strong aria-hidden="true">1.4.3.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.4.4.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/digest/digest_samples/sample_digest.html"><strong aria-hidden="true">1.4.4.1.</strong> digest 使用</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../crypto/keys/keys_package_overview.html"><strong aria-hidden="true">1.5.</strong> stdx.crypto.keys</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/keys/keys_package_api/keys_package_classes.html"><strong aria-hidden="true">1.5.1.</strong> 类</a></li><li class="chapter-item "><a href="../../../crypto/keys/keys_package_api/keys_package_enums.html"><strong aria-hidden="true">1.5.2.</strong> 枚举</a></li><li class="chapter-item "><a href="../../../crypto/keys/keys_package_api/keys_package_structs.html"><strong aria-hidden="true">1.5.3.</strong> 结构体</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.5.4.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/keys/keys_samples/sample_keys.html"><strong aria-hidden="true">1.5.4.1.</strong> keys 使用</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../crypto/x509/x509_package_overview.html"><strong aria-hidden="true">1.6.</strong> stdx.crypto.x509</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/x509/x509_package_api/x509_package_type.html"><strong aria-hidden="true">1.6.1.</strong> 类型别名</a></li><li class="chapter-item "><a href="../../../crypto/x509/x509_package_api/x509_package_interfaces.html"><strong aria-hidden="true">1.6.2.</strong> 接口</a></li><li class="chapter-item "><a href="../../../crypto/x509/x509_package_api/x509_package_classes.html"><strong aria-hidden="true">1.6.3.</strong> 类</a></li><li class="chapter-item "><a href="../../../crypto/x509/x509_package_api/x509_package_enums.html"><strong aria-hidden="true">1.6.4.</strong> 枚举</a></li><li class="chapter-item "><a href="../../../crypto/x509/x509_package_api/x509_package_structs.html"><strong aria-hidden="true">1.6.5.</strong> 结构体</a></li><li class="chapter-item "><a href="../../../crypto/x509/x509_package_api/x509_package_exceptions.html"><strong aria-hidden="true">1.6.6.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.6.7.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/x509/x509_samples/sample_x509.html"><strong aria-hidden="true">1.6.7.1.</strong> x509 使用</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../encoding/base64/base64_package_overview.html"><strong aria-hidden="true">1.7.</strong> stdx.encoding.base64</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/base64/base64_package_api/base64_package_funcs.html"><strong aria-hidden="true">1.7.1.</strong> 函数</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.7.2.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/base64/base64_samples/base64.html"><strong aria-hidden="true">1.7.2.1.</strong> Byte 数组和 Base64 互转</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../encoding/hex/hex_package_overview.html"><strong aria-hidden="true">1.8.</strong> stdx.encoding.hex</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/hex/hex_package_api/hex_package_funcs.html"><strong aria-hidden="true">1.8.1.</strong> 函数</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.8.2.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/hex/hex_samples/hex.html"><strong aria-hidden="true">1.8.2.1.</strong> Byte 数组和 Hex 互转</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../encoding/json/json_package_overview.html"><strong aria-hidden="true">1.9.</strong> stdx.encoding.json</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/json/json_package_api/encoding_json_package_interfaces.html"><strong aria-hidden="true">1.9.1.</strong> 接口</a></li><li class="chapter-item "><a href="../../../encoding/json/json_package_api/encoding_json_package_classes.html"><strong aria-hidden="true">1.9.2.</strong> 类</a></li><li class="chapter-item "><a href="../../../encoding/json/json_package_api/encoding_json_package_enums.html"><strong aria-hidden="true">1.9.3.</strong> 枚举</a></li><li class="chapter-item "><a href="../../../encoding/json/json_package_api/encoding_json_package_exceptions.html"><strong aria-hidden="true">1.9.4.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.9.5.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/json/json_samples/json_array_sample.html"><strong aria-hidden="true">1.9.5.1.</strong> JsonArray 使用示例</a></li><li class="chapter-item "><a href="../../../encoding/json/json_samples/json_value_sample.html"><strong aria-hidden="true">1.9.5.2.</strong> JsonValue 和 String 互相转换</a></li><li class="chapter-item "><a href="../../../encoding/json/json_samples/to_json_sample.html"><strong aria-hidden="true">1.9.5.3.</strong> JsonValue 与 DataModel 的转换</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_package_overview.html"><strong aria-hidden="true">1.10.</strong> stdx.encoding.json.stream</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_package_api/encoding_json_stream_package_interfaces.html"><strong aria-hidden="true">1.10.1.</strong> 接口</a></li><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_package_api/encoding_json_stream_package_classes.html"><strong aria-hidden="true">1.10.2.</strong> 类</a></li><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_package_api/encoding_json_stream_package_enums.html"><strong aria-hidden="true">1.10.3.</strong> 枚举</a></li><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_package_api/encoding_json_stream_package_structs.html"><strong aria-hidden="true">1.10.4.</strong> 结构体</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.10.5.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_samples/sample_json_reader.html"><strong aria-hidden="true">1.10.5.1.</strong> 使用 Json Stream 进行反序列化</a></li><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_samples/sample_json_writer.html"><strong aria-hidden="true">1.10.5.2.</strong> 使用 Json Stream 进行序列化</a></li><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_samples/sample_json_writeconfig.html"><strong aria-hidden="true">1.10.5.3.</strong> WriteConfig 使用示例</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../encoding/url/url_package_overview.html"><strong aria-hidden="true">1.11.</strong> stdx.encoding.url</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/url/url_package_api/url_package_classes.html"><strong aria-hidden="true">1.11.1.</strong> 类</a></li><li class="chapter-item "><a href="../../../encoding/url/url_package_api/url_package_exceptions.html"><strong aria-hidden="true">1.11.2.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.11.3.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/url/url_samples/form.html"><strong aria-hidden="true">1.11.3.1.</strong> Form 的构造使用</a></li><li class="chapter-item "><a href="../../../encoding/url/url_samples/url_parse.html"><strong aria-hidden="true">1.11.3.2.</strong> URL 解析函数 parse 的使用</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../fuzz/fuzz_package_overview.html"><strong aria-hidden="true">1.12.</strong> stdx.fuzz.fuzz</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../fuzz/fuzz_package_api/fuzz_package_constants_vars.html"><strong aria-hidden="true">1.12.1.</strong> 常量变量</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_package_api/fuzz_package_classes.html"><strong aria-hidden="true">1.12.2.</strong> 类</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_package_api/fuzz_package_exceptions.html"><strong aria-hidden="true">1.12.3.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.12.4.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../fuzz/fuzz_samples/basic_fuzzing_test.html"><strong aria-hidden="true">1.12.4.1.</strong> 测试猜测字符功能</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_samples/dataprovider_usage.html"><strong aria-hidden="true">1.12.4.2.</strong> 使用 DataProvider 功能进行测试</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_samples/fake_coverage_usage.html"><strong aria-hidden="true">1.12.4.3.</strong> 使用 FakeCoverage 避免 DataProvider 模式下 Fuzz 异常终止</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_samples/print_cj-fuzz_usage.html"><strong aria-hidden="true">1.12.4.4.</strong> 打印 fuzz 使用方法</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_samples/print_coverage.html"><strong aria-hidden="true">1.12.4.5.</strong> 实验性特性-覆盖率信息打印</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_samples/stack_backtrace_missing_solution.html"><strong aria-hidden="true">1.12.4.6.</strong> 栈回溯缺失的处理方案</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../log/log_package_overview.html"><strong aria-hidden="true">1.13.</strong> stdx.log</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../log/log_package_api/log_package_types.html"><strong aria-hidden="true">1.13.1.</strong> 类型别名</a></li><li class="chapter-item "><a href="../../../log/log_package_api/log_package_funcs.html"><strong aria-hidden="true">1.13.2.</strong> 函数</a></li><li class="chapter-item "><a href="../../../log/log_package_api/log_package_interfaces.html"><strong aria-hidden="true">1.13.3.</strong> 接口</a></li><li class="chapter-item "><a href="../../../log/log_package_api/log_package_classes.html"><strong aria-hidden="true">1.13.4.</strong> 类</a></li><li class="chapter-item "><a href="../../../log/log_package_api/log_package_structs.html"><strong aria-hidden="true">1.13.5.</strong> 结构体</a></li><li class="chapter-item "><a href="../../../log/log_package_api/log_package_exceptions.html"><strong aria-hidden="true">1.13.6.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.13.7.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../log/log_samples/log_sample.html"><strong aria-hidden="true">1.13.7.1.</strong> 日志打印示例</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../logger/logger_package_overview.html"><strong aria-hidden="true">1.14.</strong> stdx.logger</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../logger/logger_package_api/logger_package_classes.html"><strong aria-hidden="true">1.14.1.</strong> 类</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.14.2.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../logger/logger_samples/logger_sample.html"><strong aria-hidden="true">1.14.2.1.</strong> 日志打印示例</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../net/http/http_package_overview.html"><strong aria-hidden="true">1.15.</strong> stdx.net.http</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../net/http/http_package_api/http_package_funcs.html"><strong aria-hidden="true">1.15.1.</strong> 函数</a></li><li class="chapter-item "><a href="../../../net/http/http_package_api/http_package_interfaces.html"><strong aria-hidden="true">1.15.2.</strong> 接口</a></li><li class="chapter-item "><a href="../../../net/http/http_package_api/http_package_classes.html"><strong aria-hidden="true">1.15.3.</strong> 类</a></li><li class="chapter-item "><a href="../../../net/http/http_package_api/http_package_enums.html"><strong aria-hidden="true">1.15.4.</strong> 枚举</a></li><li class="chapter-item "><a href="../../../net/http/http_package_api/http_package_structs.html"><strong aria-hidden="true">1.15.5.</strong> 结构体</a></li><li class="chapter-item "><a href="../../../net/http/http_package_api/http_package_exceptions.html"><strong aria-hidden="true">1.15.6.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.15.7.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../net/http/http_samples/http_client.html"><strong aria-hidden="true">1.15.7.1.</strong> client</a></li><li class="chapter-item "><a href="../../../net/http/http_samples/cookie.html"><strong aria-hidden="true">1.15.7.2.</strong> cookie</a></li><li class="chapter-item "><a href="../../../net/http/http_samples/log.html"><strong aria-hidden="true">1.15.7.3.</strong> log</a></li><li class="chapter-item "><a href="../../../net/http/http_samples/http_server.html"><strong aria-hidden="true">1.15.7.4.</strong> server</a></li><li class="chapter-item "><a href="../../../net/http/http_samples/webSocket.html"><strong aria-hidden="true">1.15.7.5.</strong> webSocket</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../net/tls/tls_package_overview.html"><strong aria-hidden="true">1.16.</strong> stdx.net.tls</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../net/tls/tls_package_api/tls_package_classes.html" class="active"><strong aria-hidden="true">1.16.1.</strong> 类</a></li><li class="chapter-item "><a href="../../../net/tls/tls_package_api/tls_package_enums.html"><strong aria-hidden="true">1.16.2.</strong> 枚举</a></li><li class="chapter-item "><a href="../../../net/tls/tls_package_api/tls_package_structs.html"><strong aria-hidden="true">1.16.3.</strong> 结构体</a></li><li class="chapter-item "><a href="../../../net/tls/tls_package_api/tls_package_exceptions.html"><strong aria-hidden="true">1.16.4.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.16.5.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../net/tls/tls_samples/cert_key.html"><strong aria-hidden="true">1.16.5.1.</strong> 服务端证书及公钥在一份文件中</a></li><li class="chapter-item "><a href="../../../net/tls/tls_samples/client.html"><strong aria-hidden="true">1.16.5.2.</strong> 客户端示例</a></li><li class="chapter-item "><a href="../../../net/tls/tls_samples/hot_update_cert.html"><strong aria-hidden="true">1.16.5.3.</strong> 证书热更新</a></li><li class="chapter-item "><a href="../../../net/tls/tls_samples/server.html"><strong aria-hidden="true">1.16.5.4.</strong> 服务端示例</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../serialization/serialization_package_overview.html"><strong aria-hidden="true">1.17.</strong> stdx.serialization.serialization</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../serialization/serialization_package_api/serialization_package_functions.html"><strong aria-hidden="true">1.17.1.</strong> 函数</a></li><li class="chapter-item "><a href="../../../serialization/serialization_package_api/serialization_package_interfaces.html"><strong aria-hidden="true">1.17.2.</strong> 接口</a></li><li class="chapter-item "><a href="../../../serialization/serialization_package_api/serialization_package_classes.html"><strong aria-hidden="true">1.17.3.</strong> 类</a></li><li class="chapter-item "><a href="../../../serialization/serialization_package_api/serialization_package_exceptions.html"><strong aria-hidden="true">1.17.4.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.17.5.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../serialization/serialization_samples/serialize_and_deserialize_class.html"><strong aria-hidden="true">1.17.5.1.</strong> class 序列化和反序列化</a></li><li class="chapter-item "><a href="../../../serialization/serialization_samples/serialize_hashmap_and_hashset.html"><strong aria-hidden="true">1.17.5.2.</strong> HashSet 和 HashMap 序列化</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../unittest/data/data_package_overview.html"><strong aria-hidden="true">1.18.</strong> stdx.unittest.data</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../unittest/data/data_package_api/data_package_functions.html"><strong aria-hidden="true">1.18.1.</strong> 函数</a></li><li class="chapter-item "><a href="../../../unittest/data/data_package_api/data_package_classes.html"><strong aria-hidden="true">1.18.2.</strong> 类</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">仓颉编程语言扩展库 API</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="类"><a class="header" href="#类">类</a></h1>
+<h2 id="class-tlssessioncontext"><a class="header" href="#class-tlssessioncontext">class TlsSessionContext</a></h2>
+<pre><code class="language-cangjie">public class TlsSessionContext &lt;: Equatable&lt;TlsSessionContext&gt; &amp; ToString
+</code></pre>
+<p>功能：该类表示 TLS 会话上下文，给客户端提供信息，确保客户端所连接的服务端仍为相同实例，用于连接复用时，验证客户端合法性。</p>
+<blockquote>
+<p><strong>说明：</strong></p>
+<p>当客户端尝试恢复会话时，双方都必须确保他们正在恢复与合法对端的会话。</p>
+</blockquote>
+<p>父类型：</p>
+<ul>
+<li>Equatable&lt;<a href="#class-tlssessioncontext">TlsSessionContext</a>&gt;</li>
+<li>ToString</li>
+</ul>
+<h3 id="static-func-fromnamestring"><a class="header" href="#static-func-fromnamestring">static func fromName(String)</a></h3>
+<pre><code class="language-cangjie">public static func fromName(name: String): TlsSessionContext
+</code></pre>
+<p>功能：通过名称创建 <a href="tls_package_classes.html#class-tlssessioncontext">TlsSessionContext</a> 实例。</p>
+<p>通过 <a href="tls_package_classes.html#class-tlssessioncontext">TlsSessionContext</a> 保存的名称获取 <a href="tls_package_classes.html#class-tlssessioncontext">TlsSessionContext</a> 对象。该名称用于区分 TLS 服务器，因此客户端依赖此名称来避免意外，尝试恢复与错误的服务器的连接。这里不一定使用加密安全名称，因为底层实现可以完成这项工作。从此函数返回的具有相同名称的两个 TlsSessionContext 可能不相等，并且不保证可替换。尽管它们是从相同的名称创建的，因此服务器实例应该在整个生命周期内创建一个 TlsSessionContext ，并且在每次 <a href="tls_package_classes.html#class-tlssocket">TlsSocket</a>.server() 调用中使用它。</p>
+<p>参数：</p>
+<ul>
+<li>name: String - 会话上下文名称。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="tls_package_classes.html#class-tlssessioncontext">TlsSessionContext</a> - 会话上下文。</li>
+</ul>
+<h3 id="func-tostring"><a class="header" href="#func-tostring">func toString()</a></h3>
+<pre><code class="language-cangjie">public override func toString(): String
+</code></pre>
+<p>功能：生成会话上下文名称字符串。</p>
+<p>返回值：</p>
+<ul>
+<li>String - <a href="tls_package_classes.html#class-tlssessioncontext">TlsSessionContext</a>（会话上下文名称字符串）。</li>
+</ul>
+<h3 id="operator-func-tlssessioncontext"><a class="header" href="#operator-func-tlssessioncontext">operator func !=(TlsSessionContext)</a></h3>
+<pre><code class="language-cangjie">public override operator func !=(other: TlsSessionContext)
+</code></pre>
+<p>功能：判断两 <a href="tls_package_classes.html#class-tlssessioncontext">TlsSessionContext</a> 实例名称是否不同。</p>
+<p>参数：</p>
+<ul>
+<li>other: <a href="tls_package_classes.html#class-tlssessioncontext">TlsSessionContext</a> - 被比较的会话上下文对象。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>Unit - 若 <a href="tls_package_classes.html#class-tlssessioncontext">TlsSessionContext</a> 对象不同，返回 <code>true</code>；否则，返回 <code>false</code>。</li>
+</ul>
+<h3 id="operator-func-tlssessioncontext-1"><a class="header" href="#operator-func-tlssessioncontext-1">operator func ==(TlsSessionContext)</a></h3>
+<pre><code class="language-cangjie">public override operator func ==(other: TlsSessionContext)
+</code></pre>
+<p>功能：判断两 <a href="tls_package_classes.html#class-tlssessioncontext">TlsSessionContext</a> 实例名称是否相同。</p>
+<p>参数：</p>
+<ul>
+<li>other: <a href="tls_package_classes.html#class-tlssessioncontext">TlsSessionContext</a> - 被比较的会话上下文对象。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>Unit - 若 <a href="tls_package_classes.html#class-tlssessioncontext">TlsSessionContext</a> 对象相同，返回 <code>true</code>；否则，返回 <code>false</code>。</li>
+</ul>
+<h2 id="class-tlssocket"><a class="header" href="#class-tlssocket">class TlsSocket</a></h2>
+<pre><code class="language-cangjie">public class TlsSocket &lt;: StreamingSocket &amp; ToString &amp; Equatable&lt;TlsSocket&gt; &amp; Hashable
+</code></pre>
+<p>功能：<a href="tls_package_classes.html#class-tlssocket">TlsSocket</a> 用于在客户端及服务端间创建加密传输通道。</p>
+<p>父类型：</p>
+<ul>
+<li>StreamingSocket</li>
+<li>ToString</li>
+<li>Equatable&lt;<a href="#class-tlssocket">TlsSocket</a>&gt;</li>
+<li>Hashable</li>
+</ul>
+<h3 id="prop-alpnprotocolname"><a class="header" href="#prop-alpnprotocolname">prop alpnProtocolName</a></h3>
+<pre><code class="language-cangjie">public prop alpnProtocolName: ?String
+</code></pre>
+<p>功能：读取协商到的应用层协议名称。</p>
+<p>类型：?String</p>
+<p>异常：</p>
+<ul>
+<li><a href="tls_package_exceptions.html#class-tlsexception">TlsException</a> - 当套接字未完成 TLS 握手或本端 TLS 套接字已关闭时，抛出异常。</li>
+<li>IllegalMemoryException - 当内存申请失败时，抛出异常。</li>
+</ul>
+<h3 id="prop-ciphersuite"><a class="header" href="#prop-ciphersuite">prop cipherSuite</a></h3>
+<pre><code class="language-cangjie">public prop cipherSuite: CipherSuite
+</code></pre>
+<p>功能：握手后协商到的加密套。</p>
+<blockquote>
+<p><strong>说明：</strong></p>
+<p>密码套件包含加密算法、用于消息认证的散列函数、密钥交换算法。</p>
+</blockquote>
+<p>类型：<a href="tls_package_structs.html#struct-ciphersuite">CipherSuite</a></p>
+<p>异常：</p>
+<ul>
+<li><a href="tls_package_exceptions.html#class-tlsexception">TlsException</a> - 当套接字未完成 TLS 握手或本端 TLS 套接字已关闭时，抛出异常。</li>
+</ul>
+<h3 id="prop-clientcertificate"><a class="header" href="#prop-clientcertificate">prop clientCertificate</a></h3>
+<pre><code class="language-cangjie">public prop clientCertificate: ?Array&lt;X509Certificate&gt;
+</code></pre>
+<p>功能：客户端提供的客户端证书。在客户端获取时为本端证书，在服务端获取时为对端证书。</p>
+<blockquote>
+<p><strong>注意：</strong></p>
+<p>获取对端证书时，如果对端没有发送证书，该接口可能获取失败，返回 None。详见 <a href="./tls_package_classes.html#prop-peercertificate">peerCertificate</a>。</p>
+</blockquote>
+<p>类型：?Array&lt;<a href="../../../crypto/x509/x509_package_api/x509_package_classes.html#class-x509certificate">X509Certificate</a>&gt;</p>
+<p>异常：</p>
+<ul>
+<li><a href="tls_package_exceptions.html#class-tlsexception">TlsException</a> - 当套接字未完成 TLS 握手或本端 TLS 套接字已关闭时，抛出异常。</li>
+</ul>
+<h3 id="prop-domain"><a class="header" href="#prop-domain">prop domain</a></h3>
+<pre><code class="language-cangjie">public prop domain: ?String
+</code></pre>
+<p>功能：读取协商到的服务端主机名称。</p>
+<ul>
+<li><a href="tls_package_exceptions.html#class-tlsexception">TlsException</a> - 当套接字未完成 TLS 握手或本端 TLS 套接字已关闭时，抛出异常。</li>
+</ul>
+<p>类型：?String</p>
+<h3 id="prop-localaddress"><a class="header" href="#prop-localaddress">prop localAddress</a></h3>
+<pre><code class="language-cangjie">public override prop localAddress: SocketAddress
+</code></pre>
+<p>功能：读取 <a href="tls_package_classes.html#class-tlssocket">TlsSocket</a> 的本地地址。</p>
+<p>类型：SocketAddress</p>
+<p>异常：</p>
+<ul>
+<li>SocketException - 本端建连的底层 TCP 套接字关闭，抛出异常。</li>
+<li><a href="tls_package_exceptions.html#class-tlsexception">TlsException</a> - 本端配置为 TLS 的套接字已关闭时，抛出异常。</li>
+</ul>
+<h3 id="prop-peercertificate"><a class="header" href="#prop-peercertificate">prop peerCertificate</a></h3>
+<pre><code class="language-cangjie">public prop peerCertificate: ?Array&lt;X509Certificate&gt;
+</code></pre>
+<p>功能：获取对端证书。在客户端获取时同 <a href="./tls_package_classes.html#prop-servercertificate">serverCertificate</a>，在服务端获取时同 <a href="./tls_package_classes.html#prop-clientcertificate">clientCertificate</a>。</p>
+<blockquote>
+<p><strong>注意：</strong></p>
+<ul>
+<li>
+<p>如果握手时没有要求对端发送证书，此处将无法获取对端证书，返回 None。</p>
+</li>
+<li>
+<p>通过 session 机制恢复连接时，双方都不发送证书，该接口行为如下：</p>
+<ul>
+<li>在服务端，如果被恢复的原始连接建立时获取了对端证书，服务端将缓存对端证书，并在此处获取到缓存的证书；</li>
+<li>在客户端，不缓存原始连接的对端证书，此处将无法获取对端证书，返回 None。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>类型：?Array&lt;<a href="../../../crypto/x509/x509_package_api/x509_package_classes.html#class-x509certificate">X509Certificate</a>&gt;</p>
+<p>异常：</p>
+<ul>
+<li><a href="tls_package_exceptions.html#class-tlsexception">TlsException</a> - 当套接字未完成 TLS 握手或本端 TLS 套接字已关闭时，抛出异常。</li>
+</ul>
+<h3 id="prop-readtimeout"><a class="header" href="#prop-readtimeout">prop readTimeout</a></h3>
+<pre><code class="language-cangjie">public override mut prop readTimeout: ?Duration
+</code></pre>
+<p>功能：读写 <a href="tls_package_classes.html#class-tlssocket">TlsSocket</a> 的读超时时间。</p>
+<p>类型：?Duration</p>
+<p>异常：</p>
+<ul>
+<li>SocketException - 本端建连的底层 TCP 套接字关闭，抛出异常。</li>
+<li><a href="tls_package_exceptions.html#class-tlsexception">TlsException</a> - 本端配置为 TLS 的套接字已关闭时，抛出异常。</li>
+<li>IllegalArgumentException - 设定的读超时时间为负值时，抛出异常。</li>
+</ul>
+<h3 id="prop-remoteaddress"><a class="header" href="#prop-remoteaddress">prop remoteAddress</a></h3>
+<pre><code class="language-cangjie">public override prop remoteAddress: SocketAddress
+</code></pre>
+<p>功能：读取 <a href="tls_package_classes.html#class-tlssocket">TlsSocket</a> 的远端地址。</p>
+<p>类型：SocketAddress</p>
+<p>异常：</p>
+<ul>
+<li>SocketException - 本端建连的底层 TCP 套接字关闭，抛出异常。</li>
+<li><a href="tls_package_exceptions.html#class-tlsexception">TlsException</a> - 本端配置为 TLS 的套接字已关闭时，抛出异常。</li>
+</ul>
+<h3 id="prop-servercertificate"><a class="header" href="#prop-servercertificate">prop serverCertificate</a></h3>
+<pre><code class="language-cangjie">public prop serverCertificate: Array&lt;X509Certificate&gt;
+</code></pre>
+<p>功能：服务器证书链由服务器提供或在服务器配置中预先配置。在服务端获取时为本端证书，在客户端获取时为对端证书。</p>
+<blockquote>
+<p><strong>注意：</strong></p>
+<p>获取对端证书时，如果对端没有发送证书，该接口可能获取失败，返回 None。详见 <a href="./tls_package_classes.html#prop-peercertificate">peerCertificate</a>。</p>
+</blockquote>
+<p>类型：Array&lt;<a href="../../../crypto/x509/x509_package_api/x509_package_classes.html#class-x509certificate">X509Certificate</a>&gt;</p>
+<p>异常：</p>
+<ul>
+<li><a href="tls_package_exceptions.html#class-tlsexception">TlsException</a> - 当套接字未完成 TLS 握手或本端 TLS 套接字已关闭时，抛出异常。</li>
+</ul>
+<h3 id="prop-session"><a class="header" href="#prop-session">prop session</a></h3>
+<pre><code class="language-cangjie">public prop session: ?TlsSession
+</code></pre>
+<p>功能：读取 TLS 会话 id , 客户端会在握手成功后捕获当前会话的 id ，可使用该 id 重用该会话，省去 TLS 建立连接时间。连接建立未成功时，返回 <code>None</code>。</p>
+<blockquote>
+<p><strong>说明：</strong></p>
+<p>服务端不做捕获因此始终为 None。</p>
+</blockquote>
+<p>类型：?<a href="tls_package_structs.html#struct-tlssession">TlsSession</a></p>
+<p>异常：</p>
+<ul>
+<li><a href="tls_package_exceptions.html#class-tlsexception">TlsException</a> - 当套接字未完成 TLS 握手，抛出异常。</li>
+</ul>
+<h3 id="prop-socket"><a class="header" href="#prop-socket">prop socket</a></h3>
+<pre><code class="language-cangjie">public prop socket: StreamingSocket
+</code></pre>
+<p>功能：<a href="tls_package_classes.html#class-tlssocket">TlsSocket</a> 创建所使用的 StreamingSocket。</p>
+<p>类型：StreamingSocket</p>
+<p>异常：</p>
+<ul>
+<li><a href="tls_package_exceptions.html#class-tlsexception">TlsException</a> - 本端配置为 TLS 套接字已关闭时，抛出异常。</li>
+</ul>
+<h3 id="prop-tlsversion"><a class="header" href="#prop-tlsversion">prop tlsVersion</a></h3>
+<pre><code class="language-cangjie">public prop tlsVersion: TlsVersion
+</code></pre>
+<p>功能：读取协商到的 TLS 版本。</p>
+<p>类型：<a href="tls_package_enums.html#enum-tlsversion">TlsVersion</a></p>
+<p>异常：</p>
+<ul>
+<li><a href="tls_package_exceptions.html#class-tlsexception">TlsException</a> - 当套接字未完成 TLS 握手或本端 TLS 套接字已关闭时，抛出异常。</li>
+</ul>
+<h3 id="prop-writetimeout"><a class="header" href="#prop-writetimeout">prop writeTimeout</a></h3>
+<pre><code class="language-cangjie">public override mut prop writeTimeout: ?Duration
+</code></pre>
+<p>功能：读写 <a href="tls_package_classes.html#class-tlssocket">TlsSocket</a> 的写超时时间。</p>
+<p>类型：?Duration</p>
+<p>异常：</p>
+<ul>
+<li>SocketException - 本端建连的底层 TCP 套接字关闭，抛出异常。</li>
+<li><a href="tls_package_exceptions.html#class-tlsexception">TlsException</a> - 本端配置为 TLS 的套接字已关闭时，抛出异常。</li>
+<li>IllegalArgumentException - 设定的写超时时间为负值时，抛出异常。</li>
+</ul>
+<h3 id="static-func-clientstreamingsocket-tlssession-tlsclientconfig"><a class="header" href="#static-func-clientstreamingsocket-tlssession-tlsclientconfig">static func client(StreamingSocket, ?TlsSession, TlsClientConfig)</a></h3>
+<pre><code class="language-cangjie">public static func client(
+    socket: StreamingSocket,
+    session!: ?TlsSession = None,
+    clientConfig!: TlsClientConfig = TlsClientConfig()
+): TlsSocket
+</code></pre>
+<p>功能：根据传入的 StreamingSocket 实例创建指定地址的客户端 TLS 套接字，该套接字可用于客户端 TLS 握手及会话。</p>
+<p>参数：</p>
+<ul>
+<li>socket: StreamingSocket - 已连接到服务端的客户端 TCP 套接字。</li>
+<li>session!: ?<a href="tls_package_structs.html#struct-tlssession">TlsSession</a> - TLS 会话 id，若存在可用的 TLS 会话， 则可通过该 id 恢复历史 TLS 会话，省去 TLS 建立连接时间，但使用该会话依然可能协商失败。默认为 <code>None</code>。</li>
+<li>clientConfig!: <a href="tls_package_structs.html#struct-tlsclientconfig">TlsClientConfig</a> - 客户端配置，默认为 <a href="tls_package_structs.html#struct-tlsclientconfig">TlsClientConfig</a>()。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="tls_package_classes.html#class-tlssocket">TlsSocket</a> - 构造出的 <a href="tls_package_classes.html#class-tlssocket">TlsSocket</a> 实例。</li>
+</ul>
+<h3 id="static-func-serverstreamingsocket-tlssessioncontext-tlsserverconfig"><a class="header" href="#static-func-serverstreamingsocket-tlssessioncontext-tlsserverconfig">static func server(StreamingSocket, ?TlsSessionContext, TlsServerConfig)</a></h3>
+<pre><code class="language-cangjie">public static func server(
+    socket: StreamingSocket,
+    sessionContext!: ?TlsSessionContext = None,
+    serverConfig!: TlsServerConfig
+): TlsSocket
+</code></pre>
+<p>功能：根据传入的 StreamingSocket 实例创建指定地址的服务端 TLS 套接字，该套接字可用于服务端 TLS 握手及会话。</p>
+<p>参数：</p>
+<ul>
+<li>socket: StreamingSocket - TCP 连接建立完成后接受到套接字。</li>
+<li>sessionContext!: ?<a href="tls_package_classes.html#class-tlssessioncontext">TlsSessionContext</a> - TLS 会话 id， 若存在可用的 TLS 会话， 则可通过该 id 恢复历史 TLS 会话，省去 TLS 建立连接时间，但使用该会话依然可能协商失败。默认为 None。</li>
+<li>serverConfig!: <a href="tls_package_structs.html#struct-tlsserverconfig">TlsServerConfig</a> - 服务端配置，默认为 <a href="tls_package_structs.html#struct-tlsserverconfig">TlsServerConfig</a>()。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="tls_package_classes.html#class-tlssocket">TlsSocket</a> - 构造出的 <a href="tls_package_classes.html#class-tlssocket">TlsSocket</a> 实例。</li>
+</ul>
+<h3 id="func-close"><a class="header" href="#func-close">func close()</a></h3>
+<pre><code class="language-cangjie">public func close(): Unit
+</code></pre>
+<p>功能：关闭套接字。</p>
+<p>异常：</p>
+<ul>
+<li>SocketException - 底层连接无法关闭时，抛出异常。</li>
+</ul>
+<h3 id="func-handshakeduration"><a class="header" href="#func-handshakeduration">func handshake(?Duration)</a></h3>
+<pre><code class="language-cangjie">public func handshake(timeout!: ?Duration = None): Unit
+</code></pre>
+<p>功能：TLS 握手。不支持重新协商握手，因此只能被调用一次。调用对象可以为客户端或者服务端的 <a href="tls_package_classes.html#class-tlssocket">TlsSocket</a>。</p>
+<p>参数：</p>
+<ul>
+<li>timeout!: ?Duration - 握手超时时间，默认为 None 不对超时时间进行设置，此时采用默认 30s 的超时时间。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li>SocketException - 本端建连的底层 TCP 套接字关闭，抛出异常。</li>
+<li>SocketTimeoutException - 底层 TCP 套接字连接超时时，抛出异常。</li>
+<li><a href="tls_package_exceptions.html#class-tlsexception">TlsException</a> - 当握手已经开始或者已经结束，抛出异常或当握手阶段出现系统错误时，抛出异常。</li>
+<li>IllegalArgumentException - 设定的握手超时时间为负值时，抛出异常。</li>
+</ul>
+<h3 id="func-hashcode"><a class="header" href="#func-hashcode">func hashCode()</a></h3>
+<pre><code class="language-cangjie">public override func hashCode(): Int64
+</code></pre>
+<p>功能：返回 TLS 套接字对象的哈希值。</p>
+<p>返回值：</p>
+<ul>
+<li>Int64 - 对 TLS 套接字对象进行哈希计算后得到的结果。</li>
+</ul>
+<h3 id="func-isclosed"><a class="header" href="#func-isclosed">func isClosed()</a></h3>
+<pre><code class="language-cangjie">public func isClosed(): Bool
+</code></pre>
+<p>功能：返回套接字是否关闭的状态。</p>
+<p>返回值：</p>
+<ul>
+<li>Bool - 连接断开返回 true；否则，返回 false。</li>
+</ul>
+<h3 id="func-readarraybyte"><a class="header" href="#func-readarraybyte">func read(Array&lt;Byte&gt;)</a></h3>
+<pre><code class="language-cangjie">public override func read(buffer: Array&lt;Byte&gt;): Int64
+</code></pre>
+<p>功能：<a href="tls_package_classes.html#class-tlssocket">TlsSocket</a> 读取数据。</p>
+<p>参数：</p>
+<ul>
+<li>buffer: Array&lt;Byte&gt; - 存储读取到的数据内容的数组。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>Int64 - 读取到的数据内容字节数。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li>SocketException - 本端建连的底层 TCP 套接字关闭，抛出异常。</li>
+<li><a href="tls_package_exceptions.html#class-tlsexception">TlsException</a> - 当 <code>buffer</code> 为空，或者 <a href="tls_package_classes.html#class-tlssocket">TlsSocket</a> 未连接，或读取数据出现系统错误等。</li>
+</ul>
+<h3 id="func-tostring-1"><a class="header" href="#func-tostring-1">func toString()</a></h3>
+<pre><code class="language-cangjie">public func toString(): String
+</code></pre>
+<p>功能：套接字的字符串表示，字符串内容为当前套接字状态。</p>
+<blockquote>
+<p><strong>说明：</strong></p>
+<p>例如：当前套接字处于可开始进行握手状态时，该接口将返回字符串 &quot;<a href="tls_package_classes.html#class-tlssocket">TlsSocket</a>(TcpSocket(${本端地址} -&gt; ${对端地址}), ready for handshake)&quot;</p>
+</blockquote>
+<p>返回值：</p>
+<ul>
+<li>String - 该 TLS 连接字符串。</li>
+</ul>
+<h3 id="func-writearraybyte"><a class="header" href="#func-writearraybyte">func write(Array&lt;Byte&gt;)</a></h3>
+<pre><code class="language-cangjie">public func write(buffer: Array&lt;Byte&gt;): Unit
+</code></pre>
+<p>功能：<a href="tls_package_classes.html#class-tlssocket">TlsSocket</a> 发送数据。</p>
+<p>参数：</p>
+<ul>
+<li>buffer: Array&lt;Byte&gt; - 存储将要发送的数据内容数组。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li>SocketException - 本端建连的底层 TCP 套接字关闭，抛出异常。</li>
+<li><a href="tls_package_exceptions.html#class-tlsexception">TlsException</a> - 当套接字已关闭，或者 <a href="tls_package_classes.html#class-tlssocket">TlsSocket</a> 未连接，或写入数据出现系统错误等。</li>
+</ul>
+<h3 id="operator-func-tlssocket"><a class="header" href="#operator-func-tlssocket">operator func !=(TlsSocket)</a></h3>
+<pre><code class="language-cangjie">public override operator func !=(other: TlsSocket)
+</code></pre>
+<p>功能：判断两 <a href="tls_package_classes.html#class-tlssocket">TlsSocket</a> 是否引用不同实例。</p>
+<p>参数：</p>
+<ul>
+<li>other: <a href="tls_package_classes.html#class-tlssocket">TlsSocket</a> - 对比的 TLS 套接字。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>Unit - 对比的套接字不同返回 <code>true</code>；否则，返回 <code>false</code>。</li>
+</ul>
+<h3 id="operator-func-tlssocket-1"><a class="header" href="#operator-func-tlssocket-1">operator func ==(TlsSocket)</a></h3>
+<pre><code class="language-cangjie">public override operator func ==(other: TlsSocket)
+</code></pre>
+<p>功能：判断两 <a href="tls_package_classes.html#class-tlssocket">TlsSocket</a> 是否引用同一实例。</p>
+<p>参数：</p>
+<ul>
+<li>other: <a href="tls_package_classes.html#class-tlssocket">TlsSocket</a> - 对比的 TLS 套接字。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>Unit - 对比的套接字相同返回 <code>true</code>；否则，返回 <code>false</code>。</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../net/tls/tls_package_overview.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../../net/tls/tls_package_api/tls_package_enums.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../net/tls/tls_package_overview.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../../net/tls/tls_package_api/tls_package_enums.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../../elasticlunr.min.js"></script>
+        <script src="../../../mark.min.js"></script>
+        <script src="../../../searcher.js"></script>
+
+        <script src="../../../clipboard.min.js"></script>
+        <script src="../../../cangjie-highlight-export.js"></script><script src="../../../highlight.js"></script>
+        <script src="../../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        
+        <script src="../../../cangjie-highlight-export.js"></script><script src="../../../highlight.js"></script>
+        <script src="../../../assets/elasticlunr.js"></script>
+        <script src="../../../assets/fzf.umd.js"></script>
+        <script src="../../../assets/sidebar.js"></script>
+
+
+    </div>
+    </body>
+</html>

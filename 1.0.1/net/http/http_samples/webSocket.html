@@ -1,0 +1,403 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" class="light" dir="ltr">
+    <head>
+            <script type="text/x-mathjax-config">
+                MathJax.Hub.Config({
+                    showProcessingMessages: false,
+                    messageStyle: "none",
+                    extensions: ['tex2jax.js'],
+                    jax: ['input/TeX', 'output/HTML-CSS'],
+                    tex2jax: {
+                        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                        processEscapes: true
+                    },
+                    "HTML-CSS": { availableFonts: ["STIX", "TeX"] }
+                });
+            </script>
+            
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>webSocket - 仓颉编程语言扩展库 API</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../favicon.png">
+        <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../../assets/style.css">
+        <link rel="stylesheet" href="../../../assets/theme.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../../libs_overview.html"><strong aria-hidden="true">1.</strong> 仓颉编程语言扩展库 API</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../aspectCJ/aspectCJ_package_overview.html"><strong aria-hidden="true">1.1.</strong> stdx.aspectCJ</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../aspectCJ/aspectCJ_package_api/aspectCJ_package_classes.html"><strong aria-hidden="true">1.1.1.</strong> 类</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.1.2.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../aspectCJ/aspectCJ_samples/aspectCJ_sample.html"><strong aria-hidden="true">1.1.2.1.</strong> aspecjCJ 使用</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../compress/zlib/zlib_package_overview.html"><strong aria-hidden="true">1.2.</strong> stdx.compress.zlib</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../compress/zlib/zlib_package_api/zlib_package_classes.html"><strong aria-hidden="true">1.2.1.</strong> 类</a></li><li class="chapter-item "><a href="../../../compress/zlib/zlib_package_api/zlib_package_enums.html"><strong aria-hidden="true">1.2.2.</strong> 枚举</a></li><li class="chapter-item "><a href="../../../compress/zlib/zlib_package_api/zlib_package_exceptions.html"><strong aria-hidden="true">1.2.3.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.2.4.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../compress/zlib/zlib_samples/deflate_compress_decompress.html"><strong aria-hidden="true">1.2.4.1.</strong> Deflate 格式数据的压缩和解压</a></li><li class="chapter-item "><a href="../../../compress/zlib/zlib_samples/gzip_compress_decompress.html"><strong aria-hidden="true">1.2.4.2.</strong> Gzip 格式数据的压缩和解压</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../crypto/crypto/crypto_package_overview.html"><strong aria-hidden="true">1.3.</strong> stdx.crypto.crypto</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/crypto/crypto_package_api/crypto_package_classes.html"><strong aria-hidden="true">1.3.1.</strong> 类</a></li><li class="chapter-item "><a href="../../../crypto/crypto/crypto_package_api/crypto_package_structs.html"><strong aria-hidden="true">1.3.2.</strong> 结构体</a></li><li class="chapter-item "><a href="../../../crypto/crypto/crypto_package_api/crypto_package_exceptions.html"><strong aria-hidden="true">1.3.3.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.3.4.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/crypto/crypto_samples/sample_secure_random.html"><strong aria-hidden="true">1.3.4.1.</strong> SecureRandom 使用</a></li><li class="chapter-item "><a href="../../../crypto/crypto/crypto_samples/sample_crypto.html"><strong aria-hidden="true">1.3.4.2.</strong> SM4 使用</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../crypto/digest/crypto_digest_package_overview.html"><strong aria-hidden="true">1.4.</strong> stdx.crypto.digest</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/digest/digest_package_api/digest_package_classes.html"><strong aria-hidden="true">1.4.1.</strong> 类</a></li><li class="chapter-item "><a href="../../../crypto/digest/digest_package_api/digest_package_structs.html"><strong aria-hidden="true">1.4.2.</strong> 结构体</a></li><li class="chapter-item "><a href="../../../crypto/digest/digest_package_api/digest_package_exceptions.html"><strong aria-hidden="true">1.4.3.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.4.4.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/digest/digest_samples/sample_digest.html"><strong aria-hidden="true">1.4.4.1.</strong> digest 使用</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../crypto/keys/keys_package_overview.html"><strong aria-hidden="true">1.5.</strong> stdx.crypto.keys</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/keys/keys_package_api/keys_package_classes.html"><strong aria-hidden="true">1.5.1.</strong> 类</a></li><li class="chapter-item "><a href="../../../crypto/keys/keys_package_api/keys_package_enums.html"><strong aria-hidden="true">1.5.2.</strong> 枚举</a></li><li class="chapter-item "><a href="../../../crypto/keys/keys_package_api/keys_package_structs.html"><strong aria-hidden="true">1.5.3.</strong> 结构体</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.5.4.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/keys/keys_samples/sample_keys.html"><strong aria-hidden="true">1.5.4.1.</strong> keys 使用</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../crypto/x509/x509_package_overview.html"><strong aria-hidden="true">1.6.</strong> stdx.crypto.x509</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/x509/x509_package_api/x509_package_type.html"><strong aria-hidden="true">1.6.1.</strong> 类型别名</a></li><li class="chapter-item "><a href="../../../crypto/x509/x509_package_api/x509_package_interfaces.html"><strong aria-hidden="true">1.6.2.</strong> 接口</a></li><li class="chapter-item "><a href="../../../crypto/x509/x509_package_api/x509_package_classes.html"><strong aria-hidden="true">1.6.3.</strong> 类</a></li><li class="chapter-item "><a href="../../../crypto/x509/x509_package_api/x509_package_enums.html"><strong aria-hidden="true">1.6.4.</strong> 枚举</a></li><li class="chapter-item "><a href="../../../crypto/x509/x509_package_api/x509_package_structs.html"><strong aria-hidden="true">1.6.5.</strong> 结构体</a></li><li class="chapter-item "><a href="../../../crypto/x509/x509_package_api/x509_package_exceptions.html"><strong aria-hidden="true">1.6.6.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.6.7.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/x509/x509_samples/sample_x509.html"><strong aria-hidden="true">1.6.7.1.</strong> x509 使用</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../encoding/base64/base64_package_overview.html"><strong aria-hidden="true">1.7.</strong> stdx.encoding.base64</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/base64/base64_package_api/base64_package_funcs.html"><strong aria-hidden="true">1.7.1.</strong> 函数</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.7.2.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/base64/base64_samples/base64.html"><strong aria-hidden="true">1.7.2.1.</strong> Byte 数组和 Base64 互转</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../encoding/hex/hex_package_overview.html"><strong aria-hidden="true">1.8.</strong> stdx.encoding.hex</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/hex/hex_package_api/hex_package_funcs.html"><strong aria-hidden="true">1.8.1.</strong> 函数</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.8.2.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/hex/hex_samples/hex.html"><strong aria-hidden="true">1.8.2.1.</strong> Byte 数组和 Hex 互转</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../encoding/json/json_package_overview.html"><strong aria-hidden="true">1.9.</strong> stdx.encoding.json</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/json/json_package_api/encoding_json_package_interfaces.html"><strong aria-hidden="true">1.9.1.</strong> 接口</a></li><li class="chapter-item "><a href="../../../encoding/json/json_package_api/encoding_json_package_classes.html"><strong aria-hidden="true">1.9.2.</strong> 类</a></li><li class="chapter-item "><a href="../../../encoding/json/json_package_api/encoding_json_package_enums.html"><strong aria-hidden="true">1.9.3.</strong> 枚举</a></li><li class="chapter-item "><a href="../../../encoding/json/json_package_api/encoding_json_package_exceptions.html"><strong aria-hidden="true">1.9.4.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.9.5.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/json/json_samples/json_array_sample.html"><strong aria-hidden="true">1.9.5.1.</strong> JsonArray 使用示例</a></li><li class="chapter-item "><a href="../../../encoding/json/json_samples/json_value_sample.html"><strong aria-hidden="true">1.9.5.2.</strong> JsonValue 和 String 互相转换</a></li><li class="chapter-item "><a href="../../../encoding/json/json_samples/to_json_sample.html"><strong aria-hidden="true">1.9.5.3.</strong> JsonValue 与 DataModel 的转换</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_package_overview.html"><strong aria-hidden="true">1.10.</strong> stdx.encoding.json.stream</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_package_api/encoding_json_stream_package_interfaces.html"><strong aria-hidden="true">1.10.1.</strong> 接口</a></li><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_package_api/encoding_json_stream_package_classes.html"><strong aria-hidden="true">1.10.2.</strong> 类</a></li><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_package_api/encoding_json_stream_package_enums.html"><strong aria-hidden="true">1.10.3.</strong> 枚举</a></li><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_package_api/encoding_json_stream_package_structs.html"><strong aria-hidden="true">1.10.4.</strong> 结构体</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.10.5.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_samples/sample_json_reader.html"><strong aria-hidden="true">1.10.5.1.</strong> 使用 Json Stream 进行反序列化</a></li><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_samples/sample_json_writer.html"><strong aria-hidden="true">1.10.5.2.</strong> 使用 Json Stream 进行序列化</a></li><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_samples/sample_json_writeconfig.html"><strong aria-hidden="true">1.10.5.3.</strong> WriteConfig 使用示例</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../encoding/url/url_package_overview.html"><strong aria-hidden="true">1.11.</strong> stdx.encoding.url</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/url/url_package_api/url_package_classes.html"><strong aria-hidden="true">1.11.1.</strong> 类</a></li><li class="chapter-item "><a href="../../../encoding/url/url_package_api/url_package_exceptions.html"><strong aria-hidden="true">1.11.2.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.11.3.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/url/url_samples/form.html"><strong aria-hidden="true">1.11.3.1.</strong> Form 的构造使用</a></li><li class="chapter-item "><a href="../../../encoding/url/url_samples/url_parse.html"><strong aria-hidden="true">1.11.3.2.</strong> URL 解析函数 parse 的使用</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../fuzz/fuzz_package_overview.html"><strong aria-hidden="true">1.12.</strong> stdx.fuzz.fuzz</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../fuzz/fuzz_package_api/fuzz_package_constants_vars.html"><strong aria-hidden="true">1.12.1.</strong> 常量变量</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_package_api/fuzz_package_classes.html"><strong aria-hidden="true">1.12.2.</strong> 类</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_package_api/fuzz_package_exceptions.html"><strong aria-hidden="true">1.12.3.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.12.4.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../fuzz/fuzz_samples/basic_fuzzing_test.html"><strong aria-hidden="true">1.12.4.1.</strong> 测试猜测字符功能</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_samples/dataprovider_usage.html"><strong aria-hidden="true">1.12.4.2.</strong> 使用 DataProvider 功能进行测试</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_samples/fake_coverage_usage.html"><strong aria-hidden="true">1.12.4.3.</strong> 使用 FakeCoverage 避免 DataProvider 模式下 Fuzz 异常终止</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_samples/print_cj-fuzz_usage.html"><strong aria-hidden="true">1.12.4.4.</strong> 打印 fuzz 使用方法</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_samples/print_coverage.html"><strong aria-hidden="true">1.12.4.5.</strong> 实验性特性-覆盖率信息打印</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_samples/stack_backtrace_missing_solution.html"><strong aria-hidden="true">1.12.4.6.</strong> 栈回溯缺失的处理方案</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../log/log_package_overview.html"><strong aria-hidden="true">1.13.</strong> stdx.log</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../log/log_package_api/log_package_types.html"><strong aria-hidden="true">1.13.1.</strong> 类型别名</a></li><li class="chapter-item "><a href="../../../log/log_package_api/log_package_funcs.html"><strong aria-hidden="true">1.13.2.</strong> 函数</a></li><li class="chapter-item "><a href="../../../log/log_package_api/log_package_interfaces.html"><strong aria-hidden="true">1.13.3.</strong> 接口</a></li><li class="chapter-item "><a href="../../../log/log_package_api/log_package_classes.html"><strong aria-hidden="true">1.13.4.</strong> 类</a></li><li class="chapter-item "><a href="../../../log/log_package_api/log_package_structs.html"><strong aria-hidden="true">1.13.5.</strong> 结构体</a></li><li class="chapter-item "><a href="../../../log/log_package_api/log_package_exceptions.html"><strong aria-hidden="true">1.13.6.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.13.7.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../log/log_samples/log_sample.html"><strong aria-hidden="true">1.13.7.1.</strong> 日志打印示例</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../logger/logger_package_overview.html"><strong aria-hidden="true">1.14.</strong> stdx.logger</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../logger/logger_package_api/logger_package_classes.html"><strong aria-hidden="true">1.14.1.</strong> 类</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.14.2.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../logger/logger_samples/logger_sample.html"><strong aria-hidden="true">1.14.2.1.</strong> 日志打印示例</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../net/http/http_package_overview.html"><strong aria-hidden="true">1.15.</strong> stdx.net.http</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../net/http/http_package_api/http_package_funcs.html"><strong aria-hidden="true">1.15.1.</strong> 函数</a></li><li class="chapter-item "><a href="../../../net/http/http_package_api/http_package_interfaces.html"><strong aria-hidden="true">1.15.2.</strong> 接口</a></li><li class="chapter-item "><a href="../../../net/http/http_package_api/http_package_classes.html"><strong aria-hidden="true">1.15.3.</strong> 类</a></li><li class="chapter-item "><a href="../../../net/http/http_package_api/http_package_enums.html"><strong aria-hidden="true">1.15.4.</strong> 枚举</a></li><li class="chapter-item "><a href="../../../net/http/http_package_api/http_package_structs.html"><strong aria-hidden="true">1.15.5.</strong> 结构体</a></li><li class="chapter-item "><a href="../../../net/http/http_package_api/http_package_exceptions.html"><strong aria-hidden="true">1.15.6.</strong> 异常类</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.15.7.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../net/http/http_samples/http_client.html"><strong aria-hidden="true">1.15.7.1.</strong> client</a></li><li class="chapter-item "><a href="../../../net/http/http_samples/cookie.html"><strong aria-hidden="true">1.15.7.2.</strong> cookie</a></li><li class="chapter-item "><a href="../../../net/http/http_samples/log.html"><strong aria-hidden="true">1.15.7.3.</strong> log</a></li><li class="chapter-item "><a href="../../../net/http/http_samples/http_server.html"><strong aria-hidden="true">1.15.7.4.</strong> server</a></li><li class="chapter-item expanded "><a href="../../../net/http/http_samples/webSocket.html" class="active"><strong aria-hidden="true">1.15.7.5.</strong> webSocket</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../net/tls/tls_package_overview.html"><strong aria-hidden="true">1.16.</strong> stdx.net.tls</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../net/tls/tls_package_api/tls_package_classes.html"><strong aria-hidden="true">1.16.1.</strong> 类</a></li><li class="chapter-item "><a href="../../../net/tls/tls_package_api/tls_package_enums.html"><strong aria-hidden="true">1.16.2.</strong> 枚举</a></li><li class="chapter-item "><a href="../../../net/tls/tls_package_api/tls_package_structs.html"><strong aria-hidden="true">1.16.3.</strong> 结构体</a></li><li class="chapter-item "><a href="../../../net/tls/tls_package_api/tls_package_exceptions.html"><strong aria-hidden="true">1.16.4.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.16.5.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../net/tls/tls_samples/cert_key.html"><strong aria-hidden="true">1.16.5.1.</strong> 服务端证书及公钥在一份文件中</a></li><li class="chapter-item "><a href="../../../net/tls/tls_samples/client.html"><strong aria-hidden="true">1.16.5.2.</strong> 客户端示例</a></li><li class="chapter-item "><a href="../../../net/tls/tls_samples/hot_update_cert.html"><strong aria-hidden="true">1.16.5.3.</strong> 证书热更新</a></li><li class="chapter-item "><a href="../../../net/tls/tls_samples/server.html"><strong aria-hidden="true">1.16.5.4.</strong> 服务端示例</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../serialization/serialization_package_overview.html"><strong aria-hidden="true">1.17.</strong> stdx.serialization.serialization</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../serialization/serialization_package_api/serialization_package_functions.html"><strong aria-hidden="true">1.17.1.</strong> 函数</a></li><li class="chapter-item "><a href="../../../serialization/serialization_package_api/serialization_package_interfaces.html"><strong aria-hidden="true">1.17.2.</strong> 接口</a></li><li class="chapter-item "><a href="../../../serialization/serialization_package_api/serialization_package_classes.html"><strong aria-hidden="true">1.17.3.</strong> 类</a></li><li class="chapter-item "><a href="../../../serialization/serialization_package_api/serialization_package_exceptions.html"><strong aria-hidden="true">1.17.4.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">1.17.5.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../serialization/serialization_samples/serialize_and_deserialize_class.html"><strong aria-hidden="true">1.17.5.1.</strong> class 序列化和反序列化</a></li><li class="chapter-item "><a href="../../../serialization/serialization_samples/serialize_hashmap_and_hashset.html"><strong aria-hidden="true">1.17.5.2.</strong> HashSet 和 HashMap 序列化</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../unittest/data/data_package_overview.html"><strong aria-hidden="true">1.18.</strong> stdx.unittest.data</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../unittest/data/data_package_api/data_package_functions.html"><strong aria-hidden="true">1.18.1.</strong> 函数</a></li><li class="chapter-item "><a href="../../../unittest/data/data_package_api/data_package_classes.html"><strong aria-hidden="true">1.18.2.</strong> 类</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">仓颉编程语言扩展库 API</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="websocket"><a class="header" href="#websocket">webSocket</a></h1>
+<p>示例：</p>
+<!-- verify -->
+<pre><code class="language-cangjie">import stdx.net.http.*
+import stdx.encoding.url.*
+import std.time.*
+import std.sync.*
+import std.collection.*
+import stdx.log.*
+
+let server = ServerBuilder().addr(&quot;127.0.0.1&quot;).port(0).build()
+
+main() {
+    // 1 启动服务器
+    spawn {startServer()}
+    sleep(Duration.millisecond * 200)
+
+    let client = ClientBuilder().build()
+    let u = URL.parse(&quot;ws://127.0.0.1:${server.port}/webSocket&quot;)
+
+    let subProtocol = ArrayList&lt;String&gt;([&quot;foo1&quot;, &quot;bar1&quot;])
+    let headers = HttpHeaders()
+    headers.add(&quot;test&quot;, &quot;echo&quot;)
+
+    // 2 完成 WebSocket 握手，获取 WebSocket 实例
+    let websocket: WebSocket
+    let respHeaders: HttpHeaders
+    (websocket, respHeaders) = WebSocket.upgradeFromClient(client, u, subProtocols: subProtocol, headers: headers)
+    client.close()
+
+    println(&quot;subProtocol: ${websocket.subProtocol}&quot;)
+    println(respHeaders.getFirst(&quot;rsp&quot;) ?? &quot;&quot;)
+
+    // 3 消息收发
+    // 发送 hello
+    websocket.write(TextWebFrame, &quot;hello&quot;.toArray())
+    // 接收消息
+    let data = ArrayList&lt;UInt8&gt;()
+    var frame = websocket.read()
+    while (true) {
+        match (frame.frameType) {
+            case ContinuationWebFrame =&gt;
+                data.add(all: frame.payload)
+                if (frame.fin) {
+                    break
+                }
+            case TextWebFrame | BinaryWebFrame =&gt;
+                if (!data.isEmpty()) {
+                    throw Exception(&quot;invalid frame&quot;)
+                }
+                data.add(all: frame.payload)
+                if (frame.fin) {
+                    break
+                }
+            case CloseWebFrame =&gt;
+                websocket.write(CloseWebFrame, frame.payload)
+                break
+            case PingWebFrame =&gt; websocket.writePongFrame(frame.payload)
+            case _ =&gt; ()
+        }
+        frame = websocket.read()
+    }
+    println(&quot;data size: ${data.size}&quot;)
+    println(&quot;last item: ${String.fromUtf8(data.toArray()[4096])}&quot;)
+
+    // 4 关闭 websocket，
+    // 收发 CloseFrame
+    websocket.writeCloseFrame(status: 1000)
+    let websocketFrame = websocket.read()
+    println(&quot;close frame type: ${websocketFrame.frameType}&quot;)
+    println(&quot;close frame payload: ${websocketFrame.payload}&quot;)
+
+    // 关闭底层连接
+    websocket.closeConn()
+
+    server.close()
+}
+
+func startServer() {
+    // 1 注册 handler
+    server.distributor.register(&quot;/webSocket&quot;, handler1)
+    server.logger.level = LogLevel.OFF
+    server.serve()
+}
+
+// server:
+func handler1(ctx: HttpContext): Unit {
+    // 2 完成 websocket 握手，获取 websocket 实例
+    let websocketServer = WebSocket.upgradeFromServer(
+        ctx,
+        subProtocols: ArrayList&lt;String&gt;([&quot;foo&quot;, &quot;bar&quot;, &quot;foo1&quot;]),
+        userFunc: {
+            request: HttpRequest =&gt;
+            let value = request.headers.getFirst(&quot;test&quot;) ?? &quot;&quot;
+            let headers = HttpHeaders()
+            headers.add(&quot;rsp&quot;, value)
+            headers
+        }
+    )
+    // 3 消息收发
+    // 接收 hello
+    let data = ArrayList&lt;UInt8&gt;()
+    var frame = websocketServer.read()
+    while (true) {
+        match (frame.frameType) {
+            case ContinuationWebFrame =&gt;
+                data.add(all: frame.payload)
+                if (frame.fin) {
+                    break
+                }
+            case TextWebFrame | BinaryWebFrame =&gt;
+                if (!data.isEmpty()) {
+                    throw Exception(&quot;invalid frame&quot;)
+                }
+                data.add(all: frame.payload)
+                if (frame.fin) {
+                    break
+                }
+            case CloseWebFrame =&gt;
+                websocketServer.write(CloseWebFrame, frame.payload)
+                break
+            case PingWebFrame =&gt; websocketServer.writePongFrame(frame.payload)
+            case _ =&gt; ()
+        }
+        frame = websocketServer.read()
+    }
+    println(&quot;data: ${String.fromUtf8(data.toArray())}&quot;)
+
+    // 发 4097 个 a
+    websocketServer.write(TextWebFrame, Array&lt;UInt8&gt;(4097, repeat: 97))
+
+    // 4 关闭 websocket，
+    // 收发 CloseFrame
+    let websocketFrame = websocketServer.read()
+    println(&quot;close frame type: ${websocketFrame.frameType}&quot;)
+    println(&quot;close frame payload: ${websocketFrame.payload}&quot;)
+    websocketServer.write(CloseWebFrame, websocketFrame.payload)
+    // 关闭底层连接
+    websocketServer.closeConn()
+}
+</code></pre>
+<p>运行结果：</p>
+<pre><code class="language-text">subProtocol: foo1
+echo
+data: hello
+data size: 4097
+last item: a
+close frame type: CloseWebFrame
+close frame payload: [3, 232]
+close frame type: CloseWebFrame
+close frame payload: [3, 232]
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../net/http/http_samples/http_server.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../../net/tls/tls_package_overview.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../net/http/http_samples/http_server.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../../net/tls/tls_package_overview.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../../elasticlunr.min.js"></script>
+        <script src="../../../mark.min.js"></script>
+        <script src="../../../searcher.js"></script>
+
+        <script src="../../../clipboard.min.js"></script>
+        <script src="../../../cangjie-highlight-export.js"></script><script src="../../../highlight.js"></script>
+        <script src="../../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        
+        <script src="../../../cangjie-highlight-export.js"></script><script src="../../../highlight.js"></script>
+        <script src="../../../assets/elasticlunr.js"></script>
+        <script src="../../../assets/fzf.umd.js"></script>
+        <script src="../../../assets/sidebar.js"></script>
+
+
+    </div>
+    </body>
+</html>

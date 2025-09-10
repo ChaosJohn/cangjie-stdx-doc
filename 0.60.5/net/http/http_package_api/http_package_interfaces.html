@@ -1,0 +1,482 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" class="light" dir="ltr">
+    <head>
+            <script type="text/x-mathjax-config">
+                MathJax.Hub.Config({
+                    showProcessingMessages: false,
+                    messageStyle: "none",
+                    extensions: ['tex2jax.js'],
+                    jax: ['input/TeX', 'output/HTML-CSS'],
+                    tex2jax: {
+                        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                        processEscapes: true
+                    },
+                    "HTML-CSS": { availableFonts: ["STIX", "TeX"] }
+                });
+            </script>
+            
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>接口 - 仓颉编程语言扩展库 API</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../favicon.png">
+        <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../../assets/style.css">
+        <link rel="stylesheet" href="../../../assets/theme.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../../../libs_overview.html">仓颉编程语言扩展库 API 概述</a></li><li class="chapter-item "><div>stdx.compress.zlib 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../compress/zlib/zlib_package_overview.html">zlib 包概述</a></li><li class="chapter-item "><a href="../../../compress/zlib/zlib_package_api/zlib_package_classes.html">类</a></li><li class="chapter-item "><a href="../../../compress/zlib/zlib_package_api/zlib_package_enums.html">枚举</a></li><li class="chapter-item "><a href="../../../compress/zlib/zlib_package_api/zlib_package_exceptions.html">异常类</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../compress/zlib/zlib_samples/deflate_compress_decompress.html">Deflate 格式数据的压缩和解压</a></li><li class="chapter-item "><a href="../../../compress/zlib/zlib_samples/gzip_compress_decompress.html">Gzip 格式数据的压缩和解压</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.crypto.crypto 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/crypto/crypto_package_overview.html">crypto 包概述</a></li><li class="chapter-item "><a href="../../../crypto/crypto/crypto_package_api/crypto_package_classes.html">类</a></li><li class="chapter-item "><a href="../../../crypto/crypto/crypto_package_api/crypto_package_structs.html">结构体</a></li><li class="chapter-item "><a href="../../../crypto/crypto/crypto_package_api/crypto_package_exceptions.html">异常类</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/crypto/crypto_samples/sample_secure_random.html">SecureRandom 使用</a></li><li class="chapter-item "><a href="../../../crypto/crypto/crypto_samples/sample_crypto.html">SM4 使用</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.crypto.digest 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/digest/crypto_digest_package_overview.html">digest 包概述</a></li><li class="chapter-item "><a href="../../../crypto/digest/digest_package_api/digest_package_classes.html">类</a></li><li class="chapter-item "><a href="../../../crypto/digest/digest_package_api/digest_package_structs.html">结构体</a></li><li class="chapter-item "><a href="../../../crypto/digest/digest_package_api/digest_package_exceptions.html">异常类</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/digest/digest_samples/sample_digest.html">digest 使用</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.crypto.keys 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/keys/keys_package_overview.html">keys 包概述</a></li><li class="chapter-item "><a href="../../../crypto/keys/keys_package_api/keys_package_classes.html">类</a></li><li class="chapter-item "><a href="../../../crypto/keys/keys_package_api/keys_package_enums.html">枚举</a></li><li class="chapter-item "><a href="../../../crypto/keys/keys_package_api/keys_package_structs.html">结构体</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/keys/keys_samples/sample_keys.html">keys 使用</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.crypto.x509 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/x509/x509_package_overview.html">x509 包概述</a></li><li class="chapter-item "><a href="../../../crypto/x509/x509_package_api/x509_package_type.html">类型别名</a></li><li class="chapter-item "><a href="../../../crypto/x509/x509_package_api/x509_package_interfaces.html">接口</a></li><li class="chapter-item "><a href="../../../crypto/x509/x509_package_api/x509_package_classes.html">类</a></li><li class="chapter-item "><a href="../../../crypto/x509/x509_package_api/x509_package_enums.html">枚举</a></li><li class="chapter-item "><a href="../../../crypto/x509/x509_package_api/x509_package_structs.html">结构体</a></li><li class="chapter-item "><a href="../../../crypto/x509/x509_package_api/x509_package_exceptions.html">异常类</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/x509/x509_samples/sample_x509.html">x509 使用</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.encoding.base64 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/base64/base64_package_overview.html">base64 包概述</a></li><li class="chapter-item "><a href="../../../encoding/base64/base64_package_api/base64_package_funcs.html">函数</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/base64/base64_samples/base64.html">Byte 数组和 Base64 互转</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.encoding.hex 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/hex/hex_package_overview.html">hex 包概述</a></li><li class="chapter-item "><a href="../../../encoding/hex/hex_package_api/hex_package_funcs.html">函数</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/hex/hex_samples/hex.html">Byte 数组和 Hex 互转</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.encoding.json 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/json/json_package_overview.html">json 包概述</a></li><li class="chapter-item "><a href="../../../encoding/json/json_package_api/encoding_json_package_interfaces.html">接口</a></li><li class="chapter-item "><a href="../../../encoding/json/json_package_api/encoding_json_package_classes.html">类</a></li><li class="chapter-item "><a href="../../../encoding/json/json_package_api/encoding_json_package_enums.html">枚举</a></li><li class="chapter-item "><a href="../../../encoding/json/json_package_api/encoding_json_package_exceptions.html">异常类</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/json/json_samples/json_array_sample.html">JsonArray 使用示例</a></li><li class="chapter-item "><a href="../../../encoding/json/json_samples/json_value_sample.html">JsonValue 和 String 互相转换</a></li><li class="chapter-item "><a href="../../../encoding/json/json_samples/to_json_sample.html">JsonValue 与 DataModel 的转换</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.encoding.json.stream 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_package_overview.html">json.stream 包概述</a></li><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_package_api/encoding_json_stream_package_interfaces.html">接口</a></li><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_package_api/encoding_json_stream_package_classes.html">类</a></li><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_package_api/encoding_json_stream_package_enums.html">枚举</a></li><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_package_api/encoding_json_stream_package_structs.html">结构体</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_samples/sample_json_reader.html">使用 Json Stream 进行反序列化</a></li><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_samples/sample_json_writer.html">使用 Json Stream 进行序列化</a></li><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_samples/sample_json_writeconfig.html">WriteConfig 使用示例</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.encoding.url 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/url/url_package_overview.html">url 包概述</a></li><li class="chapter-item "><a href="../../../encoding/url/url_package_api/url_package_classes.html">类</a></li><li class="chapter-item "><a href="../../../encoding/url/url_package_api/url_package_exceptions.html">异常类</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/url/url_samples/form.html">Form 的构造使用</a></li><li class="chapter-item "><a href="../../../encoding/url/url_samples/url_parse.html">URL 解析函数 parse 的使用</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.fuzz.fuzz 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../fuzz/fuzz_package_overview.html">fuzz 包概述</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_package_api/fuzz_package_constants_vars.html">常量变量</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_package_api/fuzz_package_classes.html">类</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_package_api/fuzz_package_exceptions.html">异常类</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../fuzz/fuzz_samples/basic_fuzzing_test.html">测试猜测字符功能</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_samples/dataprovider_usage.html">使用 DataProvider 功能进行测试</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_samples/fake_coverage_usage.html">使用 FakeCoverage 避免 DataProvider 模式下 Fuzz 异常终止</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_samples/print_cj-fuzz_usage.html">打印 fuzz 使用方法</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_samples/print_coverage.html">实验性特性-覆盖率信息打印</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_samples/stack_backtrace_missing_solution.html">栈回溯缺失的处理方案</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.log 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../log/log_package_overview.html">log 包概述</a></li><li class="chapter-item "><a href="../../../log/log_package_api/log_package_types.html">类型别名</a></li><li class="chapter-item "><a href="../../../log/log_package_api/log_package_funcs.html">函数</a></li><li class="chapter-item "><a href="../../../log/log_package_api/log_package_interfaces.html">接口</a></li><li class="chapter-item "><a href="../../../log/log_package_api/log_package_classes.html">类</a></li><li class="chapter-item "><a href="../../../log/log_package_api/log_package_structs.html">结构体</a></li><li class="chapter-item "><a href="../../../log/log_package_api/log_package_exceptions.html">异常类</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../log/log_samples/log_sample.html">日志打印示例</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.logger 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../logger/logger_package_overview.html">logger 包概述</a></li><li class="chapter-item "><a href="../../../logger/logger_package_api/logger_package_classes.html">类</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../logger/logger_samples/logger_sample.html">日志打印示例</a></li></ol></li></ol></li><li class="chapter-item expanded "><div>stdx.net.http 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../net/http/http_package_overview.html">http 包概述</a></li><li class="chapter-item "><a href="../../../net/http/http_package_api/http_package_funcs.html">函数</a></li><li class="chapter-item expanded "><a href="../../../net/http/http_package_api/http_package_interfaces.html" class="active">接口</a></li><li class="chapter-item "><a href="../../../net/http/http_package_api/http_package_classes.html">类</a></li><li class="chapter-item "><a href="../../../net/http/http_package_api/http_package_enums.html">枚举</a></li><li class="chapter-item "><a href="../../../net/http/http_package_api/http_package_structs.html">结构体</a></li><li class="chapter-item "><a href="../../../net/http/http_package_api/http_package_exceptions.html">异常类</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../net/http/http_samples/http_client.html">client</a></li><li class="chapter-item "><a href="../../../net/http/http_samples/cookie.html">cookie</a></li><li class="chapter-item "><a href="../../../net/http/http_samples/log.html">log</a></li><li class="chapter-item "><a href="../../../net/http/http_samples/http_server.html">server</a></li><li class="chapter-item "><a href="../../../net/http/http_samples/webSocket.html">webSocket</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.net.tls 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../net/tls/tls_package_overview.html">tls 包概述</a></li><li class="chapter-item "><a href="../../../net/tls/tls_package_api/tls_package_classes.html">类</a></li><li class="chapter-item "><a href="../../../net/tls/tls_package_api/tls_package_enums.html">枚举</a></li><li class="chapter-item "><a href="../../../net/tls/tls_package_api/tls_package_structs.html">结构体</a></li><li class="chapter-item "><a href="../../../net/tls/tls_package_api/tls_package_exceptions.html">异常类</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../net/tls/tls_samples/cert_key.html">服务端证书及公钥在一份文件中</a></li><li class="chapter-item "><a href="../../../net/tls/tls_samples/client.html">客户端示例</a></li><li class="chapter-item "><a href="../../../net/tls/tls_samples/hot_update_cert.html">证书热更新</a></li><li class="chapter-item "><a href="../../../net/tls/tls_samples/server.html">服务端示例</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.serialization.serialization 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../serialization/serialization_package_overview.html">serialization 包概述</a></li><li class="chapter-item "><a href="../../../serialization/serialization_package_api/serialization_package_functions.html">函数</a></li><li class="chapter-item "><a href="../../../serialization/serialization_package_api/serialization_package_interfaces.html">接口</a></li><li class="chapter-item "><a href="../../../serialization/serialization_package_api/serialization_package_classes.html">类</a></li><li class="chapter-item "><a href="../../../serialization/serialization_package_api/serialization_package_exceptions.html">异常类</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../serialization/serialization_samples/serialize_and_deserialize_class.html">class 序列化和反序列化</a></li><li class="chapter-item "><a href="../../../serialization/serialization_samples/serialize_hashmap_and_hashset.html">HashSet 和 HashMap 序列化</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.unittest.data 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../unittest/data/data_package_overview.html">data 包概述</a></li><li class="chapter-item "><a href="../../../unittest/data/data_package_api/data_package_functions.html">函数</a></li><li class="chapter-item "><a href="../../../unittest/data/data_package_api/data_package_classes.html">类</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">仓颉编程语言扩展库 API</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="接口"><a class="header" href="#接口">接口</a></h1>
+<h2 id="interface-cookiejar"><a class="header" href="#interface-cookiejar">interface CookieJar</a></h2>
+<pre><code class="language-cangjie">public interface CookieJar {
+    prop isHttp: Bool
+    prop rejectPublicSuffixes: ArrayList&lt;String&gt;
+    static func createDefaultCookieJar(rejectPublicSuffixes: ArrayList&lt;String&gt;, isHttp: Bool): CookieJar
+    static func parseSetCookieHeader(response: HttpResponse): ArrayList&lt;Cookie&gt;
+    static func toCookieString(cookies: ArrayList&lt;Cookie&gt;): String
+    func clear(): Unit
+    func getCookies(url: URL): ArrayList&lt;Cookie&gt;
+    func removeCookies(domain: String): Unit
+    func storeCookies(url: URL, cookies: ArrayList&lt;Cookie&gt;): Unit
+}
+</code></pre>
+<p>功能：<a href="http_package_interfaces.html#interface-cookiejar">CookieJar</a> 是 <a href="http_package_classes.html#class-client">Client</a> 用来管理 <a href="http_package_classes.html#class-cookie">Cookie</a> 的工具。</p>
+<p>其有两个静态函数：</p>
+<ul>
+<li><a href="#static-func-tocookiestringarraylistcookie">toCookieString</a> 用于将 ArrayList&lt;<a href="http_package_classes.html#class-cookie">Cookie</a>&gt; 转成字符串以便设置请求的 <a href="http_package_classes.html#class-cookie">Cookie</a> header。</li>
+<li><a href="#static-func-parsesetcookieheaderhttpresponse">parseSetCookieHeader</a> 用于解析收到 response 中的 <code>Set-Cookie</code> header。</li>
+</ul>
+<p>如果 <a href="http_package_classes.html#class-client">Client</a> 配置了 <a href="http_package_interfaces.html#interface-cookiejar">CookieJar</a>，那么 <a href="http_package_classes.html#class-cookie">Cookie</a> 的解析收发都是自动的。</p>
+<blockquote>
+<p><strong>说明</strong></p>
+<ul>
+<li>用户可以实现自己的 <a href="http_package_interfaces.html#interface-cookiejar">CookieJar</a>，实现自己的管理逻辑。</li>
+<li><a href="http_package_interfaces.html#interface-cookiejar">CookieJar</a> 的管理要求见 <a href="https://httpwg.org/specs/rfc6265.html">RFC 6265</a>。</li>
+</ul>
+</blockquote>
+<h3 id="prop-ishttp"><a class="header" href="#prop-ishttp">prop isHttp</a></h3>
+<pre><code class="language-cangjie">prop isHttp: Bool
+</code></pre>
+<p>功能：该 <a href="http_package_interfaces.html#interface-cookiejar">CookieJar</a> 是否用于 HTTP 协议。</p>
+<ul>
+<li>若 isHttp 为 true， 则只会存储来自于 HTTP 协议的 <a href="http_package_classes.html#class-cookie">Cookie</a>。</li>
+<li>若 isHttp 为 false， 则只会存储来自非 HTTP 协议的 <a href="http_package_classes.html#class-cookie">Cookie</a>，且不会存储发送设置了 httpOnly 的 <a href="http_package_classes.html#class-cookie">Cookie</a>。</li>
+</ul>
+<p>类型：Bool</p>
+<h3 id="prop-rejectpublicsuffixes"><a class="header" href="#prop-rejectpublicsuffixes">prop rejectPublicSuffixes</a></h3>
+<pre><code class="language-cangjie">prop rejectPublicSuffixes: ArrayList&lt;String&gt;
+</code></pre>
+<p>功能：获取 <a href="https://publicsuffix.org/">public suffixes</a> 配置，该配置是一个 domain 黑名单，会拒绝 domain 值为 public suffixes 的 <a href="http_package_classes.html#class-cookie">Cookie</a>。</p>
+<blockquote>
+<p><strong>说明：</strong></p>
+<p>如果该 <a href="http_package_classes.html#class-cookie">Cookie</a> 来自于与 domain 相同的 host，黑名单就不会生效。</p>
+</blockquote>
+<p>类型：ArrayList&lt;String&gt;</p>
+<h3 id="static-func-createdefaultcookiejararrayliststring-bool"><a class="header" href="#static-func-createdefaultcookiejararrayliststring-bool">static func createDefaultCookieJar(ArrayList&lt;String&gt;, Bool)</a></h3>
+<pre><code class="language-cangjie">static func createDefaultCookieJar(rejectPublicSuffixes: ArrayList&lt;String&gt;, isHttp: Bool): CookieJar
+</code></pre>
+<p>功能：构建默认的管理 <a href="http_package_classes.html#class-cookie">Cookie</a> 的 <a href="http_package_interfaces.html#interface-cookiejar">CookieJar</a> 实例。</p>
+<p>默认的 <a href="http_package_interfaces.html#interface-cookiejar">CookieJar</a> 的管理要求参考 <a href="https://httpwg.org/specs/rfc6265.html#storage-model">RFC 6265 5.3.</a>。</p>
+<p>参数：</p>
+<ul>
+<li>rejectPublicSuffixes: ArrayList&lt;String&gt; - 用户配置的 public suffixes，<a href="http_package_classes.html#class-cookie">Cookie</a> 管理为了安全会拒绝 domain 值为 public suffixes 的 cookie（除非该 <a href="http_package_classes.html#class-cookie">Cookie</a> 来自于与 domain 相同的 host），public suffixes 见 <a href="https://publicsuffix.org/">PUBLIC SUFFIX LIST</a>。</li>
+<li>isHttp: Bool - 该 <a href="http_package_interfaces.html#interface-cookiejar">CookieJar</a> 是否用于 HTTP 协议，isHttp 为 true 则只会存储来自于 HTTP 协议的 <a href="http_package_classes.html#class-cookie">Cookie</a>。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="http_package_interfaces.html#interface-cookiejar">CookieJar</a> - 默认的 <a href="http_package_interfaces.html#interface-cookiejar">CookieJar</a> 实例。</li>
+</ul>
+<h3 id="static-func-parsesetcookieheaderhttpresponse"><a class="header" href="#static-func-parsesetcookieheaderhttpresponse">static func parseSetCookieHeader(HttpResponse)</a></h3>
+<pre><code class="language-cangjie">static func parseSetCookieHeader(response: HttpResponse): ArrayList&lt;Cookie&gt;
+</code></pre>
+<p>功能：解析 response 中的 <code>Set-Cookie</code> header。</p>
+<p>该函数解析 response 中的 <code>Set-Cookie</code> header，并返回解析出的 ArrayList&lt;<a href="http_package_classes.html#class-cookie">Cookie</a>&gt;，解析 <code>Set-Cookie</code> header 的具体规则见 <a href="https://httpwg.org/specs/rfc6265.html#set-cookie">RFC 6265 5.2.</a>。</p>
+<p>参数：</p>
+<ul>
+<li>response: <a href="http_package_classes.html#class-httpresponse">HttpResponse</a> - 所需要解析的 response。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>ArrayList&lt;<a href="http_package_classes.html#class-cookie">Cookie</a>&gt; - 从 response 中解析出的 ArrayList&lt;<a href="http_package_classes.html#class-cookie">Cookie</a>&gt; 数组。</li>
+</ul>
+<h3 id="static-func-tocookiestringarraylistcookie"><a class="header" href="#static-func-tocookiestringarraylistcookie">static func toCookieString(ArrayList&lt;Cookie&gt;)</a></h3>
+<pre><code class="language-cangjie">static func toCookieString(cookies: ArrayList&lt;Cookie&gt;): String
+</code></pre>
+<p>功能：将 ArrayList&lt;<a href="http_package_classes.html#class-cookie">Cookie</a>&gt; 转成字符串，用于 <a href="http_package_classes.html#class-cookie">Cookie</a> header。</p>
+<p>该函数会将传入的 ArrayList&lt;<a href="http_package_classes.html#class-cookie">Cookie</a>&gt; 数组转成协议规定的 <a href="http_package_classes.html#class-cookie">Cookie</a> header 的字符串形式，见 <a href="https://httpwg.org/specs/rfc6265.html#cookie">RFC 6265 5.4.4.</a>。</p>
+<p>参数：</p>
+<ul>
+<li>cookies: ArrayList&lt;<a href="http_package_classes.html#class-cookie">Cookie</a>&gt; - 所需转成 <a href="http_package_classes.html#class-cookie">Cookie</a> header 字符串的 ArrayList&lt;<a href="http_package_classes.html#class-cookie">Cookie</a>&gt;。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>String - 用于 <a href="http_package_classes.html#class-cookie">Cookie</a> header 的字符串。</li>
+</ul>
+<h3 id="func-clear"><a class="header" href="#func-clear">func clear()</a></h3>
+<pre><code class="language-cangjie">func clear(): Unit
+</code></pre>
+<p>功能：清除全部 <a href="http_package_classes.html#class-cookie">Cookie</a>。</p>
+<p>默认实现 CookieJarImpl 会清除 <a href="http_package_interfaces.html#interface-cookiejar">CookieJar</a> 中的所有 <a href="http_package_classes.html#class-cookie">Cookie</a>。</p>
+<h3 id="func-getcookiesurl"><a class="header" href="#func-getcookiesurl">func getCookies(URL)</a></h3>
+<pre><code class="language-cangjie">func getCookies(url: URL): ArrayList&lt;Cookie&gt;
+</code></pre>
+<p>功能：从 <a href="http_package_interfaces.html#interface-cookiejar">CookieJar</a> 中取出 ArrayList&lt;<a href="http_package_classes.html#class-cookie">Cookie</a>&gt;。</p>
+<blockquote>
+<p>默认实现 cookieJarImpl 的取 ArrayList&lt;<a href="http_package_classes.html#class-cookie">Cookie</a>&gt; 函数的具体要求见 <a href="https://httpwg.org/specs/rfc6265.html#cookie">RFC 6265 5.4.</a>，对取出的 ArrayList&lt;<a href="http_package_classes.html#class-cookie">Cookie</a>&gt; 调用 toCookieString 可以将取出的 ArrayList&lt;<a href="http_package_classes.html#class-cookie">Cookie</a>&gt; 转成 <a href="http_package_classes.html#class-cookie">Cookie</a> header 的 value 字符串。</p>
+</blockquote>
+<p>参数：</p>
+<ul>
+<li>url: <a href="../../../encoding/url/url_package_api/url_package_classes.html#class-url">URL</a> - 所要取出 ArrayList&lt;<a href="http_package_classes.html#class-cookie">Cookie</a>&gt; 的 url。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>ArrayList&lt;<a href="http_package_classes.html#class-cookie">Cookie</a>&gt; - <a href="http_package_interfaces.html#interface-cookiejar">CookieJar</a> 中存储的对应此 url 的 ArrayList&lt;<a href="http_package_classes.html#class-cookie">Cookie</a>&gt;。</li>
+</ul>
+<h3 id="func-removecookiesstring"><a class="header" href="#func-removecookiesstring">func removeCookies(String)</a></h3>
+<pre><code class="language-cangjie">func removeCookies(domain: String): Unit
+</code></pre>
+<p>功能：从 <a href="http_package_interfaces.html#interface-cookiejar">CookieJar</a> 中移除某个 domain 的 <a href="http_package_classes.html#class-cookie">Cookie</a>。</p>
+<blockquote>
+<p><strong>说明：</strong></p>
+<p>默认实现 CookieJarImpl 的移除某个 domain 的 <a href="http_package_classes.html#class-cookie">Cookie</a> 只会移除特定 domain 的 <a href="http_package_classes.html#class-cookie">Cookie</a>，domain 的 subdomain 的 <a href="http_package_classes.html#class-cookie">Cookie</a> 并不会移除。</p>
+</blockquote>
+<p>参数：</p>
+<ul>
+<li>domain: String - 所要移除 <a href="http_package_classes.html#class-cookie">Cookie</a> 的域名。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li>IllegalArgumentException - 如果传入的 domain 为空字符串或者非法，则抛出该异常，合法的 domain 规则见 <a href="http_package_classes.html#class-cookie">Cookie</a> 的参数文档。</li>
+</ul>
+<h3 id="func-storecookiesurl-arraylistcookie"><a class="header" href="#func-storecookiesurl-arraylistcookie">func storeCookies(URL, ArrayList&lt;Cookie&gt;)</a></h3>
+<pre><code class="language-cangjie">func storeCookies(url: URL, cookies: ArrayList&lt;Cookie&gt;): Unit
+</code></pre>
+<p>功能：将 ArrayList&lt;<a href="http_package_classes.html#class-cookie">Cookie</a>&gt; 存进 <a href="http_package_interfaces.html#interface-cookiejar">CookieJar</a>。</p>
+<p>如果往 <a href="http_package_interfaces.html#interface-cookiejar">CookieJar</a> 中存 <a href="http_package_classes.html#class-cookie">Cookie</a> 时超过了上限（3000 条），那么至少清除 <a href="http_package_interfaces.html#interface-cookiejar">CookieJar</a> 中 1000 条 <a href="http_package_classes.html#class-cookie">Cookie</a> 再往里存储。清除 <a href="http_package_interfaces.html#interface-cookiejar">CookieJar</a> 中 <a href="http_package_classes.html#class-cookie">Cookie</a> 的优先级见 <a href="https://httpwg.org/specs/rfc6265.html#storage-model">RFC 6265 5.3.12.</a>。</p>
+<p><a href="http_package_classes.html#class-cookie">Cookie</a>按如下顺序清除：</p>
+<ul>
+<li>过期的 <a href="http_package_classes.html#class-cookie">Cookie</a>；</li>
+<li>相同 domain 中超过 50 条以上的部分；</li>
+<li>所有 <a href="http_package_classes.html#class-cookie">Cookie</a>具有相同优先级的 <a href="http_package_classes.html#class-cookie">Cookie</a> 则优先删除 <code>last-access</code> 属性更早的。</li>
+</ul>
+<p>参数：</p>
+<ul>
+<li>url: <a href="../../../encoding/url/url_package_api/url_package_classes.html#class-url">URL</a> - 产生该 <a href="http_package_classes.html#class-cookie">Cookie</a> 的 url。</li>
+<li>cookies: ArrayList&lt;<a href="http_package_classes.html#class-cookie">Cookie</a>&gt; - 需要存储的 ArrayList&lt;<a href="http_package_classes.html#class-cookie">Cookie</a>&gt;。</li>
+</ul>
+<h2 id="interface-httprequestdistributor"><a class="header" href="#interface-httprequestdistributor">interface HttpRequestDistributor</a></h2>
+<pre><code class="language-cangjie">public interface HttpRequestDistributor {
+    func register(path: String, handler: HttpRequestHandler): Unit
+    func register(path: String, handler: (HttpContext) -&gt; Unit): Unit
+    func distribute(path: String): HttpRequestHandler
+}
+</code></pre>
+<p>功能：Http request 分发器接口，将一个 request 按照 url 中的 path 分发给对应的 <a href="http_package_interfaces.html#interface-httprequesthandler">HttpRequestHandler</a> 处理。</p>
+<blockquote>
+<p><strong>说明：</strong></p>
+<p>本实现提供一个默认的 <a href="http_package_interfaces.html#interface-httprequestdistributor">HttpRequestDistributor</a>，该 distributor 非线程安全。
+默认实现提供仓颉标准库中 HTTP/1.1、HTTP/2 的 <code>ProtocolService</code> 实例。
+且只能在启动 server 前 register，启动后再次 register，结果未定义。
+如果用户希望在启动 server 后还能够 register，需要自己提供一个线程安全的 <a href="http_package_interfaces.html#interface-httprequestdistributor">HttpRequestDistributor</a> 实现。</p>
+</blockquote>
+<h3 id="func-distributestring"><a class="header" href="#func-distributestring">func distribute(String)</a></h3>
+<pre><code class="language-cangjie">func distribute(path: String): HttpRequestHandler
+</code></pre>
+<p>功能：分发请求处理器，未找到对应请求处理器时，将返回 <a href="http_package_classes.html#class-notfoundhandler">NotFoundHandler</a> 以返回 404 状态码。</p>
+<p>参数：</p>
+<ul>
+<li>path: String - 请求路径。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="http_package_interfaces.html#interface-httprequesthandler">HttpRequestHandler</a> - 返回请求处理器。</li>
+</ul>
+<h3 id="func-registerstring-httpcontext---unit"><a class="header" href="#func-registerstring-httpcontext---unit">func register(String, (HttpContext) -&gt; Unit)</a></h3>
+<pre><code class="language-cangjie">func register(path: String, handler: (HttpContext) -&gt; Unit): Unit
+</code></pre>
+<p>功能：注册请求处理器。</p>
+<p>参数：</p>
+<ul>
+<li>path: String - 请求路径。</li>
+<li>handler: (<a href="http_package_classes.html#class-httpcontext">HttpContext</a>) -&gt;Unit - 请求处理函数。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="http_package_exceptions.html#class-httpexception">HttpException</a> - 请求路径已注册请求处理器。</li>
+</ul>
+<h3 id="func-registerstring-httprequesthandler"><a class="header" href="#func-registerstring-httprequesthandler">func register(String, HttpRequestHandler)</a></h3>
+<pre><code class="language-cangjie">func register(path: String, handler: HttpRequestHandler): Unit
+</code></pre>
+<p>功能：注册请求处理器。</p>
+<p>参数：</p>
+<ul>
+<li>path: String - 请求路径。</li>
+<li>handler: <a href="http_package_interfaces.html#interface-httprequesthandler">HttpRequestHandler</a> - 请求处理器。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="http_package_exceptions.html#class-httpexception">HttpException</a> - 请求路径已注册请求处理器。</li>
+</ul>
+<h2 id="interface-httprequesthandler"><a class="header" href="#interface-httprequesthandler">interface HttpRequestHandler</a></h2>
+<pre><code class="language-cangjie">public interface HttpRequestHandler {
+    func handle(ctx: HttpContext): Unit
+}
+</code></pre>
+<p>功能：Http request 处理器。</p>
+<p>http server 端通过 handler 处理来自客户端的 http request；在 handler 中用户可以获取 http request 的详细信息，包括 header、body；在 handler 中，用户可以构造 http response，包括 header、body，并且可以直接发送 response 给客户端，也可交由 server 发送。</p>
+<p>用户在构建 http server 时，需手动通过 server 的 <a href="http_package_interfaces.html#interface-httprequestdistributor">HttpRequestDistributor</a> 注册一个或多个 handler，当一个客户端 http request 被接收，distributor 按照 request 中 url 的 path 分发给对应的 handler 处理。</p>
+<blockquote>
+<p><strong>注意：</strong></p>
+<p>应用程序应注意 DNS 重绑定攻击，即在 handler 的处理逻辑中对 request 中的 Host 请求头的值进行合法性校验，校验该值是否为此应用程序所认可的权威主机名。</p>
+</blockquote>
+<h3 id="func-handlehttpcontext"><a class="header" href="#func-handlehttpcontext">func handle(HttpContext)</a></h3>
+<pre><code class="language-cangjie">func handle(ctx: HttpContext): Unit
+</code></pre>
+<p>功能：处理 Http 请求。</p>
+<p>参数：</p>
+<ul>
+<li>ctx: <a href="http_package_classes.html#class-httpcontext">HttpContext</a> - Http 请求上下文。</li>
+</ul>
+<h2 id="interface-protocolservicefactory"><a class="header" href="#interface-protocolservicefactory">interface ProtocolServiceFactory</a></h2>
+<pre><code class="language-cangjie">public interface ProtocolServiceFactory {
+    func create(protocol: Protocol, socket: StreamingSocket): ProtocolService
+}
+</code></pre>
+<p>功能：Http 服务实例工厂，用于生成 <code>ProtocolService</code> 实例。</p>
+<p><a href="http_package_classes.html#class-serverbuilder">ServerBuilder</a> 提供默认的实现。默认实现提供仓颉标准库中 HTTP/1.1、HTTP/2 的 <code>ProtocolService</code> 实例。</p>
+<h3 id="func-createprotocol-streamingsocket"><a class="header" href="#func-createprotocol-streamingsocket">func create(Protocol, StreamingSocket)</a></h3>
+<pre><code class="language-cangjie">func create(protocol: Protocol, socket: StreamingSocket): ProtocolService
+</code></pre>
+<p>功能：根据协议创建协议服务实例。</p>
+<p>参数：</p>
+<ul>
+<li>protocol: <a href="http_package_enums.html#enum-protocol">Protocol</a> - 协议版本，如 HTTP1_0、HTTP1_1、HTTP2_0。</li>
+<li>socket: StreamingSocket - 来自客户端的套接字。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>ProtocolService - 协议服务实例。</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../net/http/http_package_api/http_package_funcs.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../../net/http/http_package_api/http_package_classes.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../net/http/http_package_api/http_package_funcs.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../../net/http/http_package_api/http_package_classes.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../../elasticlunr.min.js"></script>
+        <script src="../../../mark.min.js"></script>
+        <script src="../../../searcher.js"></script>
+
+        <script src="../../../clipboard.min.js"></script>
+        <script src="../../../cangjie-highlight-export.js"></script><script src="../../../highlight.js"></script>
+        <script src="../../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        
+        <script src="../../../cangjie-highlight-export.js"></script><script src="../../../highlight.js"></script>
+        <script src="../../../assets/elasticlunr.js"></script>
+        <script src="../../../assets/fzf.umd.js"></script>
+        <script src="../../../assets/sidebar.js"></script>
+
+
+    </div>
+    </body>
+</html>

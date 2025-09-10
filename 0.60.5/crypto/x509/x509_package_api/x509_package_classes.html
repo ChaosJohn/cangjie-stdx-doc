@@ -1,0 +1,705 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" class="light" dir="ltr">
+    <head>
+            <script type="text/x-mathjax-config">
+                MathJax.Hub.Config({
+                    showProcessingMessages: false,
+                    messageStyle: "none",
+                    extensions: ['tex2jax.js'],
+                    jax: ['input/TeX', 'output/HTML-CSS'],
+                    tex2jax: {
+                        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                        processEscapes: true
+                    },
+                    "HTML-CSS": { availableFonts: ["STIX", "TeX"] }
+                });
+            </script>
+            
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>类 - 仓颉编程语言扩展库 API</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../favicon.png">
+        <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../../assets/style.css">
+        <link rel="stylesheet" href="../../../assets/theme.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../../../libs_overview.html">仓颉编程语言扩展库 API 概述</a></li><li class="chapter-item "><div>stdx.compress.zlib 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../compress/zlib/zlib_package_overview.html">zlib 包概述</a></li><li class="chapter-item "><a href="../../../compress/zlib/zlib_package_api/zlib_package_classes.html">类</a></li><li class="chapter-item "><a href="../../../compress/zlib/zlib_package_api/zlib_package_enums.html">枚举</a></li><li class="chapter-item "><a href="../../../compress/zlib/zlib_package_api/zlib_package_exceptions.html">异常类</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../compress/zlib/zlib_samples/deflate_compress_decompress.html">Deflate 格式数据的压缩和解压</a></li><li class="chapter-item "><a href="../../../compress/zlib/zlib_samples/gzip_compress_decompress.html">Gzip 格式数据的压缩和解压</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.crypto.crypto 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/crypto/crypto_package_overview.html">crypto 包概述</a></li><li class="chapter-item "><a href="../../../crypto/crypto/crypto_package_api/crypto_package_classes.html">类</a></li><li class="chapter-item "><a href="../../../crypto/crypto/crypto_package_api/crypto_package_structs.html">结构体</a></li><li class="chapter-item "><a href="../../../crypto/crypto/crypto_package_api/crypto_package_exceptions.html">异常类</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/crypto/crypto_samples/sample_secure_random.html">SecureRandom 使用</a></li><li class="chapter-item "><a href="../../../crypto/crypto/crypto_samples/sample_crypto.html">SM4 使用</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.crypto.digest 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/digest/crypto_digest_package_overview.html">digest 包概述</a></li><li class="chapter-item "><a href="../../../crypto/digest/digest_package_api/digest_package_classes.html">类</a></li><li class="chapter-item "><a href="../../../crypto/digest/digest_package_api/digest_package_structs.html">结构体</a></li><li class="chapter-item "><a href="../../../crypto/digest/digest_package_api/digest_package_exceptions.html">异常类</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/digest/digest_samples/sample_digest.html">digest 使用</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.crypto.keys 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/keys/keys_package_overview.html">keys 包概述</a></li><li class="chapter-item "><a href="../../../crypto/keys/keys_package_api/keys_package_classes.html">类</a></li><li class="chapter-item "><a href="../../../crypto/keys/keys_package_api/keys_package_enums.html">枚举</a></li><li class="chapter-item "><a href="../../../crypto/keys/keys_package_api/keys_package_structs.html">结构体</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/keys/keys_samples/sample_keys.html">keys 使用</a></li></ol></li></ol></li><li class="chapter-item expanded "><div>stdx.crypto.x509 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/x509/x509_package_overview.html">x509 包概述</a></li><li class="chapter-item "><a href="../../../crypto/x509/x509_package_api/x509_package_type.html">类型别名</a></li><li class="chapter-item "><a href="../../../crypto/x509/x509_package_api/x509_package_interfaces.html">接口</a></li><li class="chapter-item expanded "><a href="../../../crypto/x509/x509_package_api/x509_package_classes.html" class="active">类</a></li><li class="chapter-item "><a href="../../../crypto/x509/x509_package_api/x509_package_enums.html">枚举</a></li><li class="chapter-item "><a href="../../../crypto/x509/x509_package_api/x509_package_structs.html">结构体</a></li><li class="chapter-item "><a href="../../../crypto/x509/x509_package_api/x509_package_exceptions.html">异常类</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../crypto/x509/x509_samples/sample_x509.html">x509 使用</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.encoding.base64 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/base64/base64_package_overview.html">base64 包概述</a></li><li class="chapter-item "><a href="../../../encoding/base64/base64_package_api/base64_package_funcs.html">函数</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/base64/base64_samples/base64.html">Byte 数组和 Base64 互转</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.encoding.hex 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/hex/hex_package_overview.html">hex 包概述</a></li><li class="chapter-item "><a href="../../../encoding/hex/hex_package_api/hex_package_funcs.html">函数</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/hex/hex_samples/hex.html">Byte 数组和 Hex 互转</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.encoding.json 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/json/json_package_overview.html">json 包概述</a></li><li class="chapter-item "><a href="../../../encoding/json/json_package_api/encoding_json_package_interfaces.html">接口</a></li><li class="chapter-item "><a href="../../../encoding/json/json_package_api/encoding_json_package_classes.html">类</a></li><li class="chapter-item "><a href="../../../encoding/json/json_package_api/encoding_json_package_enums.html">枚举</a></li><li class="chapter-item "><a href="../../../encoding/json/json_package_api/encoding_json_package_exceptions.html">异常类</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/json/json_samples/json_array_sample.html">JsonArray 使用示例</a></li><li class="chapter-item "><a href="../../../encoding/json/json_samples/json_value_sample.html">JsonValue 和 String 互相转换</a></li><li class="chapter-item "><a href="../../../encoding/json/json_samples/to_json_sample.html">JsonValue 与 DataModel 的转换</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.encoding.json.stream 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_package_overview.html">json.stream 包概述</a></li><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_package_api/encoding_json_stream_package_interfaces.html">接口</a></li><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_package_api/encoding_json_stream_package_classes.html">类</a></li><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_package_api/encoding_json_stream_package_enums.html">枚举</a></li><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_package_api/encoding_json_stream_package_structs.html">结构体</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_samples/sample_json_reader.html">使用 Json Stream 进行反序列化</a></li><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_samples/sample_json_writer.html">使用 Json Stream 进行序列化</a></li><li class="chapter-item "><a href="../../../encoding/json_stream/json_stream_samples/sample_json_writeconfig.html">WriteConfig 使用示例</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.encoding.url 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/url/url_package_overview.html">url 包概述</a></li><li class="chapter-item "><a href="../../../encoding/url/url_package_api/url_package_classes.html">类</a></li><li class="chapter-item "><a href="../../../encoding/url/url_package_api/url_package_exceptions.html">异常类</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../encoding/url/url_samples/form.html">Form 的构造使用</a></li><li class="chapter-item "><a href="../../../encoding/url/url_samples/url_parse.html">URL 解析函数 parse 的使用</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.fuzz.fuzz 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../fuzz/fuzz_package_overview.html">fuzz 包概述</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_package_api/fuzz_package_constants_vars.html">常量变量</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_package_api/fuzz_package_classes.html">类</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_package_api/fuzz_package_exceptions.html">异常类</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../fuzz/fuzz_samples/basic_fuzzing_test.html">测试猜测字符功能</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_samples/dataprovider_usage.html">使用 DataProvider 功能进行测试</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_samples/fake_coverage_usage.html">使用 FakeCoverage 避免 DataProvider 模式下 Fuzz 异常终止</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_samples/print_cj-fuzz_usage.html">打印 fuzz 使用方法</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_samples/print_coverage.html">实验性特性-覆盖率信息打印</a></li><li class="chapter-item "><a href="../../../fuzz/fuzz_samples/stack_backtrace_missing_solution.html">栈回溯缺失的处理方案</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.log 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../log/log_package_overview.html">log 包概述</a></li><li class="chapter-item "><a href="../../../log/log_package_api/log_package_types.html">类型别名</a></li><li class="chapter-item "><a href="../../../log/log_package_api/log_package_funcs.html">函数</a></li><li class="chapter-item "><a href="../../../log/log_package_api/log_package_interfaces.html">接口</a></li><li class="chapter-item "><a href="../../../log/log_package_api/log_package_classes.html">类</a></li><li class="chapter-item "><a href="../../../log/log_package_api/log_package_structs.html">结构体</a></li><li class="chapter-item "><a href="../../../log/log_package_api/log_package_exceptions.html">异常类</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../log/log_samples/log_sample.html">日志打印示例</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.logger 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../logger/logger_package_overview.html">logger 包概述</a></li><li class="chapter-item "><a href="../../../logger/logger_package_api/logger_package_classes.html">类</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../logger/logger_samples/logger_sample.html">日志打印示例</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.net.http 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../net/http/http_package_overview.html">http 包概述</a></li><li class="chapter-item "><a href="../../../net/http/http_package_api/http_package_funcs.html">函数</a></li><li class="chapter-item "><a href="../../../net/http/http_package_api/http_package_interfaces.html">接口</a></li><li class="chapter-item "><a href="../../../net/http/http_package_api/http_package_classes.html">类</a></li><li class="chapter-item "><a href="../../../net/http/http_package_api/http_package_enums.html">枚举</a></li><li class="chapter-item "><a href="../../../net/http/http_package_api/http_package_structs.html">结构体</a></li><li class="chapter-item "><a href="../../../net/http/http_package_api/http_package_exceptions.html">异常类</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../net/http/http_samples/http_client.html">client</a></li><li class="chapter-item "><a href="../../../net/http/http_samples/cookie.html">cookie</a></li><li class="chapter-item "><a href="../../../net/http/http_samples/log.html">log</a></li><li class="chapter-item "><a href="../../../net/http/http_samples/http_server.html">server</a></li><li class="chapter-item "><a href="../../../net/http/http_samples/webSocket.html">webSocket</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.net.tls 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../net/tls/tls_package_overview.html">tls 包概述</a></li><li class="chapter-item "><a href="../../../net/tls/tls_package_api/tls_package_classes.html">类</a></li><li class="chapter-item "><a href="../../../net/tls/tls_package_api/tls_package_enums.html">枚举</a></li><li class="chapter-item "><a href="../../../net/tls/tls_package_api/tls_package_structs.html">结构体</a></li><li class="chapter-item "><a href="../../../net/tls/tls_package_api/tls_package_exceptions.html">异常类</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../net/tls/tls_samples/cert_key.html">服务端证书及公钥在一份文件中</a></li><li class="chapter-item "><a href="../../../net/tls/tls_samples/client.html">客户端示例</a></li><li class="chapter-item "><a href="../../../net/tls/tls_samples/hot_update_cert.html">证书热更新</a></li><li class="chapter-item "><a href="../../../net/tls/tls_samples/server.html">服务端示例</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.serialization.serialization 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../serialization/serialization_package_overview.html">serialization 包概述</a></li><li class="chapter-item "><a href="../../../serialization/serialization_package_api/serialization_package_functions.html">函数</a></li><li class="chapter-item "><a href="../../../serialization/serialization_package_api/serialization_package_interfaces.html">接口</a></li><li class="chapter-item "><a href="../../../serialization/serialization_package_api/serialization_package_classes.html">类</a></li><li class="chapter-item "><a href="../../../serialization/serialization_package_api/serialization_package_exceptions.html">异常类</a></li><li class="chapter-item "><div>示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../serialization/serialization_samples/serialize_and_deserialize_class.html">class 序列化和反序列化</a></li><li class="chapter-item "><a href="../../../serialization/serialization_samples/serialize_hashmap_and_hashset.html">HashSet 和 HashMap 序列化</a></li></ol></li></ol></li><li class="chapter-item "><div>stdx.unittest.data 包</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../unittest/data/data_package_overview.html">data 包概述</a></li><li class="chapter-item "><a href="../../../unittest/data/data_package_api/data_package_functions.html">函数</a></li><li class="chapter-item "><a href="../../../unittest/data/data_package_api/data_package_classes.html">类</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">仓颉编程语言扩展库 API</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="x509-包"><a class="header" href="#x509-包">x509 包</a></h1>
+<h2 id="class-x509certificate"><a class="header" href="#class-x509certificate">class X509Certificate</a></h2>
+<pre><code class="language-cangjie">public class X509Certificate &lt;: Equatable&lt;X509Certificate&gt; &amp; Hashable &amp; ToString {
+    public init(
+        certificateInfo: X509CertificateInfo,
+        parent!: X509Certificate,
+        publicKey!: PublicKey,
+        privateKey!: PrivateKey,
+        signatureAlgorithm!: ?SignatureAlgorithm = None
+    )
+}
+</code></pre>
+<p>功能：X509 数字证书是一种用于加密通信的数字证书，它是公钥基础设施（PKI）的核心组件之一。X509 数字证书包含了一个实体的公钥和身份信息，用于验证该实体的身份和确保通信的安全性。</p>
+<p>父类型：</p>
+<ul>
+<li>Equatable&lt;<a href="#class-x509certificate">X509Certificate</a>&gt;</li>
+<li>Hashable</li>
+<li>ToString</li>
+</ul>
+<h3 id="prop-dnsnames"><a class="header" href="#prop-dnsnames">prop dnsNames</a></h3>
+<pre><code class="language-cangjie">public prop dnsNames: Array&lt;String&gt;
+</code></pre>
+<p>功能：解析数字证书备选名称中的域名。</p>
+<p>类型：Array&lt;String&gt;</p>
+<h3 id="prop-emailaddresses"><a class="header" href="#prop-emailaddresses">prop emailAddresses</a></h3>
+<pre><code class="language-cangjie">public prop emailAddresses: Array&lt;String&gt;
+</code></pre>
+<p>功能：解析数字证书备选名称中的 email 地址。</p>
+<p>类型：Array&lt;String&gt;</p>
+<h3 id="prop-extkeyusage"><a class="header" href="#prop-extkeyusage">prop extKeyUsage</a></h3>
+<pre><code class="language-cangjie">public prop extKeyUsage: ExtKeyUsage
+</code></pre>
+<p>功能：解析数字证书中的扩展密钥用法。</p>
+<p>类型：<a href="x509_package_structs.html#struct-extkeyusage">ExtKeyUsage</a></p>
+<h3 id="prop-issuer"><a class="header" href="#prop-issuer">prop issuer</a></h3>
+<pre><code class="language-cangjie">public prop issuer: X509Name
+</code></pre>
+<p>功能：解析数字证书的颁发者信息。</p>
+<p>类型：<a href="x509_package_classes.html#class-x509name">X509Name</a></p>
+<h3 id="prop-ipaddresses"><a class="header" href="#prop-ipaddresses">prop IPAddresses</a></h3>
+<pre><code class="language-cangjie">public prop IPAddresses: Array&lt;IP&gt;
+</code></pre>
+<p>功能：解析数字证书备选名称中的 <a href="x509_package_type.html#type-ip">IP</a> 地址。</p>
+<p>类型：Array&lt;<a href="x509_package_type.html#type-ip">IP</a>&gt;</p>
+<h3 id="prop-keyusage"><a class="header" href="#prop-keyusage">prop keyUsage</a></h3>
+<pre><code class="language-cangjie">public prop keyUsage: KeyUsage
+</code></pre>
+<p>功能：解析数字证书中的密钥用法。</p>
+<p>类型：<a href="x509_package_structs.html#struct-keyusage">KeyUsage</a></p>
+<h3 id="prop-notafter"><a class="header" href="#prop-notafter">prop notAfter</a></h3>
+<pre><code class="language-cangjie">public prop notAfter: DateTime
+</code></pre>
+<p>功能：解析数字证书的有效期截止时间。</p>
+<p>类型：DateTime</p>
+<h3 id="prop-notbefore"><a class="header" href="#prop-notbefore">prop notBefore</a></h3>
+<pre><code class="language-cangjie">public prop notBefore: DateTime
+</code></pre>
+<p>功能：解析数字证书的有效期开始时间。</p>
+<p>类型：DateTime</p>
+<h3 id="prop-publickey"><a class="header" href="#prop-publickey">prop publicKey</a></h3>
+<pre><code class="language-cangjie">public prop publicKey: PublicKey
+</code></pre>
+<p>功能：解析数字证书的公钥。</p>
+<p>类型：<a href="x509_package_interfaces.html#interface-publickey">PublicKey</a></p>
+<h3 id="prop-publickeyalgorithm"><a class="header" href="#prop-publickeyalgorithm">prop publicKeyAlgorithm</a></h3>
+<pre><code class="language-cangjie">public prop publicKeyAlgorithm: PublicKeyAlgorithm
+</code></pre>
+<p>功能：解析数字证书的公钥算法。</p>
+<p>类型：<a href="x509_package_enums.html#enum-publickeyalgorithm">PublicKeyAlgorithm</a></p>
+<h3 id="prop-serialnumber"><a class="header" href="#prop-serialnumber">prop serialNumber</a></h3>
+<pre><code class="language-cangjie">public prop serialNumber: SerialNumber
+</code></pre>
+<p>功能：解析数字证书的序列号。</p>
+<p>类型：<a href="x509_package_structs.html#struct-serialnumber">SerialNumber</a></p>
+<h3 id="prop-signature"><a class="header" href="#prop-signature">prop signature</a></h3>
+<pre><code class="language-cangjie">public prop signature: Signature
+</code></pre>
+<p>功能：解析数字证书的签名。</p>
+<p>类型：<a href="x509_package_structs.html#struct-signature">Signature</a></p>
+<h3 id="prop-signaturealgorithm"><a class="header" href="#prop-signaturealgorithm">prop signatureAlgorithm</a></h3>
+<pre><code class="language-cangjie">public prop signatureAlgorithm: SignatureAlgorithm
+</code></pre>
+<p>功能：解析数字证书的签名算法。</p>
+<p>类型：<a href="./x509_package_enums.html#enum-signaturealgorithm">SignatureAlgorithm</a></p>
+<h3 id="prop-subject"><a class="header" href="#prop-subject">prop subject</a></h3>
+<pre><code class="language-cangjie">public prop subject: X509Name
+</code></pre>
+<p>功能：解析数字证书的使用者信息。</p>
+<p>类型：<a href="x509_package_classes.html#class-x509name">X509Name</a></p>
+<h3 id="initx509certificateinfo-x509certificate-publickey-privatekey-signaturealgorithm"><a class="header" href="#initx509certificateinfo-x509certificate-publickey-privatekey-signaturealgorithm">init(X509CertificateInfo, X509Certificate, PublicKey, PrivateKey, ?SignatureAlgorithm)</a></h3>
+<pre><code class="language-cangjie">public init(
+    certificateInfo: X509CertificateInfo,
+    parent!: X509Certificate,
+    publicKey!: PublicKey,
+    privateKey!: PrivateKey,
+    signatureAlgorithm!: ?SignatureAlgorithm = None
+)
+</code></pre>
+<p>功能：创建数字证书对象。</p>
+<p>参数：</p>
+<ul>
+<li>certificateInfo: <a href="x509_package_structs.html#struct-x509certificateinfo">X509CertificateInfo</a> - 数字证书配置信息。</li>
+<li>parent!: <a href="x509_package_classes.html#class-x509certificate">X509Certificate</a> - 颁发者证书。</li>
+<li>publicKey!: <a href="x509_package_interfaces.html#interface-publickey">PublicKey</a> - 申请人公钥，仅支持 RSA、ECDSA 和 DSA 公钥。</li>
+<li>privateKey!: <a href="x509_package_interfaces.html#interface-privatekey">PrivateKey</a> - 颁发者私钥，仅支持 RSA、ECDSA 和 DSA 私钥。</li>
+<li>signatureAlgorithm!: ?<a href="./x509_package_enums.html#enum-signaturealgorithm">SignatureAlgorithm</a> - 证书签名算法，默认值为 None，使用默认值时默认的摘要类型是 <a href="../../digest/digest_package_api/digest_package_classes.html#class-sha256">SHA256</a>。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="./x509_package_exceptions.html#class-x509exception">X509Exception</a> - 公钥或私钥类型不支持、私钥类型和证书签名算法中的私钥类型不匹配或数字证书信息设置失败时，抛出异常。</li>
+</ul>
+<h3 id="static-func-decodefromderderblob"><a class="header" href="#static-func-decodefromderderblob">static func decodeFromDer(DerBlob)</a></h3>
+<pre><code class="language-cangjie">public static func decodeFromDer(der: DerBlob): X509Certificate
+</code></pre>
+<p>功能：将 DER 格式的数字证书解码。</p>
+<p>参数：</p>
+<ul>
+<li>der: <a href="x509_package_structs.html#struct-derblob">DerBlob</a> - DER 格式的二进制数据。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="x509_package_classes.html#class-x509certificate">X509Certificate</a> - 由 DER 格式解码出的数字证书。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="./x509_package_exceptions.html#class-x509exception">X509Exception</a> - 数据为空时，或数据不是有效的数字证书 DER 格式时抛出异常。</li>
+</ul>
+<h3 id="static-func-decodefrompemstring"><a class="header" href="#static-func-decodefrompemstring">static func decodeFromPem(String)</a></h3>
+<pre><code class="language-cangjie">public static func decodeFromPem(pem: String): Array&lt;X509Certificate&gt;
+</code></pre>
+<p>功能：将数字证书从 PEM 格式解码。</p>
+<p>参数：</p>
+<ul>
+<li>pem: String - PEM 格式的数字证书字符流。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>Array&lt;<a href="x509_package_classes.html#class-x509certificate">X509Certificate</a>&gt; - 由 PEM 格式解码出的数字证书数组。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="./x509_package_exceptions.html#class-x509exception">X509Exception</a> - 字符流不符合 PEM 格式时，或文件头不符合数字证书头标准时抛出异常。</li>
+</ul>
+<h3 id="func-encodetoder"><a class="header" href="#func-encodetoder">func encodeToDer()</a></h3>
+<pre><code class="language-cangjie">public func encodeToDer(): DerBlob
+</code></pre>
+<p>功能：将数字证书编码成 Der 格式。</p>
+<p>返回值：</p>
+<ul>
+<li><a href="x509_package_structs.html#struct-derblob">DerBlob</a> - 编码后的 Der 格式的数字证书。</li>
+</ul>
+<h3 id="func-encodetopem"><a class="header" href="#func-encodetopem">func encodeToPem()</a></h3>
+<pre><code class="language-cangjie">public func encodeToPem(): PemEntry
+</code></pre>
+<p>功能：将数字证书编码成 PEM 格式。</p>
+<p>返回值：</p>
+<ul>
+<li><a href="x509_package_structs.html#struct-pementry">PemEntry</a> - 编码后的 PEM 格式的数字证书。</li>
+</ul>
+<h3 id="func-hashcode"><a class="header" href="#func-hashcode">func hashCode()</a></h3>
+<pre><code class="language-cangjie">public override func hashCode(): Int64
+</code></pre>
+<p>功能：返回证书哈希值。</p>
+<p>返回值：</p>
+<ul>
+<li>Int64 - 对证书对象进行哈希计算后得到的结果。</li>
+</ul>
+<h3 id="static-func-systemrootcerts"><a class="header" href="#static-func-systemrootcerts">static func systemRootCerts()</a></h3>
+<pre><code class="language-cangjie">public static func systemRootCerts(): Array&lt;X509Certificate&gt;
+</code></pre>
+<p>功能：返回操作系统的根证书，支持 Linux，MacOS 和 Windows 平台。</p>
+<p>返回值：</p>
+<ul>
+<li>Array&lt;<a href="x509_package_classes.html#class-x509certificate">X509Certificate</a>&gt; - 操作系统的根证书链。</li>
+</ul>
+<h3 id="func-tostring"><a class="header" href="#func-tostring">func toString()</a></h3>
+<pre><code class="language-cangjie">public override func toString(): String
+</code></pre>
+<p>功能：生成证书名称字符串，包含证书的使用者信息、有效期以及颁发者信息。</p>
+<p>返回值：</p>
+<ul>
+<li>String - 证书名称字符串。</li>
+</ul>
+<h3 id="func-verifyverifyoption"><a class="header" href="#func-verifyverifyoption">func verify(VerifyOption)</a></h3>
+<pre><code class="language-cangjie">public func verify(verifyOption: VerifyOption): Bool
+</code></pre>
+<p>功能：根据验证选项验证当前证书的有效性。</p>
+<p>验证优先级：</p>
+<ol>
+<li>优先验证有效期；</li>
+<li>可选验证DNS域名；</li>
+<li>最后根据根证书和中间证书验证其有效性。</li>
+</ol>
+<p>参数：</p>
+<ul>
+<li>verifyOption: <a href="x509_package_structs.html#struct-verifyoption">VerifyOption</a> - 证书验证选项。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>Bool - 证书有效返回 true，否则返回 false。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="./x509_package_exceptions.html#class-x509exception">X509Exception</a> - 检验过程中失败，比如内存分配异常等内部错误，则抛出异常。</li>
+</ul>
+<h3 id="operator-func-x509certificate"><a class="header" href="#operator-func-x509certificate">operator func !=(X509Certificate)</a></h3>
+<pre><code class="language-cangjie">public override operator func !=(other: X509Certificate): Bool
+</code></pre>
+<p>功能：判不等。</p>
+<p>参数：</p>
+<ul>
+<li>other: <a href="x509_package_classes.html#class-x509certificate">X509Certificate</a> - 被比较的证书对象。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>Bool - 若证书不同，返回 true；否则，返回 false。</li>
+</ul>
+<h3 id="operator-func-x509certificate-1"><a class="header" href="#operator-func-x509certificate-1">operator func ==(X509Certificate)</a></h3>
+<pre><code class="language-cangjie">public override operator func ==(other: X509Certificate): Bool
+</code></pre>
+<p>功能：判等。</p>
+<p>参数：</p>
+<ul>
+<li>other: <a href="x509_package_classes.html#class-x509certificate">X509Certificate</a> - 被比较的证书对象。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>Bool - 若证书相同，返回 true；否则，返回 false。</li>
+</ul>
+<h2 id="class-x509certificaterequest"><a class="header" href="#class-x509certificaterequest">class X509CertificateRequest</a></h2>
+<pre><code class="language-cangjie">public class X509CertificateRequest &lt;: Hashable &amp; ToString {
+    public init(
+        privateKey: PrivateKey,
+        certificateRequestInfo!: ?X509CertificateRequestInfo = None,
+        signatureAlgorithm!: ?SignatureAlgorithm = None
+    )
+}
+</code></pre>
+<p>功能：数字证书签名请求。</p>
+<p>父类型：</p>
+<ul>
+<li>Hashable</li>
+<li>ToString</li>
+</ul>
+<h3 id="prop-ipaddresses-1"><a class="header" href="#prop-ipaddresses-1">prop IPAddresses</a></h3>
+<pre><code class="language-cangjie">public prop IPAddresses: Array&lt;IP&gt;
+</code></pre>
+<p>功能：解析数字证书签名请求备选名称中的 <a href="x509_package_type.html#type-ip">IP</a> 地址。</p>
+<p>类型：Array&lt;<a href="x509_package_type.html#type-ip">IP</a>&gt;</p>
+<h3 id="prop-dnsnames-1"><a class="header" href="#prop-dnsnames-1">prop dnsNames</a></h3>
+<pre><code class="language-cangjie">public prop dnsNames: Array&lt;String&gt;
+</code></pre>
+<p>功能：解析数字证书签名请求备选名称中的域名。</p>
+<p>类型：Array&lt;String&gt;</p>
+<h3 id="prop-emailaddresses-1"><a class="header" href="#prop-emailaddresses-1">prop emailAddresses</a></h3>
+<pre><code class="language-cangjie">public prop emailAddresses: Array&lt;String&gt;
+</code></pre>
+<p>功能：解析数字证书签名请求备选名称中的 email 地址。</p>
+<p>类型：Array&lt;String&gt;</p>
+<h3 id="prop-publickey-1"><a class="header" href="#prop-publickey-1">prop publicKey</a></h3>
+<pre><code class="language-cangjie">public prop publicKey: PublicKey
+</code></pre>
+<p>功能：解析数字证书签名请求的公钥。</p>
+<p>类型：<a href="x509_package_interfaces.html#interface-publickey">PublicKey</a></p>
+<h3 id="prop-publickeyalgorithm-1"><a class="header" href="#prop-publickeyalgorithm-1">prop publicKeyAlgorithm</a></h3>
+<pre><code class="language-cangjie">public prop publicKeyAlgorithm: PublicKeyAlgorithm
+</code></pre>
+<p>功能：解析数字证书签名请求的公钥算法。</p>
+<p>类型：<a href="x509_package_enums.html#enum-publickeyalgorithm">PublicKeyAlgorithm</a></p>
+<h3 id="prop-signature-1"><a class="header" href="#prop-signature-1">prop signature</a></h3>
+<pre><code class="language-cangjie">public prop signature: Signature
+</code></pre>
+<p>功能：解析数字证书签名请求的签名。</p>
+<p>类型：<a href="x509_package_structs.html#struct-signature">Signature</a></p>
+<h3 id="prop-signaturealgorithm-1"><a class="header" href="#prop-signaturealgorithm-1">prop signatureAlgorithm</a></h3>
+<pre><code class="language-cangjie">public prop signatureAlgorithm: SignatureAlgorithm
+</code></pre>
+<p>功能：解析数字证书签名请求的签名算法。</p>
+<p>类型：<a href="./x509_package_enums.html#enum-signaturealgorithm">SignatureAlgorithm</a></p>
+<h3 id="prop-subject-1"><a class="header" href="#prop-subject-1">prop subject</a></h3>
+<pre><code class="language-cangjie">public prop subject: X509Name
+</code></pre>
+<p>功能：解析数字证书签名请求的使用者信息。</p>
+<p>类型：<a href="x509_package_classes.html#class-x509name">X509Name</a></p>
+<h3 id="initprivatekey-x509certificaterequestinfo-signaturealgorithm"><a class="header" href="#initprivatekey-x509certificaterequestinfo-signaturealgorithm">init(PrivateKey, ?X509CertificateRequestInfo, ?SignatureAlgorithm)</a></h3>
+<pre><code class="language-cangjie">public init(
+    privateKey: PrivateKey,
+    certificateRequestInfo!: ?X509CertificateRequestInfo = None,
+    signatureAlgorithm!: ?SignatureAlgorithm = None
+)
+</code></pre>
+<p>功能：创建数字证书签名请求对象。</p>
+<p>参数：</p>
+<ul>
+<li>privateKey: <a href="x509_package_interfaces.html#interface-privatekey">PrivateKey</a> - 私钥，仅支持 RSA、ECDSA 和 DSA 私钥。</li>
+<li>certificateRequestInfo!: ?<a href="x509_package_structs.html#struct-x509certificaterequestinfo">X509CertificateRequestInfo</a> - 数字证书签名信息，默认值为 None。</li>
+<li>signatureAlgorithm!: ?<a href="./x509_package_enums.html#enum-signaturealgorithm">SignatureAlgorithm</a> - 证书签名算法，默认值为 None，使用默认值时默认的摘要类型是 <a href="../../digest/digest_package_api/digest_package_classes.html#class-sha256">SHA256</a>。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="./x509_package_exceptions.html#class-x509exception">X509Exception</a> - 私钥类型不支持、私钥类型和证书签名算法中的私钥类型不匹配或数字证书签名信息设置失败时，抛出异常。</li>
+</ul>
+<h3 id="static-func-decodefromderderblob-1"><a class="header" href="#static-func-decodefromderderblob-1">static func decodeFromDer(DerBlob)</a></h3>
+<pre><code class="language-cangjie">public static func decodeFromDer(der: DerBlob): X509CertificateRequest
+</code></pre>
+<p>功能：将 DER 格式的数字证书签名请求解码。</p>
+<p>参数：</p>
+<ul>
+<li>der: <a href="x509_package_structs.html#struct-derblob">DerBlob</a> - DER 格式的二进制数据。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="x509_package_classes.html#class-x509certificaterequest">X509CertificateRequest</a> - 由 DER 格式解码出的数字证书签名请求。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="./x509_package_exceptions.html#class-x509exception">X509Exception</a> - 数据为空时，或数据不是有效的数字证书签名请求 DER 格式时抛出异常。</li>
+</ul>
+<h3 id="static-func-decodefrompemstring-1"><a class="header" href="#static-func-decodefrompemstring-1">static func decodeFromPem(String)</a></h3>
+<pre><code class="language-cangjie">public static func decodeFromPem(pem: String): Array&lt;X509CertificateRequest&gt;
+</code></pre>
+<p>功能：将数字证书签名请求从 PEM 格式解码。</p>
+<p>参数：</p>
+<ul>
+<li>pem: String - PEM 格式的数字证书签名请求字符流。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>Array&lt;<a href="x509_package_classes.html#class-x509certificaterequest">X509CertificateRequest</a>&gt; - 由 PEM 格式解码出的数字证书签名请求数组。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="./x509_package_exceptions.html#class-x509exception">X509Exception</a> - 字符流不符合 PEM 格式时，或文件头不符合数字证书签名请求头标准时抛出异常。</li>
+</ul>
+<h3 id="func-encodetoder-1"><a class="header" href="#func-encodetoder-1">func encodeToDer()</a></h3>
+<pre><code class="language-cangjie">public func encodeToDer(): DerBlob
+</code></pre>
+<p>功能：将数字证书签名请求编码成 Der 格式。</p>
+<p>返回值：</p>
+<ul>
+<li><a href="x509_package_structs.html#struct-derblob">DerBlob</a> - 编码后的 Der 格式的数字证书签名请求。</li>
+</ul>
+<h3 id="func-encodetopem-1"><a class="header" href="#func-encodetopem-1">func encodeToPem()</a></h3>
+<pre><code class="language-cangjie">public func encodeToPem(): PemEntry
+</code></pre>
+<p>功能：将数字证书签名请求编码成 PEM 格式。</p>
+<p>返回值：</p>
+<ul>
+<li><a href="x509_package_structs.html#struct-pementry">PemEntry</a> - 编码后的 PEM 格式的数字证书签名请求。</li>
+</ul>
+<h3 id="func-hashcode-1"><a class="header" href="#func-hashcode-1">func hashCode()</a></h3>
+<pre><code class="language-cangjie">public override func hashCode(): Int64
+</code></pre>
+<p>功能：返回证书签名请求哈希值。</p>
+<p>返回值：</p>
+<ul>
+<li>Int64 - 对证书签名请求对象进行哈希计算后得到的结果。</li>
+</ul>
+<h3 id="func-tostring-1"><a class="header" href="#func-tostring-1">func toString()</a></h3>
+<pre><code class="language-cangjie">public override func toString(): String
+</code></pre>
+<p>功能：生成证书签名请求名称字符串，包含证书签名请求的使用者信息。</p>
+<p>返回值：</p>
+<ul>
+<li>String - 证书签名请求名称字符串。</li>
+</ul>
+<h2 id="class-x509name"><a class="header" href="#class-x509name">class X509Name</a></h2>
+<pre><code class="language-cangjie">public class X509Name &lt;: ToString {
+    public init(
+        countryName!: ?String = None,
+        provinceName!: ?String = None,
+        localityName!: ?String = None,
+        organizationName!: ?String = None,
+        organizationalUnitName!: ?String = None,
+        commonName!: ?String = None,
+        email!: ?String = None
+    )
+}
+</code></pre>
+<p>功能：证书实体可辨识名称（Distinguished Name）是数字证书中的一个重要组成部分，作用是确保证书的持有者身份的真实性和可信度，同时也是数字证书验证的重要依据之一。</p>
+<p><a href="x509_package_classes.html#class-x509name">X509Name</a> 通常包含证书实体的国家或地区名称（Country Name）、州或省名称（State or Province Name）、城市名称（Locality Name）、组织名称（Organization Name）、组织单位名称（Organizational Unit Name）、通用名称（Common Name）。有时也会包含 email 地址。</p>
+<p>父类型：</p>
+<ul>
+<li>ToString</li>
+</ul>
+<h3 id="prop-commonname"><a class="header" href="#prop-commonname">prop commonName</a></h3>
+<pre><code class="language-cangjie">public prop commonName: ?String
+</code></pre>
+<p>功能：返回证书实体的通用名称。</p>
+<p>类型：?String</p>
+<h3 id="prop-countryname"><a class="header" href="#prop-countryname">prop countryName</a></h3>
+<pre><code class="language-cangjie">public prop countryName: ?String
+</code></pre>
+<p>功能：返回证书实体的国家或地区名称。</p>
+<p>类型：?String</p>
+<h3 id="prop-email"><a class="header" href="#prop-email">prop email</a></h3>
+<pre><code class="language-cangjie">public prop email: ?String
+</code></pre>
+<p>功能：返回证书实体的 email 地址。</p>
+<p>类型：?String</p>
+<h3 id="prop-localityname"><a class="header" href="#prop-localityname">prop localityName</a></h3>
+<pre><code class="language-cangjie">public prop localityName: ?String
+</code></pre>
+<p>功能：返回证书实体的城市名称。</p>
+<p>类型：?String</p>
+<h3 id="prop-organizationname"><a class="header" href="#prop-organizationname">prop organizationName</a></h3>
+<pre><code class="language-cangjie">public prop organizationName: ?String
+</code></pre>
+<p>功能：返回证书实体的组织名称。</p>
+<p>类型：?String</p>
+<h3 id="prop-organizationalunitname"><a class="header" href="#prop-organizationalunitname">prop organizationalUnitName</a></h3>
+<pre><code class="language-cangjie">public prop organizationalUnitName: ?String
+</code></pre>
+<p>功能：返回证书实体的组织单位名称。</p>
+<p>类型：?String</p>
+<h3 id="prop-provincename"><a class="header" href="#prop-provincename">prop provinceName</a></h3>
+<pre><code class="language-cangjie">public prop provinceName: ?String
+</code></pre>
+<p>功能：返回证书实体的州或省名称。</p>
+<p>类型：?String</p>
+<h3 id="initstring-string-string-string-string-string-string"><a class="header" href="#initstring-string-string-string-string-string-string">init(?String, ?String, ?String, ?String, ?String, ?String, ?String)</a></h3>
+<pre><code class="language-cangjie">    public init(
+        countryName!: ?String = None,
+        provinceName!: ?String = None,
+        localityName!: ?String = None,
+        organizationName!: ?String = None,
+        organizationalUnitName!: ?String = None,
+        commonName!: ?String = None,
+        email!: ?String = None
+    )
+</code></pre>
+<p>功能：构造 <a href="x509_package_classes.html#class-x509name">X509Name</a> 对象。</p>
+<p>参数：</p>
+<ul>
+<li>countryName!: ?String - 国家或地区名称，默认值为 None。</li>
+<li>provinceName!: ?String - 州或省名称，默认值为 None。</li>
+<li>localityName!: ?String - 城市名称，默认值为 None。</li>
+<li>organizationName!: ?String - 组织名称，默认值为 None。</li>
+<li>organizationalUnitName!: ?String - 组织单位名称，默认值为 None。</li>
+<li>commonName!: ?String - 通用名称，默认值为 None。</li>
+<li>email!: ?String - email 地址，默认值为 None。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="./x509_package_exceptions.html#class-x509exception">X509Exception</a> - 设置证书实体可辨识名称时失败，比如内存分配异常等内部错误，则抛出异常。</li>
+</ul>
+<h3 id="func-tostring-2"><a class="header" href="#func-tostring-2">func toString()</a></h3>
+<pre><code class="language-cangjie">public override func toString(): String
+</code></pre>
+<p>功能：生成证书实体名称字符串。</p>
+<p>返回值：</p>
+<ul>
+<li>String - 证书实体名称字符串，包含实体名称中存在的字段信息。</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../crypto/x509/x509_package_api/x509_package_interfaces.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../../crypto/x509/x509_package_api/x509_package_enums.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../crypto/x509/x509_package_api/x509_package_interfaces.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../../crypto/x509/x509_package_api/x509_package_enums.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../../elasticlunr.min.js"></script>
+        <script src="../../../mark.min.js"></script>
+        <script src="../../../searcher.js"></script>
+
+        <script src="../../../clipboard.min.js"></script>
+        <script src="../../../cangjie-highlight-export.js"></script><script src="../../../highlight.js"></script>
+        <script src="../../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        
+        <script src="../../../cangjie-highlight-export.js"></script><script src="../../../highlight.js"></script>
+        <script src="../../../assets/elasticlunr.js"></script>
+        <script src="../../../assets/fzf.umd.js"></script>
+        <script src="../../../assets/sidebar.js"></script>
+
+
+    </div>
+    </body>
+</html>
