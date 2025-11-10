@@ -1,0 +1,1103 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" class="light" dir="ltr">
+    <head>
+            <script type="text/x-mathjax-config">
+                MathJax.Hub.Config({
+                    showProcessingMessages: false,
+                    messageStyle: "none",
+                    extensions: ['tex2jax.js'],
+                    jax: ['input/TeX', 'output/HTML-CSS'],
+                    tex2jax: {
+                        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                        processEscapes: true
+                    },
+                    "HTML-CSS": { availableFonts: ["STIX", "TeX"] }
+                });
+            </script>
+            
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>类 - 仓颉编程语言扩展库 API</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../../favicon.png">
+        <link rel="stylesheet" href="../../../../css/variables.css">
+        <link rel="stylesheet" href="../../../../css/general.css">
+        <link rel="stylesheet" href="../../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../../highlight.css">
+        <link rel="stylesheet" href="../../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../../../assets/style.css">
+        <link rel="stylesheet" href="../../../../assets/theme.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../../../../libs_stdx/libs_overview.html"><strong aria-hidden="true">1.</strong> 仓颉编程语言扩展库概述</a></li><li class="chapter-item "><a href="../../../../libs_stdx/aspectCJ/aspectCJ_package_overview.html"><strong aria-hidden="true">2.</strong> stdx.aspectCJ</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/aspectCJ/aspectCJ_package_api/aspectCJ_package_classes.html"><strong aria-hidden="true">2.1.</strong> 类</a></li><li class="chapter-item "><div><strong aria-hidden="true">2.2.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/aspectCJ/aspectCJ_samples/aspectCJ_sample.html"><strong aria-hidden="true">2.2.1.</strong> aspecjCJ 使用</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/compress/zlib/zlib_package_overview.html"><strong aria-hidden="true">3.</strong> stdx.compress.zlib</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/compress/zlib/zlib_package_api/zlib_package_classes.html"><strong aria-hidden="true">3.1.</strong> 类</a></li><li class="chapter-item "><a href="../../../../libs_stdx/compress/zlib/zlib_package_api/zlib_package_enums.html"><strong aria-hidden="true">3.2.</strong> 枚举</a></li><li class="chapter-item "><a href="../../../../libs_stdx/compress/zlib/zlib_package_api/zlib_package_exceptions.html"><strong aria-hidden="true">3.3.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">3.4.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/compress/zlib/zlib_samples/deflate_compress_decompress.html"><strong aria-hidden="true">3.4.1.</strong> Deflate 格式数据的压缩和解压</a></li><li class="chapter-item "><a href="../../../../libs_stdx/compress/zlib/zlib_samples/gzip_compress_decompress.html"><strong aria-hidden="true">3.4.2.</strong> Gzip 格式数据的压缩和解压</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/crypto/crypto_package_overview.html"><strong aria-hidden="true">4.</strong> stdx.crypto.crypto</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/crypto/crypto/crypto_package_api/crypto_package_classes.html"><strong aria-hidden="true">4.1.</strong> 类</a></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/crypto/crypto_package_api/crypto_package_structs.html"><strong aria-hidden="true">4.2.</strong> 结构体</a></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/crypto/crypto_package_api/crypto_package_exceptions.html"><strong aria-hidden="true">4.3.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">4.4.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/crypto/crypto/crypto_samples/sample_secure_random.html"><strong aria-hidden="true">4.4.1.</strong> SecureRandom 使用</a></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/crypto/crypto_samples/sample_crypto.html"><strong aria-hidden="true">4.4.2.</strong> SM4 使用</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/digest/crypto_digest_package_overview.html"><strong aria-hidden="true">5.</strong> stdx.crypto.digest</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/crypto/digest/digest_package_api/digest_package_classes.html"><strong aria-hidden="true">5.1.</strong> 类</a></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/digest/digest_package_api/digest_package_structs.html"><strong aria-hidden="true">5.2.</strong> 结构体</a></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/digest/digest_package_api/digest_package_exceptions.html"><strong aria-hidden="true">5.3.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">5.4.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/crypto/digest/digest_samples/sample_digest.html"><strong aria-hidden="true">5.4.1.</strong> digest 使用</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../../libs_stdx/crypto/keys/keys_package_overview.html"><strong aria-hidden="true">6.</strong> stdx.crypto.keys</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../../libs_stdx/crypto/keys/keys_package_api/keys_package_classes.html" class="active"><strong aria-hidden="true">6.1.</strong> 类</a></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/keys/keys_package_api/keys_package_enums.html"><strong aria-hidden="true">6.2.</strong> 枚举</a></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/keys/keys_package_api/keys_package_structs.html"><strong aria-hidden="true">6.3.</strong> 结构体</a></li><li class="chapter-item "><div><strong aria-hidden="true">6.4.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/crypto/keys/keys_samples/sample_keys.html"><strong aria-hidden="true">6.4.1.</strong> keys 使用</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/x509/x509_package_overview.html"><strong aria-hidden="true">7.</strong> stdx.crypto.x509</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/crypto/x509/x509_package_api/x509_package_type.html"><strong aria-hidden="true">7.1.</strong> 类型别名</a></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/x509/x509_package_api/x509_package_interfaces.html"><strong aria-hidden="true">7.2.</strong> 接口</a></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/x509/x509_package_api/x509_package_classes.html"><strong aria-hidden="true">7.3.</strong> 类</a></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/x509/x509_package_api/x509_package_enums.html"><strong aria-hidden="true">7.4.</strong> 枚举</a></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/x509/x509_package_api/x509_package_structs.html"><strong aria-hidden="true">7.5.</strong> 结构体</a></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/x509/x509_package_api/x509_package_exceptions.html"><strong aria-hidden="true">7.6.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">7.7.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/crypto/x509/x509_samples/sample_x509.html"><strong aria-hidden="true">7.7.1.</strong> x509 使用</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/base64/base64_package_overview.html"><strong aria-hidden="true">8.</strong> stdx.encoding.base64</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/encoding/base64/base64_package_api/base64_package_funcs.html"><strong aria-hidden="true">8.1.</strong> 函数</a></li><li class="chapter-item "><div><strong aria-hidden="true">8.2.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/encoding/base64/base64_samples/base64.html"><strong aria-hidden="true">8.2.1.</strong> Byte 数组和 Base64 互转</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/hex/hex_package_overview.html"><strong aria-hidden="true">9.</strong> stdx.encoding.hex</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/encoding/hex/hex_package_api/hex_package_funcs.html"><strong aria-hidden="true">9.1.</strong> 函数</a></li><li class="chapter-item "><div><strong aria-hidden="true">9.2.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/encoding/hex/hex_samples/hex.html"><strong aria-hidden="true">9.2.1.</strong> Byte 数组和 Hex 互转</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json/json_package_overview.html"><strong aria-hidden="true">10.</strong> stdx.encoding.json</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json/json_package_api/encoding_json_package_interfaces.html"><strong aria-hidden="true">10.1.</strong> 接口</a></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json/json_package_api/encoding_json_package_classes.html"><strong aria-hidden="true">10.2.</strong> 类</a></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json/json_package_api/encoding_json_package_enums.html"><strong aria-hidden="true">10.3.</strong> 枚举</a></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json/json_package_api/encoding_json_package_exceptions.html"><strong aria-hidden="true">10.4.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">10.5.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json/json_samples/json_array_sample.html"><strong aria-hidden="true">10.5.1.</strong> JsonArray 使用示例</a></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json/json_samples/json_value_sample.html"><strong aria-hidden="true">10.5.2.</strong> JsonValue 和 String 互相转换</a></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json/json_samples/to_json_sample.html"><strong aria-hidden="true">10.5.3.</strong> JsonValue 与 DataModel 的转换</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json_stream/json_stream_package_overview.html"><strong aria-hidden="true">11.</strong> stdx.encoding.json.stream</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json_stream/json_stream_package_api/encoding_json_stream_package_interfaces.html"><strong aria-hidden="true">11.1.</strong> 接口</a></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json_stream/json_stream_package_api/encoding_json_stream_package_classes.html"><strong aria-hidden="true">11.2.</strong> 类</a></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json_stream/json_stream_package_api/encoding_json_stream_package_enums.html"><strong aria-hidden="true">11.3.</strong> 枚举</a></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json_stream/json_stream_package_api/encoding_json_stream_package_structs.html"><strong aria-hidden="true">11.4.</strong> 结构体</a></li><li class="chapter-item "><div><strong aria-hidden="true">11.5.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json_stream/json_stream_samples/sample_json_reader.html"><strong aria-hidden="true">11.5.1.</strong> 使用 Json Stream 进行反序列化</a></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json_stream/json_stream_samples/sample_json_writer.html"><strong aria-hidden="true">11.5.2.</strong> 使用 Json Stream 进行序列化</a></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json_stream/json_stream_samples/sample_json_writeconfig.html"><strong aria-hidden="true">11.5.3.</strong> WriteConfig 使用示例</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/url/url_package_overview.html"><strong aria-hidden="true">12.</strong> stdx.encoding.url</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/encoding/url/url_package_api/url_package_classes.html"><strong aria-hidden="true">12.1.</strong> 类</a></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/url/url_package_api/url_package_exceptions.html"><strong aria-hidden="true">12.2.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">12.3.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/encoding/url/url_samples/form.html"><strong aria-hidden="true">12.3.1.</strong> Form 的构造使用</a></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/url/url_samples/url_parse.html"><strong aria-hidden="true">12.3.2.</strong> URL 解析函数 parse 的使用</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/fuzz/fuzz_package_overview.html"><strong aria-hidden="true">13.</strong> stdx.fuzz.fuzz</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/fuzz/fuzz_package_api/fuzz_package_constants_vars.html"><strong aria-hidden="true">13.1.</strong> 常量变量</a></li><li class="chapter-item "><a href="../../../../libs_stdx/fuzz/fuzz_package_api/fuzz_package_classes.html"><strong aria-hidden="true">13.2.</strong> 类</a></li><li class="chapter-item "><a href="../../../../libs_stdx/fuzz/fuzz_package_api/fuzz_package_exceptions.html"><strong aria-hidden="true">13.3.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">13.4.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/fuzz/fuzz_samples/basic_fuzzing_test.html"><strong aria-hidden="true">13.4.1.</strong> 测试猜测字符功能</a></li><li class="chapter-item "><a href="../../../../libs_stdx/fuzz/fuzz_samples/dataprovider_usage.html"><strong aria-hidden="true">13.4.2.</strong> 使用 DataProvider 功能进行测试</a></li><li class="chapter-item "><a href="../../../../libs_stdx/fuzz/fuzz_samples/fake_coverage_usage.html"><strong aria-hidden="true">13.4.3.</strong> 使用 FakeCoverage 避免 DataProvider 模式下 Fuzz 异常终止</a></li><li class="chapter-item "><a href="../../../../libs_stdx/fuzz/fuzz_samples/print_cj-fuzz_usage.html"><strong aria-hidden="true">13.4.4.</strong> 打印 fuzz 使用方法</a></li><li class="chapter-item "><a href="../../../../libs_stdx/fuzz/fuzz_samples/print_coverage.html"><strong aria-hidden="true">13.4.5.</strong> 实验性特性-覆盖率信息打印</a></li><li class="chapter-item "><a href="../../../../libs_stdx/fuzz/fuzz_samples/stack_backtrace_missing_solution.html"><strong aria-hidden="true">13.4.6.</strong> 栈回溯缺失的处理方案</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/log/log_package_overview.html"><strong aria-hidden="true">14.</strong> stdx.log</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/log/log_package_api/log_package_types.html"><strong aria-hidden="true">14.1.</strong> 类型别名</a></li><li class="chapter-item "><a href="../../../../libs_stdx/log/log_package_api/log_package_funcs.html"><strong aria-hidden="true">14.2.</strong> 函数</a></li><li class="chapter-item "><a href="../../../../libs_stdx/log/log_package_api/log_package_interfaces.html"><strong aria-hidden="true">14.3.</strong> 接口</a></li><li class="chapter-item "><a href="../../../../libs_stdx/log/log_package_api/log_package_classes.html"><strong aria-hidden="true">14.4.</strong> 类</a></li><li class="chapter-item "><a href="../../../../libs_stdx/log/log_package_api/log_package_structs.html"><strong aria-hidden="true">14.5.</strong> 结构体</a></li><li class="chapter-item "><a href="../../../../libs_stdx/log/log_package_api/log_package_exceptions.html"><strong aria-hidden="true">14.6.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">14.7.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/log/log_samples/log_sample.html"><strong aria-hidden="true">14.7.1.</strong> 日志打印示例</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/logger/logger_package_overview.html"><strong aria-hidden="true">15.</strong> stdx.logger</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/logger/logger_package_api/logger_package_classes.html"><strong aria-hidden="true">15.1.</strong> 类</a></li><li class="chapter-item "><div><strong aria-hidden="true">15.2.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/logger/logger_samples/logger_sample.html"><strong aria-hidden="true">15.2.1.</strong> 日志打印示例</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/net/http/http_package_overview.html"><strong aria-hidden="true">16.</strong> stdx.net.http</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/net/http/http_package_api/http_package_funcs.html"><strong aria-hidden="true">16.1.</strong> 函数</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/http/http_package_api/http_package_interfaces.html"><strong aria-hidden="true">16.2.</strong> 接口</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/http/http_package_api/http_package_classes.html"><strong aria-hidden="true">16.3.</strong> 类</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/http/http_package_api/http_package_enums.html"><strong aria-hidden="true">16.4.</strong> 枚举</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/http/http_package_api/http_package_structs.html"><strong aria-hidden="true">16.5.</strong> 结构体</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/http/http_package_api/http_package_exceptions.html"><strong aria-hidden="true">16.6.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">16.7.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/net/http/http_samples/http_client.html"><strong aria-hidden="true">16.7.1.</strong> client</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/http/http_samples/cookie.html"><strong aria-hidden="true">16.7.2.</strong> cookie</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/http/http_samples/log.html"><strong aria-hidden="true">16.7.3.</strong> log</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/http/http_samples/http_server.html"><strong aria-hidden="true">16.7.4.</strong> server</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/http/http_samples/webSocket.html"><strong aria-hidden="true">16.7.5.</strong> webSocket</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/net/tls/tls_package_overview.html"><strong aria-hidden="true">17.</strong> stdx.net.tls</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/net/tls/tls_package_api/tls_package_classes.html"><strong aria-hidden="true">17.1.</strong> 类</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/tls/tls_package_api/tls_package_enums.html"><strong aria-hidden="true">17.2.</strong> 枚举</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/tls/tls_package_api/tls_package_structs.html"><strong aria-hidden="true">17.3.</strong> 结构体</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/tls/tls_package_api/tls_package_exceptions.html"><strong aria-hidden="true">17.4.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">17.5.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/net/tls/tls_samples/cert_key.html"><strong aria-hidden="true">17.5.1.</strong> 服务端证书及公钥在一份文件中</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/tls/tls_samples/client.html"><strong aria-hidden="true">17.5.2.</strong> 客户端示例</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/tls/tls_samples/hot_update_cert.html"><strong aria-hidden="true">17.5.3.</strong> 证书热更新</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/tls/tls_samples/server.html"><strong aria-hidden="true">17.5.4.</strong> 服务端示例</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/serialization/serialization_package_overview.html"><strong aria-hidden="true">18.</strong> stdx.serialization.serialization</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/serialization/serialization_package_api/serialization_package_functions.html"><strong aria-hidden="true">18.1.</strong> 函数</a></li><li class="chapter-item "><a href="../../../../libs_stdx/serialization/serialization_package_api/serialization_package_interfaces.html"><strong aria-hidden="true">18.2.</strong> 接口</a></li><li class="chapter-item "><a href="../../../../libs_stdx/serialization/serialization_package_api/serialization_package_classes.html"><strong aria-hidden="true">18.3.</strong> 类</a></li><li class="chapter-item "><a href="../../../../libs_stdx/serialization/serialization_package_api/serialization_package_exceptions.html"><strong aria-hidden="true">18.4.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">18.5.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/serialization/serialization_samples/serialize_and_deserialize_class.html"><strong aria-hidden="true">18.5.1.</strong> class 序列化和反序列化</a></li><li class="chapter-item "><a href="../../../../libs_stdx/serialization/serialization_samples/serialize_hashmap_and_hashset.html"><strong aria-hidden="true">18.5.2.</strong> HashSet 和 HashMap 序列化</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/unittest/data/data_package_overview.html"><strong aria-hidden="true">19.</strong> stdx.unittest.data</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/unittest/data/data_package_api/data_package_functions.html"><strong aria-hidden="true">19.1.</strong> 函数</a></li><li class="chapter-item "><a href="../../../../libs_stdx/unittest/data/data_package_api/data_package_classes.html"><strong aria-hidden="true">19.2.</strong> 类</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">仓颉编程语言扩展库 API</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="类"><a class="header" href="#类">类</a></h1>
+<h2 id="class-ecdsaprivatekey"><a class="header" href="#class-ecdsaprivatekey">class ECDSAPrivateKey</a></h2>
+<pre><code class="language-cangjie">public class ECDSAPrivateKey &lt;: PrivateKey {
+    public init(curve: Curve)
+}
+</code></pre>
+<p>功能：ECDSA 私钥类，提供生成 ECDSA 私钥能力，ECDSA 的私钥支持签名操作，同时支持 PEM 和 DER 格式的编码解码。使用示例见 <a href="../keys_samples/sample_keys.html#ECDSA-%E5%AF%86%E9%92%A5%E7%A4%BA%E4%BE%8B">ECDSA 密钥示例</a>。</p>
+<p>父类型：</p>
+<ul>
+<li><a href="../../x509/x509_package_api/x509_package_interfaces.html#interface-privatekey">PrivateKey</a></li>
+</ul>
+<h3 id="initcurve"><a class="header" href="#initcurve">init(Curve)</a></h3>
+<pre><code class="language-cangjie">public init(curve: Curve)
+</code></pre>
+<p>功能：init 初始化生成私钥。</p>
+<p>参数：</p>
+<ul>
+<li>curve: <a href="keys_package_enums.html#enum-curve">Curve</a> - 椭圆曲线类型。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 初始化失败，抛出异常。</li>
+</ul>
+<h3 id="static-func-decodederderblob"><a class="header" href="#static-func-decodederderblob">static func decodeDer(DerBlob)</a></h3>
+<pre><code class="language-cangjie">public static func decodeDer(blob: DerBlob): ECDSAPrivateKey
+</code></pre>
+<p>功能：将私钥从 DER 格式解码。</p>
+<p>参数：</p>
+<ul>
+<li>blob: <a href="../../x509/x509_package_api/x509_package_structs.html#struct-derblob">DerBlob</a> - 二进制格式的私钥对象。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="keys_package_classes.html#class-ecdsaprivatekey">ECDSAPrivateKey</a> - 解码出的 ECDSA 私钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 解码失败，抛出异常。</li>
+</ul>
+<h3 id="static-func-decodederderblob-string"><a class="header" href="#static-func-decodederderblob-string">static func decodeDer(DerBlob, ?String)</a></h3>
+<pre><code class="language-cangjie">public static func decodeDer(blob: DerBlob, password!: ?String): ECDSAPrivateKey
+</code></pre>
+<p>功能：将加密的私钥从 DER 格式解码。</p>
+<p>参数：</p>
+<ul>
+<li>blob: <a href="../../x509/x509_package_api/x509_package_structs.html#struct-derblob">DerBlob</a> - 二进制格式的私钥对象。</li>
+<li>password!: ?String - 解密私钥需要提供的密码，密码为 None 时则不解密。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="keys_package_classes.html#class-ecdsaprivatekey">ECDSAPrivateKey</a> - 解码出的 ECDSA 私钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 解码失败、解密失败或者参数密码为空字符串，抛出异常。</li>
+</ul>
+<h3 id="static-func-decodefrompemstring"><a class="header" href="#static-func-decodefrompemstring">static func decodeFromPem(String)</a></h3>
+<pre><code class="language-cangjie">public static func decodeFromPem(text: String): ECDSAPrivateKey
+</code></pre>
+<p>功能：将私钥从 PEM 格式解码。</p>
+<p>参数：</p>
+<ul>
+<li>text: String - PEM 格式的私钥字符流。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="keys_package_classes.html#class-ecdsaprivatekey">ECDSAPrivateKey</a> - 解码出的 ECDSA 私钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 解码失败、字符流不符合 PEM 格式或文件头不符合私钥头标准时，抛出异常。</li>
+</ul>
+<h3 id="static-func-decodefrompemstring-string"><a class="header" href="#static-func-decodefrompemstring-string">static func decodeFromPem(String, ?String)</a></h3>
+<pre><code class="language-cangjie">public static func decodeFromPem(text: String, password!: ?String): ECDSAPrivateKey
+</code></pre>
+<p>功能：将私钥从PEM 格式解码。</p>
+<p>参数：</p>
+<ul>
+<li>text: String - PEM 格式的私钥字符流。</li>
+<li>password!: ?String - 解密私钥需要提供的密码，密码为 None 时则不解密。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="keys_package_classes.html#class-ecdsaprivatekey">ECDSAPrivateKey</a> - 解码出的 ECDSA 私钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 解码失败、解密失败、参数密码为空字符串、字符流不符合 PEM 格式或文件头不符合私钥头标准时，抛出异常。</li>
+</ul>
+<h3 id="func-encodetoder"><a class="header" href="#func-encodetoder">func encodeToDer()</a></h3>
+<pre><code class="language-cangjie">public override func encodeToDer(): DerBlob
+</code></pre>
+<p>功能：将私钥编码为 DER 格式。</p>
+<p>返回值：</p>
+<ul>
+<li><a href="../../x509/x509_package_api/x509_package_structs.html#struct-derblob">DerBlob</a> - 编码后的 Der 格式私钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 编码失败，抛出异常。</li>
+</ul>
+<h3 id="func-encodetoderstring"><a class="header" href="#func-encodetoderstring">func encodeToDer(?String)</a></h3>
+<pre><code class="language-cangjie">public func encodeToDer(password!: ?String): DerBlob
+</code></pre>
+<p>功能：使用 AES-256-CBC 加密私钥，将私钥编码为 DER 格式。</p>
+<p>参数：</p>
+<ul>
+<li>password!: ?String - 加密私钥需要提供的密码，密码为 None 时则不加密。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="../../x509/x509_package_api/x509_package_structs.html#struct-derblob">DerBlob</a> - 编码后的 DER 格式私钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 编码失败、加密失败或者参数密码为空字符串，抛出异常。</li>
+</ul>
+<h3 id="func-encodetopem"><a class="header" href="#func-encodetopem">func encodeToPem()</a></h3>
+<pre><code class="language-cangjie">public override func encodeToPem(): PemEntry
+</code></pre>
+<p>功能：将私钥编码为 PEM 格式。</p>
+<p>返回值：</p>
+<ul>
+<li><a href="../../x509/x509_package_api/x509_package_structs.html#struct-pementry">PemEntry</a> - 私钥 PEM 格式的对象。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 编码失败，抛出异常。</li>
+</ul>
+<h3 id="func-signarraybyte"><a class="header" href="#func-signarraybyte">func sign(Array&lt;Byte&gt;)</a></h3>
+<pre><code class="language-cangjie">public func sign(digest: Array&lt;Byte&gt;): Array&lt;Byte&gt;
+</code></pre>
+<p>功能：sign 对数据的摘要结果进行签名。</p>
+<p>参数：</p>
+<ul>
+<li>digest: Array&lt;Byte&gt; - 数据的摘要结果。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>Array&lt;Byte&gt; - 签名后的数据。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 签名失败，抛出异常。</li>
+</ul>
+<h3 id="func-tostring"><a class="header" href="#func-tostring">func toString</a></h3>
+<pre><code class="language-cangjie">public override func toString(): String
+</code></pre>
+<p>功能：输出私钥种类。</p>
+<p>返回值：</p>
+<ul>
+<li>String - 密钥类别描述。</li>
+</ul>
+<h2 id="class-ecdsapublickey"><a class="header" href="#class-ecdsapublickey">class ECDSAPublicKey</a></h2>
+<pre><code class="language-cangjie">public class ECDSAPublicKey &lt;: PublicKey {
+    public init(pri: ECDSAPrivateKey)
+}
+</code></pre>
+<p>功能：ECDSA 公钥类，提供生成 ECDSA 公钥能力，ECDSA 公钥支持验证签名操作，支持 PEM 和 DER 格式的编码解码。使用示例见 <a href="../keys_samples/sample_keys.html#ECDSA-%E5%AF%86%E9%92%A5%E7%A4%BA%E4%BE%8B">ECDSA 密钥示例</a>。</p>
+<p>父类型：</p>
+<ul>
+<li><a href="../../x509/x509_package_api/x509_package_interfaces.html#interface-publickey">PublicKey</a></li>
+</ul>
+<h3 id="initecdsaprivatekey"><a class="header" href="#initecdsaprivatekey">init(ECDSAPrivateKey)</a></h3>
+<pre><code class="language-cangjie">public init(pri: ECDSAPrivateKey)
+</code></pre>
+<p>功能：init 初始化公钥，从私钥中获取对应的公钥。</p>
+<p>参数：</p>
+<ul>
+<li>pri: <a href="keys_package_classes.html#class-ecdsaprivatekey">ECDSAPrivateKey</a> - ECDSA 私钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 初始化失败，抛出异常。</li>
+</ul>
+<h3 id="static-func-decodederderblob-1"><a class="header" href="#static-func-decodederderblob-1">static func decodeDer(DerBlob)</a></h3>
+<pre><code class="language-cangjie">public static func decodeDer(blob: DerBlob): ECDSAPublicKey
+</code></pre>
+<p>功能：将公钥从 DER 格式解码。</p>
+<p>参数：</p>
+<ul>
+<li>blob: <a href="../../x509/x509_package_api/x509_package_structs.html#struct-derblob">DerBlob</a> - 二进制格式的公钥对象。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="keys_package_classes.html#class-ecdsapublickey">ECDSAPublicKey</a> - 解码出的 ECDSA 公钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 编码失败，抛出异常。</li>
+</ul>
+<h3 id="static-func-decodefrompemstring-1"><a class="header" href="#static-func-decodefrompemstring-1">static func decodeFromPem(String)</a></h3>
+<pre><code class="language-cangjie">public static func decodeFromPem(text: String): ECDSAPublicKey
+</code></pre>
+<p>功能：将公钥从 PEM 格式解码。</p>
+<p>参数：</p>
+<ul>
+<li>text: String - PEM 格式的公钥字符流。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="keys_package_classes.html#class-ecdsapublickey">ECDSAPublicKey</a> - 解码出的 ECDSA 公钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 解码失败、字符流不符合 PEM 格式或文件头不符合公钥头标准时，抛出异常。</li>
+</ul>
+<h3 id="func-encodetoder-1"><a class="header" href="#func-encodetoder-1">func encodeToDer()</a></h3>
+<pre><code class="language-cangjie">public override func encodeToDer(): DerBlob
+</code></pre>
+<p>功能：将公钥编码为 DER 格式。</p>
+<p>返回值：</p>
+<ul>
+<li><a href="../../x509/x509_package_api/x509_package_structs.html#struct-derblob">DerBlob</a> - 编码后的 Der 格式公钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 编码失败，抛出异常。</li>
+</ul>
+<h3 id="func-encodetopem-1"><a class="header" href="#func-encodetopem-1">func encodeToPem()</a></h3>
+<pre><code class="language-cangjie">public override func encodeToPem(): PemEntry
+</code></pre>
+<p>功能：将公钥编码为 PEM 格式。</p>
+<p>返回值：</p>
+<ul>
+<li><a href="../../x509/x509_package_api/x509_package_structs.html#struct-pementry">PemEntry</a> - <a href="../../x509/x509_package_api/x509_package_structs.html#struct-pementry">PemEntry</a> 对象。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 编码失败，抛出异常。</li>
+</ul>
+<h3 id="func-tostring-1"><a class="header" href="#func-tostring-1">func toString</a></h3>
+<pre><code class="language-cangjie">public override func toString(): String
+</code></pre>
+<p>功能：输出公钥种类。</p>
+<p>返回值：</p>
+<ul>
+<li>String - 密钥类别描述。</li>
+</ul>
+<h3 id="func-verifyarraybyte-arraybyte"><a class="header" href="#func-verifyarraybyte-arraybyte">func verify(Array&lt;Byte&gt;, Array&lt;Byte&gt;)</a></h3>
+<pre><code class="language-cangjie">public func verify(digest: Array&lt;Byte&gt;, sig: Array&lt;Byte&gt;): Bool
+</code></pre>
+<p>功能：verify 验证签名结果。</p>
+<p>参数：</p>
+<ul>
+<li>digest: Array&lt;Byte&gt; - 数据的摘要结果。</li>
+<li>sig: Array&lt;Byte&gt; - 数据的签名结果。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>Bool - 返回 true 表示验证成功，false 失败。</li>
+</ul>
+<h2 id="class-rsaprivatekey"><a class="header" href="#class-rsaprivatekey">class RSAPrivateKey</a></h2>
+<pre><code class="language-cangjie">public class RSAPrivateKey &lt;: PrivateKey{
+    public init(bits: Int32)
+    public init(bits: Int32, e: BigInt)
+}
+</code></pre>
+<p>功能：RSA 私钥类，提供生成 RSA 私钥能力，RSA 私钥支持签名和解密操作，支持 PEM 和 DER 格式的编码解码，符合 PKCS1 标准。使用示例见 <a href="../keys_samples/sample_keys.html#RSA-%E5%AF%86%E9%92%A5%E7%A4%BA%E4%BE%8B">RSA 密钥示例</a>。</p>
+<p>父类型：</p>
+<ul>
+<li><a href="../../x509/x509_package_api/x509_package_interfaces.html#interface-privatekey">PrivateKey</a></li>
+</ul>
+<h3 id="initint32"><a class="header" href="#initint32">init(Int32)</a></h3>
+<pre><code class="language-cangjie">public init(bits: Int32)
+</code></pre>
+<p>功能：init 初始化生成私钥，公钥指数默认值为 65537，业界推荐。公钥指数e的大小直接影响了RSA算法的安全性和加密效率。通常情况下，e的值越小，加密速度越快，但安全性越低。</p>
+<p>参数：</p>
+<ul>
+<li>bits: Int32 - 密钥长度，需要大于等于 512 位，并且小于等于 16384 位。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 密钥长度不符合要求或初始化失败，抛出异常。</li>
+</ul>
+<h3 id="initint32-bigint"><a class="header" href="#initint32-bigint">init(Int32, BigInt)</a></h3>
+<pre><code class="language-cangjie">public init(bits: Int32, e: BigInt)
+</code></pre>
+<p>功能：init 初始化生成私钥，允许用户指定公共指数。</p>
+<p>参数：</p>
+<ul>
+<li>bits: Int32 - 密钥长度，需要大于等于 512 位，并且小于等于 16384 位，推荐使用的密钥长度不小于 3072 位。</li>
+<li>e: BigInt - 公钥公共指数，范围是 [3, 2^256-1] 的奇数。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 密钥长度不符合要求、公钥公共指数值不符合要求或初始化失败，抛出异常。</li>
+</ul>
+<h3 id="static-func-decodederderblob-2"><a class="header" href="#static-func-decodederderblob-2">static func decodeDer(DerBlob)</a></h3>
+<pre><code class="language-cangjie">public static func decodeDer(blob: DerBlob): RSAPrivateKey
+</code></pre>
+<p>功能：将私钥从 DER 格式解码。</p>
+<p>参数：</p>
+<ul>
+<li>blob: <a href="../../x509/x509_package_api/x509_package_structs.html#struct-derblob">DerBlob</a> - 二进制格式的私钥对象。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="keys_package_classes.html#class-rsaprivatekey">RSAPrivateKey</a> - 解码出的 RSA 私钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 解码失败，抛出异常。</li>
+</ul>
+<h3 id="static-func-decodederderblob-string-1"><a class="header" href="#static-func-decodederderblob-string-1">static func decodeDer(DerBlob, ?String)</a></h3>
+<pre><code class="language-cangjie">public static func decodeDer(blob: DerBlob, password!: ?String): RSAPrivateKey
+</code></pre>
+<p>功能：将加密的私钥从 DER 格式解码。</p>
+<p>参数：</p>
+<ul>
+<li>blob: <a href="../../x509/x509_package_api/x509_package_structs.html#struct-derblob">DerBlob</a> - 二进制格式的私钥对象。</li>
+<li>password!: ?String - 解密私钥需要提供的密码，密码为 None 时则不解密。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="keys_package_classes.html#class-rsaprivatekey">RSAPrivateKey</a> - 解码出的 RSA 私钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 解码失败、解密失败或者参数密码为空字符串，抛出异常。</li>
+</ul>
+<h3 id="static-func-decodefrompemstring-2"><a class="header" href="#static-func-decodefrompemstring-2">static func decodeFromPem(String)</a></h3>
+<pre><code class="language-cangjie">public static func decodeFromPem(text: String): RSAPrivateKey
+</code></pre>
+<p>功能：将私钥从 PEM 格式解码。</p>
+<p>参数：</p>
+<ul>
+<li>text: String - PEM 格式的私钥字符流。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="keys_package_classes.html#class-rsaprivatekey">RSAPrivateKey</a> - 解码出的 RSA 私钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 解码失败、解密失败、字符流不符合 PEM 格式或文件头不符合私钥头标准时，抛出异常。</li>
+</ul>
+<h3 id="static-func-decodefrompemstring-string-1"><a class="header" href="#static-func-decodefrompemstring-string-1">static func decodeFromPem(String, ?String)</a></h3>
+<pre><code class="language-cangjie">public static func decodeFromPem(text: String, password!: ?String): RSAPrivateKey
+</code></pre>
+<p>功能：将私钥从 PEM 格式解码。</p>
+<p>参数：</p>
+<ul>
+<li>text: String - PEM 格式的私钥字符流。</li>
+<li>password!: ?String - 解密私钥需要提供的密码，密码为 None 时则不解密。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="keys_package_classes.html#class-rsaprivatekey">RSAPrivateKey</a> - 解码出的 RSA 私钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 解码失败、解密失败、参数密码为空字符串、字符流不符合 PEM 格式或文件头不符合私钥头标准时，抛出异常。</li>
+</ul>
+<h3 id="func-decryptinputstream-outputstream-padoption"><a class="header" href="#func-decryptinputstream-outputstream-padoption">func decrypt(InputStream, OutputStream, PadOption)</a></h3>
+<pre><code class="language-cangjie">public func decrypt(input: InputStream, output: OutputStream, padType!: PadOption): Unit
+</code></pre>
+<p>功能：decrypt 解密出原始数据。</p>
+<p>参数：</p>
+<ul>
+<li>input: InputStream - 加密的数据。</li>
+<li>output: OutputStream - 解密后的数据。</li>
+<li>padType!: <a href="keys_package_enums.html#enum-padoption">PadOption</a> - 填充模式，可以选择 PKCS1 或 OAEP 模式，不支持 PSS 模式，在对安全场景要求较高的情况下，推荐使用 OAEP 填充模式。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 设置填充模式失败或解密失败，抛出异常。</li>
+</ul>
+<h3 id="func-encodetoder-2"><a class="header" href="#func-encodetoder-2">func encodeToDer()</a></h3>
+<pre><code class="language-cangjie">public override func encodeToDer(): DerBlob
+</code></pre>
+<p>功能：将私钥编码为 DER 格式。</p>
+<p>返回值：</p>
+<ul>
+<li><a href="../../x509/x509_package_api/x509_package_structs.html#struct-derblob">DerBlob</a> - 编码后的 DER 格式私钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 编码失败，抛出异常。</li>
+</ul>
+<h3 id="func-encodetoderstring-1"><a class="header" href="#func-encodetoderstring-1">func encodeToDer(?String)</a></h3>
+<pre><code class="language-cangjie">public func encodeToDer(password!: ?String): DerBlob
+</code></pre>
+<p>功能：使用 AES-256-CBC 加密私钥，将私钥编码为 DER 格式。</p>
+<p>参数：</p>
+<ul>
+<li>password!: ?String - 加密私钥需要提供的密码，密码为 None 时则不加密。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="../../x509/x509_package_api/x509_package_structs.html#struct-derblob">DerBlob</a> - 编码后的 DER 格式私钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 编码失败、加密失败或者参数密码为空字符串，抛出异常。</li>
+</ul>
+<h3 id="func-encodetopem-2"><a class="header" href="#func-encodetopem-2">func encodeToPem()</a></h3>
+<pre><code class="language-cangjie">public override func encodeToPem(): PemEntry
+</code></pre>
+<p>功能：将私钥编码为 PEM 格式。</p>
+<p>返回值：</p>
+<ul>
+<li><a href="../../x509/x509_package_api/x509_package_structs.html#struct-pementry">PemEntry</a> - 私钥 PEM 格式的对象。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 编码失败，抛出异常。</li>
+</ul>
+<h3 id="func-signdigest-arraybyte-padoption"><a class="header" href="#func-signdigest-arraybyte-padoption">func sign(Digest, Array&lt;Byte&gt;, PadOption)</a></h3>
+<pre><code class="language-cangjie">public func sign(hash: Digest, digest: Array&lt;Byte&gt;, padType!: PadOption): Array&lt;Byte&gt;
+</code></pre>
+<p>功能：对数据的摘要结果进行签名。</p>
+<p>参数：</p>
+<ul>
+<li>hash: Digest - 摘要方法，获取 digest 结果使用的摘要方法。</li>
+<li>digest: Array&lt;Byte&gt; - 数据的摘要结果。</li>
+<li>padType!: <a href="keys_package_enums.html#enum-padoption">PadOption</a> - 填充模式，可以选择 PKCS1 或 PSS 模式，不支持 OAEP 模式，在对安全场景要求较高的情况下，推荐使用 PSS 填充模式。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>Array&lt;Byte&gt; - 签名后的数据。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 设置摘要方法失败、设置填充模式失败或签名失败，抛出异常。</li>
+</ul>
+<h3 id="func-tostring-2"><a class="header" href="#func-tostring-2">func toString()</a></h3>
+<pre><code class="language-cangjie">public override func toString(): String
+</code></pre>
+<p>功能：输出私钥种类。</p>
+<p>返回值：</p>
+<ul>
+<li>String - 密钥类别描述。</li>
+</ul>
+<h2 id="class-rsapublickey"><a class="header" href="#class-rsapublickey">class RSAPublicKey</a></h2>
+<pre><code class="language-cangjie">public class RSAPublicKey &lt;: PublicKey {
+    public init(pri: RSAPrivateKey)
+}
+</code></pre>
+<p>功能：RSA 公钥类，提供生成 RSA 公钥能力，RSA 公钥支持验证签名和加密操作，支持 PEM 和 DER 格式的编码解码。使用示例见 <a href="../keys_samples/sample_keys.html#RSA-%E5%AF%86%E9%92%A5%E7%A4%BA%E4%BE%8B">RSA 密钥示例</a>。</p>
+<p>父类型：</p>
+<ul>
+<li><a href="../../x509/x509_package_api/x509_package_interfaces.html#interface-publickey">PublicKey</a></li>
+</ul>
+<h3 id="initrsaprivatekey"><a class="header" href="#initrsaprivatekey">init(RSAPrivateKey)</a></h3>
+<pre><code class="language-cangjie">public init(pri: RSAPrivateKey)
+</code></pre>
+<p>功能：init 初始化公钥，从私钥中获取对应的公钥。</p>
+<p>参数：</p>
+<ul>
+<li>pri: <a href="keys_package_classes.html#class-rsaprivatekey">RSAPrivateKey</a> - RSA私钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 初始化失败，抛出异常。</li>
+</ul>
+<h3 id="static-func-decodederderblob-3"><a class="header" href="#static-func-decodederderblob-3">static func decodeDer(DerBlob)</a></h3>
+<pre><code class="language-cangjie">public static func decodeDer(blob: DerBlob): RSAPublicKey
+</code></pre>
+<p>功能：将公钥从 DER 格式解码。</p>
+<p>参数：</p>
+<ul>
+<li>blob: <a href="../../x509/x509_package_api/x509_package_structs.html#struct-derblob">DerBlob</a> - 二进制格式的公钥对象。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="keys_package_classes.html#class-rsapublickey">RSAPublicKey</a> - 解码出的 RSA 公钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 解码失败，抛出异常。</li>
+</ul>
+<h3 id="static-func-decodefrompemstring-3"><a class="header" href="#static-func-decodefrompemstring-3">static func decodeFromPem(String)</a></h3>
+<pre><code class="language-cangjie">public static func decodeFromPem(text: String): RSAPublicKey
+</code></pre>
+<p>功能：将公钥从PEM 格式解码。</p>
+<p>参数：</p>
+<ul>
+<li>text: String - PEM 格式的公钥字符流。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="keys_package_classes.html#class-rsapublickey">RSAPublicKey</a> - 解码出的 RSA 公钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 解码失败、字符流不符合 PEM 格式或文件头不符合公钥头标准时，抛出异常。</li>
+</ul>
+<h3 id="func-encodetoder-3"><a class="header" href="#func-encodetoder-3">func encodeToDer()</a></h3>
+<pre><code class="language-cangjie">public override func encodeToDer(): DerBlob
+</code></pre>
+<p>功能：将公钥编码为 DER 格式。</p>
+<p>返回值：</p>
+<ul>
+<li><a href="../../x509/x509_package_api/x509_package_structs.html#struct-derblob">DerBlob</a> - 编码后的 Der 格式公钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 编码失败，抛出异常。</li>
+</ul>
+<h3 id="func-encodetopem-3"><a class="header" href="#func-encodetopem-3">func encodeToPem()</a></h3>
+<pre><code class="language-cangjie">public override func encodeToPem(): PemEntry
+</code></pre>
+<p>功能：将公钥编码为 PEM 格式。</p>
+<p>返回值：</p>
+<ul>
+<li><a href="../../x509/x509_package_api/x509_package_structs.html#struct-pementry">PemEntry</a> - 返回 <a href="../../x509/x509_package_api/x509_package_structs.html#struct-pementry">PemEntry</a> 对象。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 编码失败，抛出异常。</li>
+</ul>
+<h3 id="func-encryptinputstream-outputstream-padoption"><a class="header" href="#func-encryptinputstream-outputstream-padoption">func encrypt(InputStream, OutputStream, PadOption)</a></h3>
+<pre><code class="language-cangjie">public func encrypt(input: InputStream, output: OutputStream, padType!: PadOption): Unit
+</code></pre>
+<p>功能：encrypt 给一段数据进行加密。</p>
+<p>参数：</p>
+<ul>
+<li>input: InputStream - 需要加密的数据。</li>
+<li>output: OutputStream - 加密后的数据。</li>
+<li>padType!: <a href="keys_package_enums.html#enum-padoption">PadOption</a> - 填充模式，可以选择 PKCS1 或 OAEP 模式，不支持 PSS 模式，在对安全场景要求较高的情况下，推荐使用 OAEP 填充模式。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 设置填充模式失败或加密失败，抛出异常。</li>
+</ul>
+<h3 id="func-tostring-3"><a class="header" href="#func-tostring-3">func toString()</a></h3>
+<pre><code class="language-cangjie">public override func toString(): String
+</code></pre>
+<p>功能：输出公钥种类。</p>
+<p>返回值：</p>
+<ul>
+<li>String - 密钥类别描述。</li>
+</ul>
+<h3 id="func-verifydigest-arraybyte-arraybyte-padoption"><a class="header" href="#func-verifydigest-arraybyte-arraybyte-padoption">func verify(Digest, Array&lt;Byte&gt;, Array&lt;Byte&gt;, PadOption)</a></h3>
+<pre><code class="language-cangjie">public func verify(hash: Digest, digest: Array&lt;Byte&gt;, sig: Array&lt;Byte&gt;, padType!: PadOption): Bool
+</code></pre>
+<p>功能：verify 验证签名结果。</p>
+<p>参数：</p>
+<ul>
+<li>hash: Digest  - 摘要方法，获取 digest 结果使用的摘要方法。</li>
+<li>digest: Array&lt;Byte&gt; - 数据的摘要结果。</li>
+<li>sig: Array&lt;Byte&gt; - 数据的签名结果。</li>
+<li>padType!: <a href="keys_package_enums.html#enum-padoption">PadOption</a> - 填充模式，可以选择 PKCS1 或 PSS 模式，不支持 OAEP 模式，在对安全场景要求较高的情况下，推荐使用 PSS 填充模式。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>Bool - 返回 true 表示验证成功，false 失败。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 设置填充模式失败或验证失败，抛出异常。</li>
+</ul>
+<h2 id="class-sm2privatekey"><a class="header" href="#class-sm2privatekey">class SM2PrivateKey</a></h2>
+<pre><code class="language-cangjie">public class SM2PrivateKey &lt;: PrivateKey {
+    public init()
+}
+</code></pre>
+<p>功能：SM2 私钥类，提供生成 SM2 私钥能力，SM2 私钥支持签名和解密操作，支持 PEM 和 DER 格式的编码解码，符合 PKCS1 标准。使用示例见 <a href="../keys_samples/sample_keys.html#SM2-%E5%AF%86%E9%92%A5%E7%A4%BA%E4%BE%8B">SM2 密钥示例</a>。</p>
+<p>父类型：</p>
+<ul>
+<li><a href="../../x509/x509_package_api/x509_package_interfaces.html#interface-privatekey">PrivateKey</a></li>
+</ul>
+<h3 id="init"><a class="header" href="#init">init()</a></h3>
+<pre><code class="language-cangjie">public init()
+</code></pre>
+<p>功能：init 初始化生成私钥。</p>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 初始化失败，抛出异常。</li>
+</ul>
+<h3 id="static-func-decodederderblob-4"><a class="header" href="#static-func-decodederderblob-4">static func decodeDer(DerBlob)</a></h3>
+<pre><code class="language-cangjie">public static func decodeDer(blob: DerBlob): SM2PrivateKey
+</code></pre>
+<p>功能：将私钥从 DER 格式解码。</p>
+<p>参数：</p>
+<ul>
+<li>blob: <a href="../../x509/x509_package_api/x509_package_structs.html#struct-derblob">DerBlob</a> - 二进制格式的私钥对象。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="keys_package_classes.html#class-sm2privatekey">SM2PrivateKey</a> - 解码出的 SM2 私钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 解码失败，抛出异常。</li>
+</ul>
+<h3 id="static-func-decodederderblob-string-2"><a class="header" href="#static-func-decodederderblob-string-2">static func decodeDer(DerBlob, ?String)</a></h3>
+<pre><code class="language-cangjie">public static func decodeDer(blob: DerBlob, password!: ?String): SM2PrivateKey
+</code></pre>
+<p>功能：将加密的私钥从 DER 格式解码。</p>
+<p>参数：</p>
+<ul>
+<li>blob: <a href="../../x509/x509_package_api/x509_package_structs.html#struct-derblob">DerBlob</a> - 二进制格式的私钥对象。</li>
+<li>password!: ?String - 解密私钥需要提供的密码，密码为 None 时则不解密。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="keys_package_classes.html#class-sm2privatekey">SM2PrivateKey</a> - 解码出的 SM2 私钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 解码失败、解密失败或者参数密码为空字符串，抛出异常。</li>
+</ul>
+<h3 id="static-func-decodefrompemstring-4"><a class="header" href="#static-func-decodefrompemstring-4">static func decodeFromPem(String)</a></h3>
+<pre><code class="language-cangjie">public static func decodeFromPem(text: String): SM2PrivateKey
+</code></pre>
+<p>功能：将私钥从 PEM 格式解码。</p>
+<p>参数：</p>
+<ul>
+<li>text: String - PEM 格式的私钥字符流。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="keys_package_classes.html#class-sm2privatekey">SM2PrivateKey</a> - 解码出的 SM2 私钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 解码失败、解密失败、字符流不符合 PEM 格式或文件头不符合私钥头标准时，抛出异常。</li>
+</ul>
+<h3 id="static-func-decodefrompemstring-string-2"><a class="header" href="#static-func-decodefrompemstring-string-2">static func decodeFromPem(String, ?String)</a></h3>
+<pre><code class="language-cangjie">public static func decodeFromPem(text: String, password!: ?String): SM2PrivateKey
+</code></pre>
+<p>功能：将私钥从 PEM 格式解码。</p>
+<p>参数：</p>
+<ul>
+<li>text: String - PEM 格式的私钥字符流。</li>
+<li>password!: ?String - 解密私钥需要提供的密码，密码为 None 时则不解密。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="keys_package_classes.html#class-sm2privatekey">SM2PrivateKey</a> - 解码出的 SM2 私钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 解码失败、解密失败、参数密码为空字符串、字符流不符合 PEM 格式或文件头不符合私钥头标准时，抛出异常。</li>
+</ul>
+<h3 id="func-decryptarraybyte"><a class="header" href="#func-decryptarraybyte">func decrypt(Array&lt;Byte&gt;)</a></h3>
+<pre><code class="language-cangjie">public func decrypt(input: Array&lt;Byte&gt;): Array&lt;Byte&gt;
+</code></pre>
+<p>功能：decrypt 解密出原始数据，待解密密文需要遵循 ASN.1 编码规则。</p>
+<p>参数：</p>
+<ul>
+<li>input: Array&lt;Byte&gt; - 加密的数据。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>Array&lt;Byte&gt; - 解密后的数据。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 解密失败，抛出异常。</li>
+</ul>
+<h3 id="func-encodetoder-4"><a class="header" href="#func-encodetoder-4">func encodeToDer()</a></h3>
+<pre><code class="language-cangjie">public func encodeToDer(): DerBlob
+</code></pre>
+<p>功能：将私钥编码为 DER 格式。</p>
+<p>返回值：</p>
+<ul>
+<li><a href="../../x509/x509_package_api/x509_package_structs.html#struct-derblob">DerBlob</a> - 编码后的 DER 格式私钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 编码失败，抛出异常。</li>
+</ul>
+<h3 id="func-encodetoderstring-2"><a class="header" href="#func-encodetoderstring-2">func encodeToDer(?String)</a></h3>
+<pre><code class="language-cangjie">public func encodeToDer(password!: ?String): DerBlob
+</code></pre>
+<p>功能：使用 AES-256-CBC 加密私钥，将私钥编码为 DER 格式。</p>
+<p>参数：</p>
+<ul>
+<li>password!: ?String - 加密私钥需要提供的密码，密码为 None 时则不加密。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="../../x509/x509_package_api/x509_package_structs.html#struct-derblob">DerBlob</a> - 编码后的 DER 格式公钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 编码失败、加密失败或者参数密码为空字符串，抛出异常。</li>
+</ul>
+<h3 id="func-encodetopemstring"><a class="header" href="#func-encodetopemstring">func encodeToPem(?String)</a></h3>
+<pre><code class="language-cangjie">public func encodeToPem(password!: ?String): PemEntry 
+</code></pre>
+<p>功能：将加密的私钥编码为 PEM 格式。</p>
+<p>参数：</p>
+<ul>
+<li>password!: ?String - 加密私钥需要提供的密码，密码为 None 时则不加密。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="../../x509/x509_package_api/x509_package_structs.html#struct-pementry">PemEntry</a> - 私钥 PEM 格式的对象。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 编码失败、加密失败或者参数密码为空字符串，抛出异常。</li>
+</ul>
+<h3 id="func-encodetopem-4"><a class="header" href="#func-encodetopem-4">func encodeToPem()</a></h3>
+<pre><code class="language-cangjie">public func encodeToPem(): PemEntry
+</code></pre>
+<p>功能：将私钥编码为 PEM 格式。</p>
+<p>返回值：</p>
+<ul>
+<li><a href="../../x509/x509_package_api/x509_package_structs.html#struct-pementry">PemEntry</a> - 私钥 PEM 格式的对象。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 编码失败，抛出异常。</li>
+</ul>
+<h3 id="func-signarraybyte-1"><a class="header" href="#func-signarraybyte-1">func sign(Array&lt;Byte&gt;)</a></h3>
+<pre><code class="language-cangjie">public func sign(data: Array&lt;Byte&gt;): Array&lt;Byte&gt;
+</code></pre>
+<p>功能：sign 对数据进行签名，SM2 采用<a href="../../digest/digest_package_api/digest_package_classes.html#class-sm3">SM3</a>数据摘要算法。</p>
+<p>参数：</p>
+<ul>
+<li>data: Array&lt;Byte&gt; - 数据。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>Array&lt;Byte&gt; - 签名后的数据。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 签名失败，抛出异常。</li>
+</ul>
+<h3 id="func-tostring-4"><a class="header" href="#func-tostring-4">func toString</a></h3>
+<pre><code class="language-cangjie">public override func toString(): String
+</code></pre>
+<p>功能：输出私钥种类。</p>
+<p>返回值：</p>
+<ul>
+<li>String - 密钥类别描述。</li>
+</ul>
+<h2 id="class-sm2publickey"><a class="header" href="#class-sm2publickey">class SM2PublicKey</a></h2>
+<pre><code class="language-cangjie">public class SM2PublicKey &lt;: PublicKey {
+    public init(pri: SM2PrivateKey)
+}
+</code></pre>
+<p>功能：SM2 公钥类，提供生成 SM2 公钥能力，SM2 公钥支持验证签名和加密操作，支持 PEM 和 DER 格式的编码解码。使用示例见 <a href="../keys_samples/sample_keys.html#SM2-%E5%AF%86%E9%92%A5%E7%A4%BA%E4%BE%8B">SM2 密钥示例</a>。</p>
+<p>父类型：</p>
+<ul>
+<li><a href="../../x509/x509_package_api/x509_package_interfaces.html#interface-publickey">PublicKey</a></li>
+</ul>
+<h3 id="initsm2privatekey"><a class="header" href="#initsm2privatekey">init(SM2PrivateKey)</a></h3>
+<pre><code class="language-cangjie">public init(pri: SM2PrivateKey)
+</code></pre>
+<p>功能：init 初始化公钥，从私钥中获取对应的公钥。</p>
+<p>参数：</p>
+<ul>
+<li>pri: <a href="keys_package_classes.html#class-sm2privatekey">SM2PrivateKey</a> - SM2 私钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 初始化失败，抛出异常。</li>
+</ul>
+<h3 id="static-func-decodederderblob-5"><a class="header" href="#static-func-decodederderblob-5">static func decodeDer(DerBlob)</a></h3>
+<pre><code class="language-cangjie">public static func decodeDer(blob: DerBlob): SM2PublicKey
+</code></pre>
+<p>功能：将公钥从 DER 格式解码。</p>
+<p>参数：</p>
+<ul>
+<li>blob: <a href="../../x509/x509_package_api/x509_package_structs.html#struct-derblob">DerBlob</a> - 二进制格式的公钥对象。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="keys_package_classes.html#class-sm2publickey">SM2PublicKey</a> - 解码出的 SM2 公钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 解码失败，抛出异常。</li>
+</ul>
+<h3 id="static-func-decodefrompemstring-5"><a class="header" href="#static-func-decodefrompemstring-5">static func decodeFromPem(String)</a></h3>
+<pre><code class="language-cangjie">public static func decodeFromPem(text: String): SM2PublicKey
+</code></pre>
+<p>功能：将公钥从PEM 格式解码。</p>
+<p>参数：</p>
+<ul>
+<li>text: String - PEM 格式的公钥字符流。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li><a href="keys_package_classes.html#class-sm2publickey">SM2PublicKey</a> - 解码出的 SM2 公钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 解码失败、字符流不符合 PEM 格式或文件头不符合公钥头标准时，抛出异常。</li>
+</ul>
+<h3 id="func-encodetoder-5"><a class="header" href="#func-encodetoder-5">func encodeToDer()</a></h3>
+<pre><code class="language-cangjie">public func encodeToDer(): DerBlob
+</code></pre>
+<p>功能：将公钥编码为 DER 格式。</p>
+<p>返回值：</p>
+<ul>
+<li><a href="../../x509/x509_package_api/x509_package_structs.html#struct-derblob">DerBlob</a> - 编码后的 Der 格式公钥。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 编码失败，抛出异常。</li>
+</ul>
+<h3 id="func-encodetopem-5"><a class="header" href="#func-encodetopem-5">func encodeToPem()</a></h3>
+<pre><code class="language-cangjie">public func encodeToPem(): PemEntry
+</code></pre>
+<p>功能：将公钥编码为 PEM 格式。</p>
+<p>返回值：</p>
+<ul>
+<li><a href="../../x509/x509_package_api/x509_package_structs.html#struct-pementry">PemEntry</a> - 返回 <a href="../../x509/x509_package_api/x509_package_structs.html#struct-pementry">PemEntry</a> 对象。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 编码失败，抛出异常。</li>
+</ul>
+<h3 id="func-encryptarraybyte"><a class="header" href="#func-encryptarraybyte">func encrypt(Array&lt;Byte&gt;)</a></h3>
+<pre><code class="language-cangjie">public func encrypt(input: Array&lt;Byte&gt;): Array&lt;Byte&gt; 
+</code></pre>
+<p>功能：encrypt 给一段数据进行加密，输出密文遵循 ASN.1 编码规则。</p>
+<p>参数：</p>
+<ul>
+<li>input: Array&lt;Byte&gt; - 需要加密的数据。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>Array&lt;Byte&gt; - 加密后的数据。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 加密失败，抛出异常。</li>
+</ul>
+<h3 id="func-tostring-5"><a class="header" href="#func-tostring-5">func toString()</a></h3>
+<pre><code class="language-cangjie">public override func toString(): String
+</code></pre>
+<p>功能：输出公钥种类。</p>
+<p>返回值：</p>
+<ul>
+<li>String - 密钥类别描述。</li>
+</ul>
+<h3 id="func-verifyarraybyte-arraybyte-1"><a class="header" href="#func-verifyarraybyte-arraybyte-1">func verify(Array&lt;Byte&gt;, Array&lt;Byte&gt;)</a></h3>
+<pre><code class="language-cangjie">public func verify(data: Array&lt;Byte&gt;, sig: Array&lt;Byte&gt;): Bool
+</code></pre>
+<p>功能：verify 验证签名结果。</p>
+<p>参数：</p>
+<ul>
+<li>data: Array&lt;Byte&gt; - 数据。</li>
+<li>sig: Array&lt;Byte&gt; - 数据的签名结果。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>Bool - 返回 true 表示验证成功，false 失败。</li>
+</ul>
+<p>异常：</p>
+<ul>
+<li><a href="../../digest/digest_package_api/digest_package_exceptions.html#class-cryptoexception">CryptoException</a> - 设置填充模式失败或验证失败，抛出异常。</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../../libs_stdx/crypto/keys/keys_package_overview.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../../../libs_stdx/crypto/keys/keys_package_api/keys_package_enums.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../../libs_stdx/crypto/keys/keys_package_overview.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../../../libs_stdx/crypto/keys/keys_package_api/keys_package_enums.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../../../elasticlunr.min.js"></script>
+        <script src="../../../../mark.min.js"></script>
+        <script src="../../../../searcher.js"></script>
+
+        <script src="../../../../clipboard.min.js"></script>
+        <script src="../../../../cangjie-highlight-export.js"></script><script src="../../../../highlight.js"></script>
+        <script src="../../../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        
+        <script src="../../../../cangjie-highlight-export.js"></script><script src="../../../../highlight.js"></script>
+        <script src="../../../../assets/elasticlunr.js"></script>
+        <script src="../../../../assets/fzf.umd.js"></script>
+        <script src="../../../../assets/sidebar.js"></script>
+
+
+    </div>
+    </body>
+</html>

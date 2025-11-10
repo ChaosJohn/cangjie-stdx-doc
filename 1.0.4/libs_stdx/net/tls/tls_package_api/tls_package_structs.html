@@ -1,0 +1,540 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" class="light" dir="ltr">
+    <head>
+            <script type="text/x-mathjax-config">
+                MathJax.Hub.Config({
+                    showProcessingMessages: false,
+                    messageStyle: "none",
+                    extensions: ['tex2jax.js'],
+                    jax: ['input/TeX', 'output/HTML-CSS'],
+                    tex2jax: {
+                        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                        processEscapes: true
+                    },
+                    "HTML-CSS": { availableFonts: ["STIX", "TeX"] }
+                });
+            </script>
+            
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>结构体 - 仓颉编程语言扩展库 API</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../../favicon.png">
+        <link rel="stylesheet" href="../../../../css/variables.css">
+        <link rel="stylesheet" href="../../../../css/general.css">
+        <link rel="stylesheet" href="../../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../../highlight.css">
+        <link rel="stylesheet" href="../../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../../../assets/style.css">
+        <link rel="stylesheet" href="../../../../assets/theme.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../../../../libs_stdx/libs_overview.html"><strong aria-hidden="true">1.</strong> 仓颉编程语言扩展库概述</a></li><li class="chapter-item "><a href="../../../../libs_stdx/aspectCJ/aspectCJ_package_overview.html"><strong aria-hidden="true">2.</strong> stdx.aspectCJ</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/aspectCJ/aspectCJ_package_api/aspectCJ_package_classes.html"><strong aria-hidden="true">2.1.</strong> 类</a></li><li class="chapter-item "><div><strong aria-hidden="true">2.2.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/aspectCJ/aspectCJ_samples/aspectCJ_sample.html"><strong aria-hidden="true">2.2.1.</strong> aspecjCJ 使用</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/compress/zlib/zlib_package_overview.html"><strong aria-hidden="true">3.</strong> stdx.compress.zlib</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/compress/zlib/zlib_package_api/zlib_package_classes.html"><strong aria-hidden="true">3.1.</strong> 类</a></li><li class="chapter-item "><a href="../../../../libs_stdx/compress/zlib/zlib_package_api/zlib_package_enums.html"><strong aria-hidden="true">3.2.</strong> 枚举</a></li><li class="chapter-item "><a href="../../../../libs_stdx/compress/zlib/zlib_package_api/zlib_package_exceptions.html"><strong aria-hidden="true">3.3.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">3.4.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/compress/zlib/zlib_samples/deflate_compress_decompress.html"><strong aria-hidden="true">3.4.1.</strong> Deflate 格式数据的压缩和解压</a></li><li class="chapter-item "><a href="../../../../libs_stdx/compress/zlib/zlib_samples/gzip_compress_decompress.html"><strong aria-hidden="true">3.4.2.</strong> Gzip 格式数据的压缩和解压</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/crypto/crypto_package_overview.html"><strong aria-hidden="true">4.</strong> stdx.crypto.crypto</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/crypto/crypto/crypto_package_api/crypto_package_classes.html"><strong aria-hidden="true">4.1.</strong> 类</a></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/crypto/crypto_package_api/crypto_package_structs.html"><strong aria-hidden="true">4.2.</strong> 结构体</a></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/crypto/crypto_package_api/crypto_package_exceptions.html"><strong aria-hidden="true">4.3.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">4.4.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/crypto/crypto/crypto_samples/sample_secure_random.html"><strong aria-hidden="true">4.4.1.</strong> SecureRandom 使用</a></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/crypto/crypto_samples/sample_crypto.html"><strong aria-hidden="true">4.4.2.</strong> SM4 使用</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/digest/crypto_digest_package_overview.html"><strong aria-hidden="true">5.</strong> stdx.crypto.digest</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/crypto/digest/digest_package_api/digest_package_classes.html"><strong aria-hidden="true">5.1.</strong> 类</a></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/digest/digest_package_api/digest_package_structs.html"><strong aria-hidden="true">5.2.</strong> 结构体</a></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/digest/digest_package_api/digest_package_exceptions.html"><strong aria-hidden="true">5.3.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">5.4.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/crypto/digest/digest_samples/sample_digest.html"><strong aria-hidden="true">5.4.1.</strong> digest 使用</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/keys/keys_package_overview.html"><strong aria-hidden="true">6.</strong> stdx.crypto.keys</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/crypto/keys/keys_package_api/keys_package_classes.html"><strong aria-hidden="true">6.1.</strong> 类</a></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/keys/keys_package_api/keys_package_enums.html"><strong aria-hidden="true">6.2.</strong> 枚举</a></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/keys/keys_package_api/keys_package_structs.html"><strong aria-hidden="true">6.3.</strong> 结构体</a></li><li class="chapter-item "><div><strong aria-hidden="true">6.4.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/crypto/keys/keys_samples/sample_keys.html"><strong aria-hidden="true">6.4.1.</strong> keys 使用</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/x509/x509_package_overview.html"><strong aria-hidden="true">7.</strong> stdx.crypto.x509</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/crypto/x509/x509_package_api/x509_package_type.html"><strong aria-hidden="true">7.1.</strong> 类型别名</a></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/x509/x509_package_api/x509_package_interfaces.html"><strong aria-hidden="true">7.2.</strong> 接口</a></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/x509/x509_package_api/x509_package_classes.html"><strong aria-hidden="true">7.3.</strong> 类</a></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/x509/x509_package_api/x509_package_enums.html"><strong aria-hidden="true">7.4.</strong> 枚举</a></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/x509/x509_package_api/x509_package_structs.html"><strong aria-hidden="true">7.5.</strong> 结构体</a></li><li class="chapter-item "><a href="../../../../libs_stdx/crypto/x509/x509_package_api/x509_package_exceptions.html"><strong aria-hidden="true">7.6.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">7.7.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/crypto/x509/x509_samples/sample_x509.html"><strong aria-hidden="true">7.7.1.</strong> x509 使用</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/base64/base64_package_overview.html"><strong aria-hidden="true">8.</strong> stdx.encoding.base64</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/encoding/base64/base64_package_api/base64_package_funcs.html"><strong aria-hidden="true">8.1.</strong> 函数</a></li><li class="chapter-item "><div><strong aria-hidden="true">8.2.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/encoding/base64/base64_samples/base64.html"><strong aria-hidden="true">8.2.1.</strong> Byte 数组和 Base64 互转</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/hex/hex_package_overview.html"><strong aria-hidden="true">9.</strong> stdx.encoding.hex</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/encoding/hex/hex_package_api/hex_package_funcs.html"><strong aria-hidden="true">9.1.</strong> 函数</a></li><li class="chapter-item "><div><strong aria-hidden="true">9.2.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/encoding/hex/hex_samples/hex.html"><strong aria-hidden="true">9.2.1.</strong> Byte 数组和 Hex 互转</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json/json_package_overview.html"><strong aria-hidden="true">10.</strong> stdx.encoding.json</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json/json_package_api/encoding_json_package_interfaces.html"><strong aria-hidden="true">10.1.</strong> 接口</a></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json/json_package_api/encoding_json_package_classes.html"><strong aria-hidden="true">10.2.</strong> 类</a></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json/json_package_api/encoding_json_package_enums.html"><strong aria-hidden="true">10.3.</strong> 枚举</a></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json/json_package_api/encoding_json_package_exceptions.html"><strong aria-hidden="true">10.4.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">10.5.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json/json_samples/json_array_sample.html"><strong aria-hidden="true">10.5.1.</strong> JsonArray 使用示例</a></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json/json_samples/json_value_sample.html"><strong aria-hidden="true">10.5.2.</strong> JsonValue 和 String 互相转换</a></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json/json_samples/to_json_sample.html"><strong aria-hidden="true">10.5.3.</strong> JsonValue 与 DataModel 的转换</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json_stream/json_stream_package_overview.html"><strong aria-hidden="true">11.</strong> stdx.encoding.json.stream</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json_stream/json_stream_package_api/encoding_json_stream_package_interfaces.html"><strong aria-hidden="true">11.1.</strong> 接口</a></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json_stream/json_stream_package_api/encoding_json_stream_package_classes.html"><strong aria-hidden="true">11.2.</strong> 类</a></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json_stream/json_stream_package_api/encoding_json_stream_package_enums.html"><strong aria-hidden="true">11.3.</strong> 枚举</a></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json_stream/json_stream_package_api/encoding_json_stream_package_structs.html"><strong aria-hidden="true">11.4.</strong> 结构体</a></li><li class="chapter-item "><div><strong aria-hidden="true">11.5.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json_stream/json_stream_samples/sample_json_reader.html"><strong aria-hidden="true">11.5.1.</strong> 使用 Json Stream 进行反序列化</a></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json_stream/json_stream_samples/sample_json_writer.html"><strong aria-hidden="true">11.5.2.</strong> 使用 Json Stream 进行序列化</a></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/json_stream/json_stream_samples/sample_json_writeconfig.html"><strong aria-hidden="true">11.5.3.</strong> WriteConfig 使用示例</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/url/url_package_overview.html"><strong aria-hidden="true">12.</strong> stdx.encoding.url</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/encoding/url/url_package_api/url_package_classes.html"><strong aria-hidden="true">12.1.</strong> 类</a></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/url/url_package_api/url_package_exceptions.html"><strong aria-hidden="true">12.2.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">12.3.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/encoding/url/url_samples/form.html"><strong aria-hidden="true">12.3.1.</strong> Form 的构造使用</a></li><li class="chapter-item "><a href="../../../../libs_stdx/encoding/url/url_samples/url_parse.html"><strong aria-hidden="true">12.3.2.</strong> URL 解析函数 parse 的使用</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/fuzz/fuzz_package_overview.html"><strong aria-hidden="true">13.</strong> stdx.fuzz.fuzz</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/fuzz/fuzz_package_api/fuzz_package_constants_vars.html"><strong aria-hidden="true">13.1.</strong> 常量变量</a></li><li class="chapter-item "><a href="../../../../libs_stdx/fuzz/fuzz_package_api/fuzz_package_classes.html"><strong aria-hidden="true">13.2.</strong> 类</a></li><li class="chapter-item "><a href="../../../../libs_stdx/fuzz/fuzz_package_api/fuzz_package_exceptions.html"><strong aria-hidden="true">13.3.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">13.4.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/fuzz/fuzz_samples/basic_fuzzing_test.html"><strong aria-hidden="true">13.4.1.</strong> 测试猜测字符功能</a></li><li class="chapter-item "><a href="../../../../libs_stdx/fuzz/fuzz_samples/dataprovider_usage.html"><strong aria-hidden="true">13.4.2.</strong> 使用 DataProvider 功能进行测试</a></li><li class="chapter-item "><a href="../../../../libs_stdx/fuzz/fuzz_samples/fake_coverage_usage.html"><strong aria-hidden="true">13.4.3.</strong> 使用 FakeCoverage 避免 DataProvider 模式下 Fuzz 异常终止</a></li><li class="chapter-item "><a href="../../../../libs_stdx/fuzz/fuzz_samples/print_cj-fuzz_usage.html"><strong aria-hidden="true">13.4.4.</strong> 打印 fuzz 使用方法</a></li><li class="chapter-item "><a href="../../../../libs_stdx/fuzz/fuzz_samples/print_coverage.html"><strong aria-hidden="true">13.4.5.</strong> 实验性特性-覆盖率信息打印</a></li><li class="chapter-item "><a href="../../../../libs_stdx/fuzz/fuzz_samples/stack_backtrace_missing_solution.html"><strong aria-hidden="true">13.4.6.</strong> 栈回溯缺失的处理方案</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/log/log_package_overview.html"><strong aria-hidden="true">14.</strong> stdx.log</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/log/log_package_api/log_package_types.html"><strong aria-hidden="true">14.1.</strong> 类型别名</a></li><li class="chapter-item "><a href="../../../../libs_stdx/log/log_package_api/log_package_funcs.html"><strong aria-hidden="true">14.2.</strong> 函数</a></li><li class="chapter-item "><a href="../../../../libs_stdx/log/log_package_api/log_package_interfaces.html"><strong aria-hidden="true">14.3.</strong> 接口</a></li><li class="chapter-item "><a href="../../../../libs_stdx/log/log_package_api/log_package_classes.html"><strong aria-hidden="true">14.4.</strong> 类</a></li><li class="chapter-item "><a href="../../../../libs_stdx/log/log_package_api/log_package_structs.html"><strong aria-hidden="true">14.5.</strong> 结构体</a></li><li class="chapter-item "><a href="../../../../libs_stdx/log/log_package_api/log_package_exceptions.html"><strong aria-hidden="true">14.6.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">14.7.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/log/log_samples/log_sample.html"><strong aria-hidden="true">14.7.1.</strong> 日志打印示例</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/logger/logger_package_overview.html"><strong aria-hidden="true">15.</strong> stdx.logger</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/logger/logger_package_api/logger_package_classes.html"><strong aria-hidden="true">15.1.</strong> 类</a></li><li class="chapter-item "><div><strong aria-hidden="true">15.2.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/logger/logger_samples/logger_sample.html"><strong aria-hidden="true">15.2.1.</strong> 日志打印示例</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/net/http/http_package_overview.html"><strong aria-hidden="true">16.</strong> stdx.net.http</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/net/http/http_package_api/http_package_funcs.html"><strong aria-hidden="true">16.1.</strong> 函数</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/http/http_package_api/http_package_interfaces.html"><strong aria-hidden="true">16.2.</strong> 接口</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/http/http_package_api/http_package_classes.html"><strong aria-hidden="true">16.3.</strong> 类</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/http/http_package_api/http_package_enums.html"><strong aria-hidden="true">16.4.</strong> 枚举</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/http/http_package_api/http_package_structs.html"><strong aria-hidden="true">16.5.</strong> 结构体</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/http/http_package_api/http_package_exceptions.html"><strong aria-hidden="true">16.6.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">16.7.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/net/http/http_samples/http_client.html"><strong aria-hidden="true">16.7.1.</strong> client</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/http/http_samples/cookie.html"><strong aria-hidden="true">16.7.2.</strong> cookie</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/http/http_samples/log.html"><strong aria-hidden="true">16.7.3.</strong> log</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/http/http_samples/http_server.html"><strong aria-hidden="true">16.7.4.</strong> server</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/http/http_samples/webSocket.html"><strong aria-hidden="true">16.7.5.</strong> webSocket</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../../libs_stdx/net/tls/tls_package_overview.html"><strong aria-hidden="true">17.</strong> stdx.net.tls</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/net/tls/tls_package_api/tls_package_classes.html"><strong aria-hidden="true">17.1.</strong> 类</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/tls/tls_package_api/tls_package_enums.html"><strong aria-hidden="true">17.2.</strong> 枚举</a></li><li class="chapter-item expanded "><a href="../../../../libs_stdx/net/tls/tls_package_api/tls_package_structs.html" class="active"><strong aria-hidden="true">17.3.</strong> 结构体</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/tls/tls_package_api/tls_package_exceptions.html"><strong aria-hidden="true">17.4.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">17.5.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/net/tls/tls_samples/cert_key.html"><strong aria-hidden="true">17.5.1.</strong> 服务端证书及公钥在一份文件中</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/tls/tls_samples/client.html"><strong aria-hidden="true">17.5.2.</strong> 客户端示例</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/tls/tls_samples/hot_update_cert.html"><strong aria-hidden="true">17.5.3.</strong> 证书热更新</a></li><li class="chapter-item "><a href="../../../../libs_stdx/net/tls/tls_samples/server.html"><strong aria-hidden="true">17.5.4.</strong> 服务端示例</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/serialization/serialization_package_overview.html"><strong aria-hidden="true">18.</strong> stdx.serialization.serialization</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/serialization/serialization_package_api/serialization_package_functions.html"><strong aria-hidden="true">18.1.</strong> 函数</a></li><li class="chapter-item "><a href="../../../../libs_stdx/serialization/serialization_package_api/serialization_package_interfaces.html"><strong aria-hidden="true">18.2.</strong> 接口</a></li><li class="chapter-item "><a href="../../../../libs_stdx/serialization/serialization_package_api/serialization_package_classes.html"><strong aria-hidden="true">18.3.</strong> 类</a></li><li class="chapter-item "><a href="../../../../libs_stdx/serialization/serialization_package_api/serialization_package_exceptions.html"><strong aria-hidden="true">18.4.</strong> 异常类</a></li><li class="chapter-item "><div><strong aria-hidden="true">18.5.</strong> 示例教程</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/serialization/serialization_samples/serialize_and_deserialize_class.html"><strong aria-hidden="true">18.5.1.</strong> class 序列化和反序列化</a></li><li class="chapter-item "><a href="../../../../libs_stdx/serialization/serialization_samples/serialize_hashmap_and_hashset.html"><strong aria-hidden="true">18.5.2.</strong> HashSet 和 HashMap 序列化</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../../libs_stdx/unittest/data/data_package_overview.html"><strong aria-hidden="true">19.</strong> stdx.unittest.data</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../libs_stdx/unittest/data/data_package_api/data_package_functions.html"><strong aria-hidden="true">19.1.</strong> 函数</a></li><li class="chapter-item "><a href="../../../../libs_stdx/unittest/data/data_package_api/data_package_classes.html"><strong aria-hidden="true">19.2.</strong> 类</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">仓颉编程语言扩展库 API</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="结构体"><a class="header" href="#结构体">结构体</a></h1>
+<h2 id="struct-ciphersuite"><a class="header" href="#struct-ciphersuite">struct CipherSuite</a></h2>
+<pre><code class="language-cangjie">public struct CipherSuite &lt;: ToString &amp; Equatable&lt;CipherSuite&gt;
+</code></pre>
+<p>功能：TLS 中的密码套件。</p>
+<p>父类型：</p>
+<ul>
+<li>ToString</li>
+<li>Equatable&lt;<a href="#struct-ciphersuite">CipherSuite</a>&gt;</li>
+</ul>
+<h3 id="static-prop-allsupported"><a class="header" href="#static-prop-allsupported">static prop allSupported</a></h3>
+<pre><code class="language-cangjie">public static prop allSupported: Array&lt;CipherSuite&gt;
+</code></pre>
+<p>功能：返回所有支持的密码套件。</p>
+<p>返回值：存放密码套件的数组。</p>
+<p>类型：Array&lt;<a href="tls_package_structs.html#struct-ciphersuite">CipherSuite</a>&gt;</p>
+<h3 id="func-tostring"><a class="header" href="#func-tostring">func toString()</a></h3>
+<pre><code class="language-cangjie">public func toString(): String
+</code></pre>
+<p>功能：返回密码套件名称。</p>
+<p>返回值：</p>
+<ul>
+<li>String - 密码套件名称。</li>
+</ul>
+<h3 id="operator-func-ciphersuite"><a class="header" href="#operator-func-ciphersuite">operator func !=(CipherSuite)</a></h3>
+<pre><code class="language-cangjie">public operator func !=(that: CipherSuite): Bool
+</code></pre>
+<p>功能：判断两个密码套件是否不等。</p>
+<p>参数：</p>
+<ul>
+<li>that: <a href="tls_package_structs.html#struct-ciphersuite">CipherSuite</a> - 被比较的密码套件对象。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>Bool - 若不等，则返回 <code>true</code>；反之，返回 <code>false</code>。</li>
+</ul>
+<h3 id="operator-func-ciphersuite-1"><a class="header" href="#operator-func-ciphersuite-1">operator func ==(CipherSuite)</a></h3>
+<pre><code class="language-cangjie">public operator func ==(that: CipherSuite): Bool
+</code></pre>
+<p>功能：判断两个密码套件是否相等。</p>
+<p>参数：</p>
+<ul>
+<li>that: <a href="tls_package_structs.html#struct-ciphersuite">CipherSuite</a> - 被比较的密码套件对象。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>Bool - 若相等，则返回 <code>true</code>；反之，返回 <code>false</code>。</li>
+</ul>
+<h2 id="struct-tlsclientconfig"><a class="header" href="#struct-tlsclientconfig">struct TlsClientConfig</a></h2>
+<pre><code class="language-cangjie">public struct TlsClientConfig {
+    public var keylogCallback: ?(TlsSocket, String) -&gt; Unit = None
+    public var verifyMode: CertificateVerifyMode = CertificateVerifyMode.Default
+    public init()
+}
+</code></pre>
+<p>功能：客户端配置。</p>
+<h3 id="var-keylogcallback"><a class="header" href="#var-keylogcallback">var keylogCallback</a></h3>
+<pre><code class="language-cangjie">public var keylogCallback: ?(TlsSocket, String) -&gt; Unit = None
+</code></pre>
+<p>功能：握手过程的回调函数，提供 TLS 初始秘钥数据，用于调试和解密记录使用。</p>
+<p>类型：?(<a href="tls_package_classes.html#class-tlssocket">TlsSocket</a>, String) -&gt; Unit</p>
+<h3 id="var-verifymode"><a class="header" href="#var-verifymode">var verifyMode</a></h3>
+<pre><code class="language-cangjie">public var verifyMode: CertificateVerifyMode = CertificateVerifyMode.Default
+</code></pre>
+<p>功能：设置或获取证书认证模式，默认为 <code>Default</code>。</p>
+<p>类型：<a href="tls_package_enums.html#enum-certificateverifymode">CertificateVerifyMode</a></p>
+<h3 id="prop-alpnprotocolslist"><a class="header" href="#prop-alpnprotocolslist">prop alpnProtocolsList</a></h3>
+<pre><code class="language-cangjie">public mut prop alpnProtocolsList: Array&lt;String&gt;
+</code></pre>
+<p>功能：要求的应用层协议名称。若列表为空，则客户将不协商应用层协议。</p>
+<p>类型：Array&lt;String&gt;</p>
+<p>异常：</p>
+<ul>
+<li>IllegalArgumentException - 列表元素有 '\0' 字符时，抛出异常。</li>
+</ul>
+<h3 id="prop-ciphersuitesv1_2"><a class="header" href="#prop-ciphersuitesv1_2">prop cipherSuitesV1_2</a></h3>
+<pre><code class="language-cangjie">public mut prop cipherSuitesV1_2: ?Array&lt;String&gt;
+</code></pre>
+<p>功能：基于 TLS 1.2 协议下的加密套。</p>
+<p>类型：?Array&lt;String&gt;</p>
+<p>异常：</p>
+<ul>
+<li>IllegalArgumentException - 列表元素有 '\0' 字符时，抛出异常。</li>
+</ul>
+<h3 id="prop-ciphersuitesv1_3"><a class="header" href="#prop-ciphersuitesv1_3">prop cipherSuitesV1_3</a></h3>
+<pre><code class="language-cangjie">public mut prop cipherSuitesV1_3: ?Array&lt;String&gt;
+</code></pre>
+<p>功能：基于 TLS 1.3 协议下的加密套。</p>
+<p>类型：?Array&lt;String&gt;</p>
+<p>异常：</p>
+<ul>
+<li>IllegalArgumentException - 列表元素有 '\0' 字符时，抛出异常。</li>
+</ul>
+<h3 id="prop-clientcertificate"><a class="header" href="#prop-clientcertificate">prop clientCertificate</a></h3>
+<pre><code class="language-cangjie">public mut prop clientCertificate: ?(Array&lt;X509Certificate&gt;, PrivateKey)
+</code></pre>
+<p>功能：客户端证书和私钥。</p>
+<p>类型：?(Array&lt;<a href="../../../crypto/x509/x509_package_api/x509_package_classes.html#class-x509certificate">X509Certificate</a>&gt;, PrivateKey)</p>
+<h3 id="prop-domain"><a class="header" href="#prop-domain">prop domain</a></h3>
+<pre><code class="language-cangjie">public mut prop domain: ?String
+</code></pre>
+<p>功能：读写要求的服务端主机地址 (SNI)， <code>None</code> 表示不要求。</p>
+<p>类型：?String</p>
+<p>异常：</p>
+<ul>
+<li>IllegalArgumentException - 参数有 '\0' 字符时，抛出异常。</li>
+</ul>
+<h3 id="prop-maxversion"><a class="header" href="#prop-maxversion">prop maxVersion</a></h3>
+<pre><code class="language-cangjie">public mut prop maxVersion: TlsVersion
+</code></pre>
+<p>功能：支持的 TLS 最大的版本。</p>
+<blockquote>
+<p><strong>注意：</strong></p>
+<p>当仅设置 <code>maxVersion</code> 而未设置 <code>minVersion</code> ，或设置的 <code>maxVersion</code> 低于 <code>minVersion</code> ，将会在握手阶段抛出 <a href="tls_package_exceptions.html#class-tlsexception">TlsException</a>。</p>
+</blockquote>
+<p>类型：<a href="tls_package_enums.html#enum-tlsversion">TlsVersion</a></p>
+<h3 id="prop-minversion"><a class="header" href="#prop-minversion">prop minVersion</a></h3>
+<pre><code class="language-cangjie">public mut prop minVersion: TlsVersion
+</code></pre>
+<p>功能：支持的 TLS 最小的版本。</p>
+<blockquote>
+<p><strong>注意：</strong></p>
+<p>当仅设置 <code>minVersion</code> 而未设置 <code>maxVersion</code> ，或设置的 <code>minVersion</code> 高于 <code>maxVersion</code> ，将会在握手阶段抛出 <a href="tls_package_exceptions.html#class-tlsexception">TlsException</a>。</p>
+</blockquote>
+<p>类型：<a href="tls_package_enums.html#enum-tlsversion">TlsVersion</a></p>
+<h3 id="prop-securitylevel"><a class="header" href="#prop-securitylevel">prop securityLevel</a></h3>
+<pre><code class="language-cangjie">public mut prop securityLevel: Int32
+</code></pre>
+<p>功能：指定客户端的安全级别，默认值为2，可选参数值在 0-5 内，参数值含义参见 openssl-SSL_CTX_set_security_level 说明。</p>
+<p>类型：Int32</p>
+<h3 id="prop-signaturealgorithms"><a class="header" href="#prop-signaturealgorithms">prop signatureAlgorithms</a></h3>
+<pre><code class="language-cangjie">public mut prop signatureAlgorithms: ?Array&lt;SignatureAlgorithm&gt;
+</code></pre>
+<p>功能：指定保序的签名和哈希算法。在值为 <code>None</code> 或者列表为空时，客户端会使用默认的列表。指定列表后，客户端可能不会发送不合适的签名算法。
+参见 <a href="https://www.rfc-editor.org/rfc/rfc5246.html#section-7.4.1.4.1">RFC5246 7.4.1.4.1 (TLS 1.2)</a> 章节， <a href="https://www.rfc-editor.org/rfc/rfc8446.html#section-4.2.3">RFC8446 4.2.3. (TLS 1.3)</a> 章节。</p>
+<p>类型：?Array&lt;<a href="tls_package_enums.html#enum-signaturealgorithm">SignatureAlgorithm</a>&gt;</p>
+<h3 id="init"><a class="header" href="#init">init()</a></h3>
+<pre><code class="language-cangjie">public init()
+</code></pre>
+<p>功能：构造 <a href="tls_package_structs.html#struct-tlsclientconfig">TlsClientConfig</a>。</p>
+<h2 id="struct-tlsserverconfig"><a class="header" href="#struct-tlsserverconfig">struct TlsServerConfig</a></h2>
+<pre><code class="language-cangjie">public struct TlsServerConfig {
+    public var clientIdentityRequired: TlsClientIdentificationMode = Disabled
+    public var keylogCallback: ?(TlsSocket, String) -&gt; Unit = None
+    public var verifyMode: CertificateVerifyMode = CertificateVerifyMode.Default
+    public init(certChain: Array&lt;X509Certificate&gt;, certKey: PrivateKey)
+}
+</code></pre>
+<p>功能：服务端配置。</p>
+<h3 id="var-clientidentityrequired"><a class="header" href="#var-clientidentityrequired">var clientIdentityRequired</a></h3>
+<pre><code class="language-cangjie">public var clientIdentityRequired: TlsClientIdentificationMode = Disabled
+</code></pre>
+<p>功能：设置或获取服务端要求客户端的认证模式，默认不要求客户端认证服务端证书，也不要求客户端发送本端证书。</p>
+<p>类型：<a href="tls_package_enums.html#enum-tlsclientidentificationmode">TlsClientIdentificationMode</a></p>
+<h3 id="var-keylogcallback-1"><a class="header" href="#var-keylogcallback-1">var keylogCallback</a></h3>
+<pre><code class="language-cangjie">public var keylogCallback: ?(TlsSocket, String) -&gt; Unit = None
+</code></pre>
+<p>功能：握手过程的回调函数，提供 TLS 初始秘钥数据，用于调试和解密记录使用。</p>
+<p>类型：?(<a href="tls_package_classes.html#class-tlssocket">TlsSocket</a>, String) -&gt; Unit</p>
+<h3 id="var-verifymode-1"><a class="header" href="#var-verifymode-1">var verifyMode</a></h3>
+<pre><code class="language-cangjie">public var verifyMode: CertificateVerifyMode = CertificateVerifyMode.Default
+</code></pre>
+<p>功能：设置或获取认证模式，默认认证系统证书。</p>
+<p>类型：<a href="tls_package_enums.html#enum-certificateverifymode">CertificateVerifyMode</a></p>
+<h3 id="prop-ciphersuitesv1_2-1"><a class="header" href="#prop-ciphersuitesv1_2-1">prop cipherSuitesV1_2</a></h3>
+<pre><code class="language-cangjie">public mut prop cipherSuitesV1_2: Array&lt;String&gt;
+</code></pre>
+<p>功能：基于 TLS 1.2 协议下的加密套。</p>
+<p>类型：Array&lt;String&gt;</p>
+<p>异常：</p>
+<ul>
+<li>IllegalArgumentException - 列表元素有 '\0' 字符时，抛出异常。</li>
+</ul>
+<h3 id="prop-ciphersuitesv1_3-1"><a class="header" href="#prop-ciphersuitesv1_3-1">prop cipherSuitesV1_3</a></h3>
+<pre><code class="language-cangjie">public mut prop cipherSuitesV1_3: Array&lt;String&gt;
+</code></pre>
+<p>功能：基于 TLS 1.3 协议下的加密套。</p>
+<p>类型：Array&lt;String&gt;</p>
+<p>异常：</p>
+<ul>
+<li>IllegalArgumentException - 列表元素有 '\0' 字符时，抛出异常。</li>
+</ul>
+<h3 id="prop-dhparameters"><a class="header" href="#prop-dhparameters">prop dhParameters</a></h3>
+<pre><code class="language-cangjie">public mut prop dhParameters: ?DHParamters
+</code></pre>
+<p>功能：指定服务端的 DH 密钥参数，默认为 <code>None</code>， 默认情况下使用 openssl 自动生成的参数值。</p>
+<p>类型：?<a href="../../../crypto/x509/x509_package_api/x509_package_interfaces.html#interface-dhparamters">DHParamters</a></p>
+<h3 id="prop-maxversion-1"><a class="header" href="#prop-maxversion-1">prop maxVersion</a></h3>
+<pre><code class="language-cangjie">public mut prop maxVersion: TlsVersion
+</code></pre>
+<p>功能：支持的最大 TLS 版本。</p>
+<blockquote>
+<p><strong>注意：</strong></p>
+<p>当仅设置 <code>maxVersion</code> 而未设置 <code>minVersion</code> ，或设置的 <code>maxVersion</code> 低于 <code>minVersion</code> ，将会在握手阶段抛出 <a href="tls_package_exceptions.html#class-tlsexception">TlsException</a>。</p>
+</blockquote>
+<p>类型：<a href="tls_package_enums.html#enum-tlsversion">TlsVersion</a></p>
+<h3 id="prop-minversion-1"><a class="header" href="#prop-minversion-1">prop minVersion</a></h3>
+<pre><code class="language-cangjie">public mut prop minVersion: TlsVersion
+</code></pre>
+<p>功能：支持的最小 TLS 版本。</p>
+<blockquote>
+<p><strong>注意：</strong></p>
+<p>当仅设置 <code>minVersion</code> 而未设置 <code>maxVersion</code> ，或设置的 <code>minVersion</code> 高于 <code>maxVersion</code> ，将会在握手阶段抛出 <a href="tls_package_exceptions.html#class-tlsexception">TlsException</a>。</p>
+</blockquote>
+<p>类型：<a href="tls_package_enums.html#enum-tlsversion">TlsVersion</a></p>
+<h3 id="prop-securitylevel-1"><a class="header" href="#prop-securitylevel-1">prop securityLevel</a></h3>
+<pre><code class="language-cangjie">public mut prop securityLevel: Int32
+</code></pre>
+<p>功能：指定服务端的安全级别，默认值为2，可选参数值在 [0,5] 内，参数值含义参见 <a href="https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html">openssl-SSL_CTX_set_security_level</a> 说明。
+功能：指定服务端的安全级别，默认值为2，可选参数值在 0-5 内，参数值含义参见 openssl-SSL_CTX_set_security_level 说明。</p>
+<p>类型：Int32</p>
+<p>异常：</p>
+<ul>
+<li>IllegalArgumentException - 当配置值不在 0-5 范围内时，抛出异常。</li>
+</ul>
+<h3 id="prop-servercertificatearrayx509certificate-privatekey"><a class="header" href="#prop-servercertificatearrayx509certificate-privatekey">prop serverCertificate(Array&lt;X509Certificate&gt;, PrivateKey)</a></h3>
+<pre><code class="language-cangjie">public mut prop serverCertificate: (Array&lt;X509Certificate&gt;, PrivateKey)
+</code></pre>
+<p>功能：服务端证书和对应的私钥文件。</p>
+<p>类型：(Array&lt;<a href="../../../crypto/x509/x509_package_api/x509_package_classes.html#class-x509certificate">X509Certificate</a>&gt;, PrivateKey)</p>
+<h3 id="prop-supportedalpnprotocols"><a class="header" href="#prop-supportedalpnprotocols">prop supportedAlpnProtocols</a></h3>
+<pre><code class="language-cangjie">public mut prop supportedAlpnProtocols: Array&lt;String&gt;
+</code></pre>
+<p>功能：应用层协商协议，若客户端尝试协商该协议，服务端将与选取其中相交的协议名称。若客户端未尝试协商协议，则该配置将被忽略。</p>
+<p>类型：Array&lt;String&gt;</p>
+<p>异常：</p>
+<ul>
+<li>IllegalArgumentException - 列表元素有 '\0' 字符时，抛出异常。</li>
+</ul>
+<h3 id="initarrayx509certificate-privatekey"><a class="header" href="#initarrayx509certificate-privatekey">init(Array&lt;X509Certificate&gt;, PrivateKey)</a></h3>
+<pre><code class="language-cangjie">public init(certChain: Array&lt;X509Certificate&gt;, certKey: PrivateKey)
+</code></pre>
+<p>功能：构造 <a href="tls_package_structs.html#struct-tlsserverconfig">TlsServerConfig</a> 对象。</p>
+<p>参数：</p>
+<ul>
+<li>certChain: Array&lt;<a href="../../../crypto/x509/x509_package_api/x509_package_classes.html#class-x509certificate">X509Certificate</a>&gt; - 证书对象。</li>
+<li>certKey: <a href="../../../crypto/x509/x509_package_api/x509_package_interfaces.html#interface-privatekey">PrivateKey</a> - 私钥对象。</li>
+</ul>
+<h2 id="struct-tlssession"><a class="header" href="#struct-tlssession">struct TlsSession</a></h2>
+<pre><code class="language-cangjie">public struct TlsSession &lt;: Equatable&lt;TlsSession&gt; &amp; ToString &amp; Hashable
+</code></pre>
+<p>功能：此结构体表示已建立的客户端会话。此结构体实例用户不可创建，其内部结构对用户不可见。</p>
+<p>当客户端 TLS 握手成功后，将会生成一个会话，当连接因一些原因丢失后，客户端可以通过这个会话 id 复用此次会话，省略握手流程。</p>
+<p>父类型：</p>
+<ul>
+<li>Equatable&lt;<a href="#struct-tlssession">TlsSession</a>&gt;</li>
+<li>ToString</li>
+<li>Hashable</li>
+</ul>
+<h3 id="func-hashcode"><a class="header" href="#func-hashcode">func hashCode()</a></h3>
+<pre><code class="language-cangjie">public override func hashCode(): Int64
+</code></pre>
+<p>功能：生成会话 id 哈希值。</p>
+<p>返回值：</p>
+<ul>
+<li>Int64 - 会话 id 哈希值。</li>
+</ul>
+<h3 id="func-tostring-1"><a class="header" href="#func-tostring-1">func toString()</a></h3>
+<pre><code class="language-cangjie">public override func toString(): String
+</code></pre>
+<p>功能：生成会话 id 字符串。</p>
+<p>返回值：</p>
+<ul>
+<li>String - <a href="tls_package_structs.html#struct-tlssession">TlsSession</a>(会话 id 字符串)。</li>
+</ul>
+<h3 id="operator-func-tlssession"><a class="header" href="#operator-func-tlssession">operator func !=(TlsSession)</a></h3>
+<pre><code class="language-cangjie">public override operator func !=(other: TlsSession)
+</code></pre>
+<p>功能：判断会话 id 是否不同。</p>
+<p>参数：</p>
+<ul>
+<li>other: <a href="tls_package_structs.html#struct-tlssession">TlsSession</a> - 被比较的会话对象。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>Unit - 若会话对象不同，返回 <code>true</code>；否则，返回 <code>false</code>。</li>
+</ul>
+<h3 id="operator-func-tlssession-1"><a class="header" href="#operator-func-tlssession-1">operator func ==(TlsSession)</a></h3>
+<pre><code class="language-cangjie">public override operator func ==(other: TlsSession)
+</code></pre>
+<p>功能：判断会话 id 是否相同。</p>
+<p>参数：</p>
+<ul>
+<li>other: <a href="tls_package_structs.html#struct-tlssession">TlsSession</a> - 被比较的会话对象。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>Unit - 若会话对象相同，返回 <code>true</code>；否则，返回 <code>false</code>。</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../../libs_stdx/net/tls/tls_package_api/tls_package_enums.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../../../libs_stdx/net/tls/tls_package_api/tls_package_exceptions.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../../libs_stdx/net/tls/tls_package_api/tls_package_enums.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../../../libs_stdx/net/tls/tls_package_api/tls_package_exceptions.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../../../elasticlunr.min.js"></script>
+        <script src="../../../../mark.min.js"></script>
+        <script src="../../../../searcher.js"></script>
+
+        <script src="../../../../clipboard.min.js"></script>
+        <script src="../../../../cangjie-highlight-export.js"></script><script src="../../../../highlight.js"></script>
+        <script src="../../../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        
+        <script src="../../../../cangjie-highlight-export.js"></script><script src="../../../../highlight.js"></script>
+        <script src="../../../../assets/elasticlunr.js"></script>
+        <script src="../../../../assets/fzf.umd.js"></script>
+        <script src="../../../../assets/sidebar.js"></script>
+
+
+    </div>
+    </body>
+</html>

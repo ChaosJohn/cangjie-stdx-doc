@@ -1,0 +1,95 @@
+/*
+Based off of the Ayu theme
+Original by Dempfi (https://github.com/dempfi/ayu)
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  background: #191f26;
+  color: #e6e1cf;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #5c6773;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-name,
+.hljs-section,
+.hljs-selector-tag {
+    color: #328dff
+}
+
+.hljs-template-variable,
+.hljs-variable {
+    color: #54cec7
+}
+
+.hljs-regexp,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-string {
+    color: #81bd3e
+}
+
+.hljs-bullet,
+.hljs-link,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-symbol {
+    color: #4dc7ff
+}
+
+.hljs-attr,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-doctag,
+.hljs-javadoc,
+.hljs-params,
+.hljs-title,
+.hljs-type {
+    color: #6f79a9
+}
+
+.hljs-attribute,
+.hljs-subst {
+    color: #fff
+}
+
+.hljs-formula {
+    font-style: italic
+}
+
+.hljs-selector-class,
+.hljs-selector-id {
+    color: #ffab40
+}
+
+.hljs-package {
+    color: #999999
+}
+
+.hljs-doctag,
+.hljs-strong {
+    font-weight: bold;
+}
+
+.hljs-emphasis {
+    font-style: italic
+}
+
+.hljs-tag {
+    color: #00568d;
+}
+
+.hljs-addition {
+  color: #91b362;
+}
+
+.hljs-deletion {
+  color: #d96c75;
+}

@@ -1,0 +1,156 @@
+/* Tomorrow Night Theme */
+/* https://github.com/jmblog/color-themes-for-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+/* https://github.com/jmblog/color-themes-for-highlightjs */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+    color: #969896
+}
+
+.hljs-keyword,
+.hljs-name,
+.hljs-section,
+.hljs-selector-tag {
+    color: #328dff
+}
+
+.hljs-template-variable,
+.hljs-variable {
+    color: #54cec7
+}
+
+.hljs-regexp,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-string {
+    color: #81bd3e
+}
+
+.hljs-bullet,
+.hljs-link,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-symbol {
+    color: #4dc7ff
+}
+
+.hljs-attr,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-javadoc,
+.hljs-params,
+.hljs-title,
+.hljs-type {
+    color: #6f79a9
+}
+
+.hljs-attribute,
+.hljs-subst {
+    color: #fff
+}
+
+.hljs-formula {
+    font-style: italic
+}
+
+.hljs-selector-class,
+.hljs-selector-id {
+    color: #ffab40
+}
+
+.hljs-package {
+    color: #999999
+}
+
+.hljs-doctag,
+.hljs-strong {
+    font-weight: bold;
+}
+
+.hljs-emphasis {
+    font-style: italic
+}
+
+/* Tomorrow Red */
+.hljs-tag,
+.ruby .hljs-constant,
+.xml .hljs-tag .hljs-title,
+.xml .hljs-pi,
+.xml .hljs-doctype,
+.html .hljs-doctype,
+.css .hljs-id,
+.css .hljs-class,
+.css .hljs-pseudo {
+    color: #cc6666;
+}
+
+/* Tomorrow Orange */
+.hljs-preprocessor,
+.hljs-pragma,
+.hljs-constant {
+    color: #de935f;
+}
+
+/* Tomorrow Yellow */
+.ruby .hljs-class .hljs-title,
+.css .hljs-rule .hljs-attribute {
+    color: #f0c674;
+}
+
+/* Tomorrow Green */
+.hljs-value,
+.hljs-inheritance,
+.hljs-header,
+.ruby .hljs-symbol,
+.xml .hljs-cdata {
+    color: #b5bd68;
+}
+
+/* Tomorrow Aqua */
+.css .hljs-hexcolor {
+    color: #8abeb7;
+}
+
+/* Tomorrow Blue */
+.hljs-function,
+.python .hljs-decorator,
+.python .hljs-title,
+.ruby .hljs-function .hljs-title,
+.ruby .hljs-title .hljs-keyword,
+.perl .hljs-sub,
+.javascript .hljs-title,
+.coffeescript .hljs-title {
+    color: #81a2be;
+}
+
+.javascript .hljs-function {
+    color: #b294bb;
+}
+
+.hljs {
+    display: block;
+    overflow-x: auto;
+    background: #1d1f21;
+    color: #c5c8c6;
+}
+
+.coffeescript .javascript,
+.javascript .xml,
+.tex .hljs-formula,
+.xml .javascript,
+.xml .vbscript,
+.xml .css,
+.xml .hljs-cdata {
+    opacity: 0.5;
+}
+
+.hljs-addition {
+    color: #718c00;
+}
+
+.hljs-deletion {
+    color: #c82829;
+}
